@@ -85,6 +85,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.AudioEventsInfo = new System.Windows.Forms.RichTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trkVolume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SceneChangeDuration)).BeginInit();
             this.panel1.SuspendLayout();
@@ -96,6 +98,7 @@
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // trayIcon
@@ -427,7 +430,7 @@
             this.ExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
             this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExitButton.ForeColor = System.Drawing.Color.Silver;
-            this.ExitButton.Location = new System.Drawing.Point(1162, 10);
+            this.ExitButton.Location = new System.Drawing.Point(1155, 10);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(75, 35);
             this.ExitButton.TabIndex = 27;
@@ -438,14 +441,12 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(36)))), ((int)(((byte)(45)))));
+            this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.panel7);
-            this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(-1, 54);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1252, 744);
+            this.panel1.Size = new System.Drawing.Size(1252, 780);
             this.panel1.TabIndex = 28;
             // 
             // panel7
@@ -456,9 +457,9 @@
             this.panel7.Controls.Add(this.SpeechChatCheckbox);
             this.panel7.Controls.Add(this.ChatTextBox);
             this.panel7.Controls.Add(this.label10);
-            this.panel7.Location = new System.Drawing.Point(937, 11);
+            this.panel7.Location = new System.Drawing.Point(947, 22);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(276, 712);
+            this.panel7.Size = new System.Drawing.Size(276, 740);
             this.panel7.TabIndex = 30;
             // 
             // SpeechChatComboBox
@@ -549,7 +550,7 @@
             this.ChatTextBox.Location = new System.Drawing.Point(22, 87);
             this.ChatTextBox.Name = "ChatTextBox";
             this.ChatTextBox.ReadOnly = true;
-            this.ChatTextBox.Size = new System.Drawing.Size(235, 607);
+            this.ChatTextBox.Size = new System.Drawing.Size(235, 643);
             this.ChatTextBox.TabIndex = 29;
             this.ChatTextBox.Text = "";
             this.ChatTextBox.Visible = false;
@@ -577,7 +578,7 @@
             this.panel5.Controls.Add(this.AddSceneSourceButton);
             this.panel5.Controls.Add(this.SceneSourceChangeDuration);
             this.panel5.Controls.Add(this.DeleteSceneSourceButton);
-            this.panel5.Location = new System.Drawing.Point(359, 374);
+            this.panel5.Location = new System.Drawing.Point(340, 399);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(276, 350);
             this.panel5.TabIndex = 29;
@@ -667,9 +668,9 @@
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
             this.panel4.Controls.Add(this.LogTextBox);
             this.panel4.Controls.Add(this.label5);
-            this.panel4.Location = new System.Drawing.Point(647, 11);
+            this.panel4.Location = new System.Drawing.Point(651, 22);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(276, 712);
+            this.panel4.Size = new System.Drawing.Size(276, 740);
             this.panel4.TabIndex = 29;
             // 
             // LogTextBox
@@ -681,7 +682,7 @@
             this.LogTextBox.Location = new System.Drawing.Point(22, 87);
             this.LogTextBox.Name = "LogTextBox";
             this.LogTextBox.ReadOnly = true;
-            this.LogTextBox.Size = new System.Drawing.Size(235, 607);
+            this.LogTextBox.Size = new System.Drawing.Size(235, 641);
             this.LogTextBox.TabIndex = 29;
             this.LogTextBox.Text = "";
             // 
@@ -708,7 +709,7 @@
             this.panel3.Controls.Add(this.AddSceneButton);
             this.panel3.Controls.Add(this.SceneChangeDuration);
             this.panel3.Controls.Add(this.DeleteSceneButton);
-            this.panel3.Location = new System.Drawing.Point(359, 12);
+            this.panel3.Location = new System.Drawing.Point(340, 42);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(276, 350);
             this.panel3.TabIndex = 28;
@@ -742,9 +743,9 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.lblLine);
             this.panel2.Controls.Add(this.lstbxSoundsPaths);
-            this.panel2.Location = new System.Drawing.Point(11, 12);
+            this.panel2.Location = new System.Drawing.Point(3, 42);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(338, 350);
+            this.panel2.Size = new System.Drawing.Size(316, 350);
             this.panel2.TabIndex = 27;
             // 
             // AudioEventsInfo
@@ -768,12 +769,35 @@
             this.pictureBox1.TabIndex = 29;
             this.pictureBox1.TabStop = false;
             // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(36)))), ((int)(((byte)(45)))));
+            this.panel6.Controls.Add(this.label9);
+            this.panel6.Controls.Add(this.panel5);
+            this.panel6.Controls.Add(this.panel3);
+            this.panel6.Controls.Add(this.panel2);
+            this.panel6.Location = new System.Drawing.Point(13, 13);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(619, 752);
+            this.panel6.TabIndex = 31;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(3, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(194, 25);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "Channel Rewards";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(69)))), ((int)(((byte)(208)))));
-            this.ClientSize = new System.Drawing.Size(1249, 790);
+            this.ClientSize = new System.Drawing.Size(1242, 831);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ExitButton);
@@ -804,6 +828,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -864,6 +890,8 @@
         private System.Windows.Forms.CheckBox SpeechChatCheckbox;
         private System.Windows.Forms.Panel TwitchLoginPanel;
         private System.Windows.Forms.ComboBox SpeechChatComboBox;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label label9;
     }
 }
 
