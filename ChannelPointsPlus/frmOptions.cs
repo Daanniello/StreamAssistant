@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -34,7 +35,7 @@ namespace ChannelPointsPlus
             if (userInput == "") return;
             Properties.Settings.Default.savedChannelID = userInput;
             Properties.Settings.Default.Save();
-            MessageBox.Show("Please restart the program to connect to the new ChannelID.", "Channel Points SFX Program", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Please restart the program to connect to the new ChannelID.", "ChannelPointsPlus", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -51,6 +52,16 @@ namespace ChannelPointsPlus
         {
             Properties.Settings.Default.minimizeToTray = cbTrayMini.Checked;
             Properties.Settings.Default.Save();
+        }
+
+        private void ResetTwitchLoginButton_Click(object sender, EventArgs e)
+        {
+            if (File.Exists("settingsTwitch.txt"))
+            {
+                File.Delete("settingsTwitch.txt");
+            }
+
+            MessageBox.Show("Please restart the program to connect to the new Twitch login.", "ChannelPointsPlus", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

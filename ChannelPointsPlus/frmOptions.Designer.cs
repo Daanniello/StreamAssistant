@@ -31,6 +31,7 @@
             this.cbTrayMini = new System.Windows.Forms.CheckBox();
             this.btnResetID = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.ResetTwitchLoginButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cbTrayMini
@@ -71,13 +72,26 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // ResetTwitchLoginButton
+            // 
+            this.ResetTwitchLoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ResetTwitchLoginButton.ForeColor = System.Drawing.Color.White;
+            this.ResetTwitchLoginButton.Location = new System.Drawing.Point(12, 76);
+            this.ResetTwitchLoginButton.Name = "ResetTwitchLoginButton";
+            this.ResetTwitchLoginButton.Size = new System.Drawing.Size(120, 23);
+            this.ResetTwitchLoginButton.TabIndex = 3;
+            this.ResetTwitchLoginButton.Text = "Reset Twitch Login";
+            this.ResetTwitchLoginButton.UseVisualStyleBackColor = true;
+            this.ResetTwitchLoginButton.Click += new System.EventHandler(this.ResetTwitchLoginButton_Click);
+            // 
             // frmOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(36)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(325, 257);
+            this.ClientSize = new System.Drawing.Size(339, 294);
             this.ControlBox = false;
+            this.Controls.Add(this.ResetTwitchLoginButton);
             this.Controls.Add(this.cbTrayMini);
             this.Controls.Add(this.btnResetID);
             this.Controls.Add(this.btnClose);
@@ -98,5 +112,6 @@
         private System.Windows.Forms.CheckBox cbTrayMini;
         private System.Windows.Forms.Button btnResetID;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button ResetTwitchLoginButton;
     }
 }

@@ -20,7 +20,7 @@ namespace ChannelPointsPlus
 
         public void ReadMessage(string message)
         {
-            synthesizer.Speak(message);
+            if(!message.StartsWith("!")) synthesizer.Speak(message);
         }
 
         public List<string> GetInstalledVoices()

@@ -45,6 +45,17 @@ namespace ChannelPointsPlus
             sceneSourceChanger = new SceneSourceChanger(this);
             new TwitchPointsRewardsManager(this);
 
+            //Checks if the user already has twitch info
+            if (File.Exists("settingsTwitch.txt"))
+            {
+                String[] loadSettings = File.ReadAllLines("settingsTwitch.txt");
+                for(var x = 0; x < 1; x++)
+                {
+                    string[] split = loadSettings[x].Split('|');
+                    ConnectTwitchChat(split[0], split[1]);
+                }                
+            }
+
             volumeLevel = savedVolumeLevel = Convert.ToInt32(Properties.Settings.Default.savedVolumeLevel);
             reloadAudioListItems();
             reloadSceneListItems();
@@ -477,7 +488,15 @@ namespace ChannelPointsPlus
 
         private void TwitchConnectButton_Click(object sender, EventArgs e)
         {
-            new TwitchChatManager(this, TwitchUsernameInput.Text, TwitchOAuthInput.Text);
+            ConnectTwitchChat(TwitchUsernameInput.Text, TwitchOAuthInput.Text);
+            string buildString = "";
+            buildString += TwitchUsernameInput.Text + "|" + TwitchOAuthInput.Text;
+            File.WriteAllText("settingsTwitch.txt", buildString);
+        }
+
+        private void ConnectTwitchChat(string username, string oauth)
+        {
+            new TwitchChatManager(this, username, oauth);
             ChatTextBox.Visible = true;
             SpeechChatCheckbox.Visible = true;
             TwitchLoginPanel.Visible = false;
