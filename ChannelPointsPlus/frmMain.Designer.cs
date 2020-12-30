@@ -47,6 +47,9 @@
             this.btnEditSound = new System.Windows.Forms.Button();
             this.AddSceneButton = new System.Windows.Forms.Button();
             this.DeleteSceneButton = new System.Windows.Forms.Button();
+            this.AddSceneSourceButton = new System.Windows.Forms.Button();
+            this.DeleteSceneSourceButton = new System.Windows.Forms.Button();
+            this.TwitchConnectButton = new System.Windows.Forms.Button();
             this.SceneRewards = new System.Windows.Forms.ListBox();
             this.SceneNames = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,14 +59,16 @@
             this.label4 = new System.Windows.Forms.Label();
             this.ExitButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.SceneChangeEventsInfo = new System.Windows.Forms.RichTextBox();
-            this.AudioEventsInfo = new System.Windows.Forms.RichTextBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.LogTextBox = new System.Windows.Forms.RichTextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.SpeechChatComboBox = new System.Windows.Forms.ComboBox();
+            this.TwitchLoginPanel = new System.Windows.Forms.Panel();
+            this.TwitchOAuthInput = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.TwitchUsernameInput = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.SpeechChatCheckbox = new System.Windows.Forms.CheckBox();
+            this.ChatTextBox = new System.Windows.Forms.RichTextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -71,18 +76,26 @@
             this.label7 = new System.Windows.Forms.Label();
             this.SceneSourceNames = new System.Windows.Forms.ListBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.AddSceneSourceButton = new System.Windows.Forms.Button();
             this.SceneSourceChangeDuration = new System.Windows.Forms.NumericUpDown();
-            this.DeleteSceneSourceButton = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.LogTextBox = new System.Windows.Forms.RichTextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.SceneChangeEventsInfo = new System.Windows.Forms.RichTextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.AudioEventsInfo = new System.Windows.Forms.RichTextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.trkVolume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SceneChangeDuration)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel7.SuspendLayout();
+            this.TwitchLoginPanel.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SceneSourceChangeDuration)).BeginInit();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // trayIcon
@@ -288,6 +301,48 @@
             this.DeleteSceneButton.UseVisualStyleBackColor = true;
             this.DeleteSceneButton.Click += new System.EventHandler(this.DeleteSceneButton_Click);
             // 
+            // AddSceneSourceButton
+            // 
+            this.AddSceneSourceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddSceneSourceButton.ForeColor = System.Drawing.Color.Silver;
+            this.AddSceneSourceButton.Location = new System.Drawing.Point(18, 188);
+            this.AddSceneSourceButton.Name = "AddSceneSourceButton";
+            this.AddSceneSourceButton.Size = new System.Drawing.Size(80, 23);
+            this.AddSceneSourceButton.TabIndex = 21;
+            this.AddSceneSourceButton.Text = "Add Scene";
+            this.toolTip1.SetToolTip(this.AddSceneSourceButton, "Add a new sound to the list.\r\nFirsts asks for the reward name then opens a file s" +
+        "elect dialog.");
+            this.AddSceneSourceButton.UseVisualStyleBackColor = true;
+            this.AddSceneSourceButton.Click += new System.EventHandler(this.AddSceneSourceButton_Click);
+            // 
+            // DeleteSceneSourceButton
+            // 
+            this.DeleteSceneSourceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteSceneSourceButton.ForeColor = System.Drawing.Color.Silver;
+            this.DeleteSceneSourceButton.Location = new System.Drawing.Point(179, 188);
+            this.DeleteSceneSourceButton.Name = "DeleteSceneSourceButton";
+            this.DeleteSceneSourceButton.Size = new System.Drawing.Size(80, 23);
+            this.DeleteSceneSourceButton.TabIndex = 22;
+            this.DeleteSceneSourceButton.Text = "Delete Scene";
+            this.toolTip1.SetToolTip(this.DeleteSceneSourceButton, "Add a new sound to the list.\r\nFirsts asks for the reward name then opens a file s" +
+        "elect dialog.");
+            this.DeleteSceneSourceButton.UseVisualStyleBackColor = true;
+            this.DeleteSceneSourceButton.Click += new System.EventHandler(this.DeleteSceneSourceButton_Click);
+            // 
+            // TwitchConnectButton
+            // 
+            this.TwitchConnectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TwitchConnectButton.ForeColor = System.Drawing.Color.Silver;
+            this.TwitchConnectButton.Location = new System.Drawing.Point(49, 87);
+            this.TwitchConnectButton.Name = "TwitchConnectButton";
+            this.TwitchConnectButton.Size = new System.Drawing.Size(134, 35);
+            this.TwitchConnectButton.TabIndex = 28;
+            this.TwitchConnectButton.Text = "Connect";
+            this.toolTip1.SetToolTip(this.TwitchConnectButton, "Add a new sound to the list.\r\nFirsts asks for the reward name then opens a file s" +
+        "elect dialog.");
+            this.TwitchConnectButton.UseVisualStyleBackColor = true;
+            this.TwitchConnectButton.Click += new System.EventHandler(this.TwitchConnectButton_Click);
+            // 
             // SceneRewards
             // 
             this.SceneRewards.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(101)))));
@@ -372,7 +427,7 @@
             this.ExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
             this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExitButton.ForeColor = System.Drawing.Color.Silver;
-            this.ExitButton.Location = new System.Drawing.Point(847, 10);
+            this.ExitButton.Location = new System.Drawing.Point(1162, 10);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(75, 35);
             this.ExitButton.TabIndex = 27;
@@ -383,120 +438,132 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(36)))), ((int)(((byte)(45)))));
+            this.panel1.Controls.Add(this.panel7);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(-1, 54);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(944, 744);
+            this.panel1.Size = new System.Drawing.Size(1252, 744);
             this.panel1.TabIndex = 28;
             // 
-            // panel3
+            // panel7
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
-            this.panel3.Controls.Add(this.SceneChangeEventsInfo);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.SceneRewards);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.SceneNames);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.AddSceneButton);
-            this.panel3.Controls.Add(this.SceneChangeDuration);
-            this.panel3.Controls.Add(this.DeleteSceneButton);
-            this.panel3.Location = new System.Drawing.Point(359, 12);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(276, 350);
-            this.panel3.TabIndex = 28;
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.panel7.Controls.Add(this.SpeechChatComboBox);
+            this.panel7.Controls.Add(this.TwitchLoginPanel);
+            this.panel7.Controls.Add(this.SpeechChatCheckbox);
+            this.panel7.Controls.Add(this.ChatTextBox);
+            this.panel7.Controls.Add(this.label10);
+            this.panel7.Location = new System.Drawing.Point(937, 11);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(276, 712);
+            this.panel7.TabIndex = 30;
             // 
-            // panel2
+            // SpeechChatComboBox
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
-            this.panel2.Controls.Add(this.AudioEventsInfo);
-            this.panel2.Controls.Add(this.lstbxSoundsRewards);
-            this.panel2.Controls.Add(this.btnEditTitle);
-            this.panel2.Controls.Add(this.trkVolume);
-            this.panel2.Controls.Add(this.btnStopAll);
-            this.panel2.Controls.Add(this.btnEditSound);
-            this.panel2.Controls.Add(this.txtVolume);
-            this.panel2.Controls.Add(this.btnRemove);
-            this.panel2.Controls.Add(this.btnTest);
-            this.panel2.Controls.Add(this.lblVolume);
-            this.panel2.Controls.Add(this.btnAdd);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.lblLine);
-            this.panel2.Controls.Add(this.lstbxSoundsPaths);
-            this.panel2.Location = new System.Drawing.Point(11, 12);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(338, 350);
-            this.panel2.TabIndex = 27;
+            this.SpeechChatComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.SpeechChatComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SpeechChatComboBox.ForeColor = System.Drawing.Color.White;
+            this.SpeechChatComboBox.FormattingEnabled = true;
+            this.SpeechChatComboBox.Location = new System.Drawing.Point(136, 44);
+            this.SpeechChatComboBox.Name = "SpeechChatComboBox";
+            this.SpeechChatComboBox.Size = new System.Drawing.Size(121, 21);
+            this.SpeechChatComboBox.TabIndex = 35;
+            this.SpeechChatComboBox.Visible = false;
+            this.SpeechChatComboBox.SelectedIndexChanged += new System.EventHandler(this.SpeechChatComboBox_SelectedIndexChanged);
             // 
-            // SceneChangeEventsInfo
+            // TwitchLoginPanel
             // 
-            this.SceneChangeEventsInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
-            this.SceneChangeEventsInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SceneChangeEventsInfo.ForeColor = System.Drawing.Color.Silver;
-            this.SceneChangeEventsInfo.Location = new System.Drawing.Point(18, 42);
-            this.SceneChangeEventsInfo.Name = "SceneChangeEventsInfo";
-            this.SceneChangeEventsInfo.Size = new System.Drawing.Size(221, 33);
-            this.SceneChangeEventsInfo.TabIndex = 27;
-            this.SceneChangeEventsInfo.Text = "Changes scene for a certain duration. Changes back to the old scene when it ends." +
-    "";
+            this.TwitchLoginPanel.Controls.Add(this.TwitchConnectButton);
+            this.TwitchLoginPanel.Controls.Add(this.TwitchOAuthInput);
+            this.TwitchLoginPanel.Controls.Add(this.label12);
+            this.TwitchLoginPanel.Controls.Add(this.TwitchUsernameInput);
+            this.TwitchLoginPanel.Controls.Add(this.label11);
+            this.TwitchLoginPanel.Location = new System.Drawing.Point(22, 87);
+            this.TwitchLoginPanel.Name = "TwitchLoginPanel";
+            this.TwitchLoginPanel.Size = new System.Drawing.Size(235, 137);
+            this.TwitchLoginPanel.TabIndex = 34;
             // 
-            // AudioEventsInfo
+            // TwitchOAuthInput
             // 
-            this.AudioEventsInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
-            this.AudioEventsInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.AudioEventsInfo.ForeColor = System.Drawing.Color.Silver;
-            this.AudioEventsInfo.Location = new System.Drawing.Point(16, 42);
-            this.AudioEventsInfo.Name = "AudioEventsInfo";
-            this.AudioEventsInfo.Size = new System.Drawing.Size(221, 33);
-            this.AudioEventsInfo.TabIndex = 28;
-            this.AudioEventsInfo.Text = "Plays an audio when a reward is redeemed.";
+            this.TwitchOAuthInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.TwitchOAuthInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TwitchOAuthInput.ForeColor = System.Drawing.Color.White;
+            this.TwitchOAuthInput.Location = new System.Drawing.Point(118, 51);
+            this.TwitchOAuthInput.Name = "TwitchOAuthInput";
+            this.TwitchOAuthInput.Size = new System.Drawing.Size(100, 20);
+            this.TwitchOAuthInput.TabIndex = 30;
             // 
-            // panel4
+            // label12
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
-            this.panel4.Controls.Add(this.LogTextBox);
-            this.panel4.Controls.Add(this.label5);
-            this.panel4.Location = new System.Drawing.Point(647, 11);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(276, 712);
-            this.panel4.TabIndex = 29;
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(16, 55);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(72, 13);
+            this.label12.TabIndex = 32;
+            this.label12.Text = "Twitch OAuth";
             // 
-            // label5
+            // TwitchUsernameInput
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(18, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 19);
-            this.label5.TabIndex = 28;
-            this.label5.Text = "Logs";
+            this.TwitchUsernameInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.TwitchUsernameInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TwitchUsernameInput.ForeColor = System.Drawing.Color.White;
+            this.TwitchUsernameInput.Location = new System.Drawing.Point(118, 15);
+            this.TwitchUsernameInput.Name = "TwitchUsernameInput";
+            this.TwitchUsernameInput.Size = new System.Drawing.Size(100, 20);
+            this.TwitchUsernameInput.TabIndex = 31;
             // 
-            // LogTextBox
+            // label11
             // 
-            this.LogTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(101)))));
-            this.LogTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.LogTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogTextBox.ForeColor = System.Drawing.Color.Silver;
-            this.LogTextBox.Location = new System.Drawing.Point(22, 87);
-            this.LogTextBox.Name = "LogTextBox";
-            this.LogTextBox.ReadOnly = true;
-            this.LogTextBox.Size = new System.Drawing.Size(235, 607);
-            this.LogTextBox.TabIndex = 29;
-            this.LogTextBox.Text = "";
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(17, 18);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(90, 13);
+            this.label11.TabIndex = 28;
+            this.label11.Text = "Twitch Username";
             // 
-            // pictureBox1
+            // SpeechChatCheckbox
             // 
-            this.pictureBox1.Image = global::ChannelPointsPlus.Properties.Resources.ChannelRewardsSystem;
-            this.pictureBox1.Location = new System.Drawing.Point(8, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(56, 53);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 29;
-            this.pictureBox1.TabStop = false;
+            this.SpeechChatCheckbox.AutoSize = true;
+            this.SpeechChatCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SpeechChatCheckbox.ForeColor = System.Drawing.Color.White;
+            this.SpeechChatCheckbox.Location = new System.Drawing.Point(174, 21);
+            this.SpeechChatCheckbox.Name = "SpeechChatCheckbox";
+            this.SpeechChatCheckbox.Size = new System.Drawing.Size(83, 17);
+            this.SpeechChatCheckbox.TabIndex = 33;
+            this.SpeechChatCheckbox.Text = "SpeechChat";
+            this.SpeechChatCheckbox.UseVisualStyleBackColor = true;
+            this.SpeechChatCheckbox.Visible = false;
+            this.SpeechChatCheckbox.CheckedChanged += new System.EventHandler(this.SpeechChatCheckbox_CheckedChanged);
+            // 
+            // ChatTextBox
+            // 
+            this.ChatTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(101)))));
+            this.ChatTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ChatTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChatTextBox.ForeColor = System.Drawing.Color.Silver;
+            this.ChatTextBox.Location = new System.Drawing.Point(22, 87);
+            this.ChatTextBox.Name = "ChatTextBox";
+            this.ChatTextBox.ReadOnly = true;
+            this.ChatTextBox.Size = new System.Drawing.Size(235, 607);
+            this.ChatTextBox.TabIndex = 29;
+            this.ChatTextBox.Text = "";
+            this.ChatTextBox.Visible = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(18, 17);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(47, 19);
+            this.label10.TabIndex = 28;
+            this.label10.Text = "Chat";
             // 
             // panel5
             // 
@@ -580,20 +647,6 @@
             this.label8.TabIndex = 25;
             this.label8.Text = "Source Duration";
             // 
-            // AddSceneSourceButton
-            // 
-            this.AddSceneSourceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddSceneSourceButton.ForeColor = System.Drawing.Color.Silver;
-            this.AddSceneSourceButton.Location = new System.Drawing.Point(18, 188);
-            this.AddSceneSourceButton.Name = "AddSceneSourceButton";
-            this.AddSceneSourceButton.Size = new System.Drawing.Size(80, 23);
-            this.AddSceneSourceButton.TabIndex = 21;
-            this.AddSceneSourceButton.Text = "Add Scene";
-            this.toolTip1.SetToolTip(this.AddSceneSourceButton, "Add a new sound to the list.\r\nFirsts asks for the reward name then opens a file s" +
-        "elect dialog.");
-            this.AddSceneSourceButton.UseVisualStyleBackColor = true;
-            this.AddSceneSourceButton.Click += new System.EventHandler(this.AddSceneSourceButton_Click);
-            // 
             // SceneSourceChangeDuration
             // 
             this.SceneSourceChangeDuration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(101)))));
@@ -609,33 +662,125 @@
             0,
             0});
             // 
-            // DeleteSceneSourceButton
+            // panel4
             // 
-            this.DeleteSceneSourceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteSceneSourceButton.ForeColor = System.Drawing.Color.Silver;
-            this.DeleteSceneSourceButton.Location = new System.Drawing.Point(179, 188);
-            this.DeleteSceneSourceButton.Name = "DeleteSceneSourceButton";
-            this.DeleteSceneSourceButton.Size = new System.Drawing.Size(80, 23);
-            this.DeleteSceneSourceButton.TabIndex = 22;
-            this.DeleteSceneSourceButton.Text = "Delete Scene";
-            this.toolTip1.SetToolTip(this.DeleteSceneSourceButton, "Add a new sound to the list.\r\nFirsts asks for the reward name then opens a file s" +
-        "elect dialog.");
-            this.DeleteSceneSourceButton.UseVisualStyleBackColor = true;
-            this.DeleteSceneSourceButton.Click += new System.EventHandler(this.DeleteSceneSourceButton_Click);
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.panel4.Controls.Add(this.LogTextBox);
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Location = new System.Drawing.Point(647, 11);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(276, 712);
+            this.panel4.TabIndex = 29;
+            // 
+            // LogTextBox
+            // 
+            this.LogTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(101)))));
+            this.LogTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LogTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogTextBox.ForeColor = System.Drawing.Color.Silver;
+            this.LogTextBox.Location = new System.Drawing.Point(22, 87);
+            this.LogTextBox.Name = "LogTextBox";
+            this.LogTextBox.ReadOnly = true;
+            this.LogTextBox.Size = new System.Drawing.Size(235, 607);
+            this.LogTextBox.TabIndex = 29;
+            this.LogTextBox.Text = "";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(18, 17);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 19);
+            this.label5.TabIndex = 28;
+            this.label5.Text = "Logs";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.panel3.Controls.Add(this.SceneChangeEventsInfo);
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.SceneRewards);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.SceneNames);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.AddSceneButton);
+            this.panel3.Controls.Add(this.SceneChangeDuration);
+            this.panel3.Controls.Add(this.DeleteSceneButton);
+            this.panel3.Location = new System.Drawing.Point(359, 12);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(276, 350);
+            this.panel3.TabIndex = 28;
+            // 
+            // SceneChangeEventsInfo
+            // 
+            this.SceneChangeEventsInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.SceneChangeEventsInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SceneChangeEventsInfo.ForeColor = System.Drawing.Color.Silver;
+            this.SceneChangeEventsInfo.Location = new System.Drawing.Point(18, 42);
+            this.SceneChangeEventsInfo.Name = "SceneChangeEventsInfo";
+            this.SceneChangeEventsInfo.Size = new System.Drawing.Size(221, 33);
+            this.SceneChangeEventsInfo.TabIndex = 27;
+            this.SceneChangeEventsInfo.Text = "Changes scene for a certain duration. Changes back to the old scene when it ends." +
+    "";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.panel2.Controls.Add(this.AudioEventsInfo);
+            this.panel2.Controls.Add(this.lstbxSoundsRewards);
+            this.panel2.Controls.Add(this.btnEditTitle);
+            this.panel2.Controls.Add(this.trkVolume);
+            this.panel2.Controls.Add(this.btnStopAll);
+            this.panel2.Controls.Add(this.btnEditSound);
+            this.panel2.Controls.Add(this.txtVolume);
+            this.panel2.Controls.Add(this.btnRemove);
+            this.panel2.Controls.Add(this.btnTest);
+            this.panel2.Controls.Add(this.lblVolume);
+            this.panel2.Controls.Add(this.btnAdd);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.lblLine);
+            this.panel2.Controls.Add(this.lstbxSoundsPaths);
+            this.panel2.Location = new System.Drawing.Point(11, 12);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(338, 350);
+            this.panel2.TabIndex = 27;
+            // 
+            // AudioEventsInfo
+            // 
+            this.AudioEventsInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.AudioEventsInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AudioEventsInfo.ForeColor = System.Drawing.Color.Silver;
+            this.AudioEventsInfo.Location = new System.Drawing.Point(16, 42);
+            this.AudioEventsInfo.Name = "AudioEventsInfo";
+            this.AudioEventsInfo.Size = new System.Drawing.Size(221, 33);
+            this.AudioEventsInfo.TabIndex = 28;
+            this.AudioEventsInfo.Text = "Plays an audio when a reward is redeemed.";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ChannelPointsPlus.Properties.Resources.ChannelRewardsSystem;
+            this.pictureBox1.Location = new System.Drawing.Point(8, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(56, 53);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 29;
+            this.pictureBox1.TabStop = false;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(69)))), ((int)(((byte)(208)))));
-            this.ClientSize = new System.Drawing.Size(934, 790);
+            this.ClientSize = new System.Drawing.Size(1249, 790);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.btnSettings);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1000, 1000);
+            this.MaximumSize = new System.Drawing.Size(1500, 1500);
             this.MinimumSize = new System.Drawing.Size(341, 326);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -645,16 +790,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.trkVolume)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SceneChangeDuration)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.TwitchLoginPanel.ResumeLayout(false);
+            this.TwitchLoginPanel.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SceneSourceChangeDuration)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SceneSourceChangeDuration)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -704,6 +853,17 @@
         private System.Windows.Forms.Button AddSceneSourceButton;
         private System.Windows.Forms.NumericUpDown SceneSourceChangeDuration;
         private System.Windows.Forms.Button DeleteSceneSourceButton;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.RichTextBox ChatTextBox;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox TwitchUsernameInput;
+        private System.Windows.Forms.TextBox TwitchOAuthInput;
+        private System.Windows.Forms.Button TwitchConnectButton;
+        private System.Windows.Forms.CheckBox SpeechChatCheckbox;
+        private System.Windows.Forms.Panel TwitchLoginPanel;
+        private System.Windows.Forms.ComboBox SpeechChatComboBox;
     }
 }
 

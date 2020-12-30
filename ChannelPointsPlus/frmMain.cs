@@ -28,21 +28,22 @@ namespace ChannelPointsPlus
         public SceneSourceChanger sceneSourceChanger;
         public AudioPlayer audioPlayer;
         public SlobsPipeClient slobsClient;
+        public SpeechChat speechChat;
 
         public frmMain()
         {
-            InitializeComponent();
+            InitializeComponent();          
         }
 
         private async void frmMain_Load(object sender, EventArgs e)
         {
-            slobsClient = new SlobsPipeClient("slobs");
+            slobsClient = new SlobsPipeClient("slobs");  
+
 
             audioPlayer = new AudioPlayer(this);
             sceneChanger = new SceneChanger(this);
             sceneSourceChanger = new SceneSourceChanger(this);
             new TwitchPointsRewardsManager(this);
-            
 
             volumeLevel = savedVolumeLevel = Convert.ToInt32(Properties.Settings.Default.savedVolumeLevel);
             reloadAudioListItems();
@@ -79,6 +80,11 @@ namespace ChannelPointsPlus
         public void Log(string logMessage)
         {
             this.Invoke(new MethodInvoker(() => LogTextBox.AppendText(logMessage + "\n")));
+        }
+
+        public void ChatMessageLog(string logMessage)
+        {
+            this.Invoke(new MethodInvoker(() => ChatTextBox.AppendText(logMessage + "\n")));
         }
 
         private void frmMain_OnClosing(object sender, FormClosingEventArgs e)
@@ -467,6 +473,37 @@ namespace ChannelPointsPlus
 
             bindingsSceneSource.Remove(SceneSourceRewards.SelectedItem.ToString());
             reloadSceneSourceListItems();            
+        }
+
+        private void TwitchConnectButton_Click(object sender, EventArgs e)
+        {
+            new TwitchChatManager(this, TwitchUsernameInput.Text, TwitchOAuthInput.Text);
+            ChatTextBox.Visible = true;
+            SpeechChatCheckbox.Visible = true;
+            TwitchLoginPanel.Visible = false;
+            speechChat = new SpeechChat();
+            SpeechChatComboBox.Visible = true;
+            SpeechChatComboBox.Items.AddRange(speechChat.GetInstalledVoices().ToArray());
+        }
+
+        private void SpeechChatCheckbox_CheckedChanged(dynamic sender, EventArgs e)
+        {
+            if(sender.CheckState == CheckState.Checked)
+            {
+                speechChat.isTurnedOn = true;
+                ChatMessageLog("SpeechChat is turned on!");
+            }
+            else
+            {
+                speechChat.isTurnedOn = false;
+                ChatMessageLog("SpeechChat is turned off!");
+            }
+        }
+
+        private void SpeechChatComboBox_SelectedIndexChanged(dynamic sender, EventArgs e)
+        {
+            speechChat.SelectVoice(sender.SelectedItem);
+            ChatMessageLog($"Voice changed to {sender.SelectedItem}");
         }
 
         /// <summary>
