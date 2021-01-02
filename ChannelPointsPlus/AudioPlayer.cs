@@ -8,7 +8,7 @@ namespace ChannelPointsPlus
     public class AudioPlayer
     {
         private static MediaPlayer thePlayer;
-        private static List<MediaPlayer> allPlayers = new List<MediaPlayer>();
+        public static List<MediaPlayer> allPlayers = new List<MediaPlayer>();
         private frmMain mainForm;
 
         public AudioPlayer(frmMain mainForm)
@@ -53,11 +53,7 @@ namespace ChannelPointsPlus
 
         public void StopAllPlayers()
         {
-            foreach (MediaPlayer player in allPlayers)
-            {
-                player.Stop();
-                player.Close();
-            }
+           
         }
 
         /// <summary>

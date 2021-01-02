@@ -49,6 +49,8 @@ namespace ChannelPointsPlus
 
         private async void OnRewardRedeemed(object sender, OnRewardRedeemedArgs e)
         {
+            _mainForm.speechChat.ReadMessage($"{e.DisplayName} claimed the channel reward {e.RewardTitle}");
+
             _mainForm.Log($"Reward claimed: {e.DisplayName} used {e.RewardTitle}");
             if (_mainForm.bindingsAudio.ContainsKey(e.RewardTitle) && e.Status != "ACTION_TAKEN")
             {
@@ -66,6 +68,12 @@ namespace ChannelPointsPlus
             {
                 _mainForm.bindingsSceneSource.TryGetValue(e.RewardTitle, out string output);
                 _mainForm.sceneSourceChanger.ChangeSceneSource(output, _mainForm.GetSceneSourceDuration());
+            }
+
+            if (_mainForm.bindingsVideo.ContainsKey(e.RewardTitle) && e.Status != "ACTION_TAKEN")
+            {
+                _mainForm.bindingsVideo.TryGetValue(e.RewardTitle, out string output);
+                _mainForm.videoPlayer.StartHttpListener(output);
             }
         }
     }

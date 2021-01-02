@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Speech.Synthesis;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,18 +10,20 @@ namespace ChannelPointsPlus
 {
     public class SpeechChat
     {
+        private frmMain _mainForm;
         private SpeechSynthesizer synthesizer;
         public bool isTurnedOn = false;
 
-        public SpeechChat()
+        public SpeechChat(frmMain mainForm)
         {
+            _mainForm = mainForm;
             synthesizer = new SpeechSynthesizer();
             synthesizer.SetOutputToDefaultAudioDevice();            
         }
 
-        public void ReadMessage(string message)
-        {
-            if(!message.StartsWith("!")) synthesizer.Speak(message);
+        public async void ReadMessage(string message)
+        {            
+            if (!message.StartsWith("!") && isTurnedOn == true) synthesizer.Speak(message);
         }
 
         public List<string> GetInstalledVoices()

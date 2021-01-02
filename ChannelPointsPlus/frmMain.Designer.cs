@@ -50,6 +50,9 @@
             this.AddSceneSourceButton = new System.Windows.Forms.Button();
             this.DeleteSceneSourceButton = new System.Windows.Forms.Button();
             this.TwitchConnectButton = new System.Windows.Forms.Button();
+            this.AddVideoButton = new System.Windows.Forms.Button();
+            this.DeleteVideoButton = new System.Windows.Forms.Button();
+            this.TTSSettingsButton = new System.Windows.Forms.Button();
             this.SceneRewards = new System.Windows.Forms.ListBox();
             this.SceneNames = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -59,7 +62,30 @@
             this.label4 = new System.Windows.Forms.Label();
             this.ExitButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.VideoRewards = new System.Windows.Forms.ListBox();
+            this.VideoUrls = new System.Windows.Forms.ListBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.SceneSourceRewards = new System.Windows.Forms.ListBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.SceneSourceNames = new System.Windows.Forms.ListBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.SceneSourceChangeDuration = new System.Windows.Forms.NumericUpDown();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.SceneChangeEventsInfo = new System.Windows.Forms.RichTextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.AudioEventsInfo = new System.Windows.Forms.RichTextBox();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.TTSSettingsPanel = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.TTSSubscribersOnlyCheckbox = new System.Windows.Forms.CheckBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.SpeechChatComboBox = new System.Windows.Forms.ComboBox();
             this.TwitchLoginPanel = new System.Windows.Forms.Panel();
             this.TwitchOAuthInput = new System.Windows.Forms.TextBox();
@@ -69,41 +95,29 @@
             this.SpeechChatCheckbox = new System.Windows.Forms.CheckBox();
             this.ChatTextBox = new System.Windows.Forms.RichTextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.SceneSourceRewards = new System.Windows.Forms.ListBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.SceneSourceNames = new System.Windows.Forms.ListBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.SceneSourceChangeDuration = new System.Windows.Forms.NumericUpDown();
             this.panel4 = new System.Windows.Forms.Panel();
             this.LogTextBox = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.SceneChangeEventsInfo = new System.Windows.Forms.RichTextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.AudioEventsInfo = new System.Windows.Forms.RichTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trkVolume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SceneChangeDuration)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.TwitchLoginPanel.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SceneSourceChangeDuration)).BeginInit();
-            this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.TTSSettingsPanel.SuspendLayout();
+            this.TwitchLoginPanel.SuspendLayout();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // trayIcon
             // 
-            this.trayIcon.Text = "Channel Points SFX Program";
+            this.trayIcon.Text = "ChannelPointsPlus";
             this.trayIcon.Visible = true;
             this.trayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trayIcon_MouseDoubleClick);
             // 
@@ -346,6 +360,48 @@
             this.TwitchConnectButton.UseVisualStyleBackColor = true;
             this.TwitchConnectButton.Click += new System.EventHandler(this.TwitchConnectButton_Click);
             // 
+            // AddVideoButton
+            // 
+            this.AddVideoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddVideoButton.ForeColor = System.Drawing.Color.Silver;
+            this.AddVideoButton.Location = new System.Drawing.Point(18, 188);
+            this.AddVideoButton.Name = "AddVideoButton";
+            this.AddVideoButton.Size = new System.Drawing.Size(80, 23);
+            this.AddVideoButton.TabIndex = 21;
+            this.AddVideoButton.Text = "Add Video";
+            this.toolTip1.SetToolTip(this.AddVideoButton, "Add a new sound to the list.\r\nFirsts asks for the reward name then opens a file s" +
+        "elect dialog.");
+            this.AddVideoButton.UseVisualStyleBackColor = true;
+            this.AddVideoButton.Click += new System.EventHandler(this.AddVideoButton_Click);
+            // 
+            // DeleteVideoButton
+            // 
+            this.DeleteVideoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteVideoButton.ForeColor = System.Drawing.Color.Silver;
+            this.DeleteVideoButton.Location = new System.Drawing.Point(179, 188);
+            this.DeleteVideoButton.Name = "DeleteVideoButton";
+            this.DeleteVideoButton.Size = new System.Drawing.Size(80, 23);
+            this.DeleteVideoButton.TabIndex = 22;
+            this.DeleteVideoButton.Text = "Delete Scene";
+            this.toolTip1.SetToolTip(this.DeleteVideoButton, "Add a new sound to the list.\r\nFirsts asks for the reward name then opens a file s" +
+        "elect dialog.");
+            this.DeleteVideoButton.UseVisualStyleBackColor = true;
+            this.DeleteVideoButton.Click += new System.EventHandler(this.DeleteVideoButton_Click);
+            // 
+            // TTSSettingsButton
+            // 
+            this.TTSSettingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.TTSSettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TTSSettingsButton.ForeColor = System.Drawing.Color.Silver;
+            this.TTSSettingsButton.Location = new System.Drawing.Point(232, 17);
+            this.TTSSettingsButton.Name = "TTSSettingsButton";
+            this.TTSSettingsButton.Size = new System.Drawing.Size(25, 25);
+            this.TTSSettingsButton.TabIndex = 30;
+            this.TTSSettingsButton.Text = "⚙️";
+            this.toolTip1.SetToolTip(this.TTSSettingsButton, "Opens the settings dialog.");
+            this.TTSSettingsButton.UseVisualStyleBackColor = false;
+            this.TTSSettingsButton.Click += new System.EventHandler(this.TTSSettingsButton_Click);
+            // 
             // SceneRewards
             // 
             this.SceneRewards.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(101)))));
@@ -449,122 +505,87 @@
             this.panel1.Size = new System.Drawing.Size(1252, 780);
             this.panel1.TabIndex = 28;
             // 
-            // panel7
+            // panel6
             // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
-            this.panel7.Controls.Add(this.SpeechChatComboBox);
-            this.panel7.Controls.Add(this.TwitchLoginPanel);
-            this.panel7.Controls.Add(this.SpeechChatCheckbox);
-            this.panel7.Controls.Add(this.ChatTextBox);
-            this.panel7.Controls.Add(this.label10);
-            this.panel7.Location = new System.Drawing.Point(947, 22);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(276, 740);
-            this.panel7.TabIndex = 30;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(36)))), ((int)(((byte)(45)))));
+            this.panel6.Controls.Add(this.panel8);
+            this.panel6.Controls.Add(this.label9);
+            this.panel6.Controls.Add(this.panel5);
+            this.panel6.Controls.Add(this.panel3);
+            this.panel6.Controls.Add(this.panel2);
+            this.panel6.Location = new System.Drawing.Point(13, 13);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(619, 752);
+            this.panel6.TabIndex = 31;
             // 
-            // SpeechChatComboBox
+            // panel8
             // 
-            this.SpeechChatComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
-            this.SpeechChatComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SpeechChatComboBox.ForeColor = System.Drawing.Color.White;
-            this.SpeechChatComboBox.FormattingEnabled = true;
-            this.SpeechChatComboBox.Location = new System.Drawing.Point(136, 44);
-            this.SpeechChatComboBox.Name = "SpeechChatComboBox";
-            this.SpeechChatComboBox.Size = new System.Drawing.Size(121, 21);
-            this.SpeechChatComboBox.TabIndex = 35;
-            this.SpeechChatComboBox.Visible = false;
-            this.SpeechChatComboBox.SelectedIndexChanged += new System.EventHandler(this.SpeechChatComboBox_SelectedIndexChanged);
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.panel8.Controls.Add(this.richTextBox2);
+            this.panel8.Controls.Add(this.label13);
+            this.panel8.Controls.Add(this.VideoRewards);
+            this.panel8.Controls.Add(this.VideoUrls);
+            this.panel8.Controls.Add(this.AddVideoButton);
+            this.panel8.Controls.Add(this.DeleteVideoButton);
+            this.panel8.Location = new System.Drawing.Point(19, 402);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(276, 350);
+            this.panel8.TabIndex = 30;
             // 
-            // TwitchLoginPanel
+            // richTextBox2
             // 
-            this.TwitchLoginPanel.Controls.Add(this.TwitchConnectButton);
-            this.TwitchLoginPanel.Controls.Add(this.TwitchOAuthInput);
-            this.TwitchLoginPanel.Controls.Add(this.label12);
-            this.TwitchLoginPanel.Controls.Add(this.TwitchUsernameInput);
-            this.TwitchLoginPanel.Controls.Add(this.label11);
-            this.TwitchLoginPanel.Location = new System.Drawing.Point(22, 87);
-            this.TwitchLoginPanel.Name = "TwitchLoginPanel";
-            this.TwitchLoginPanel.Size = new System.Drawing.Size(235, 137);
-            this.TwitchLoginPanel.TabIndex = 34;
+            this.richTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox2.ForeColor = System.Drawing.Color.Silver;
+            this.richTextBox2.Location = new System.Drawing.Point(18, 42);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(255, 39);
+            this.richTextBox2.TabIndex = 27;
+            this.richTextBox2.Text = "Add a video on stream when a reward has been claimed.";
             // 
-            // TwitchOAuthInput
+            // label13
             // 
-            this.TwitchOAuthInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
-            this.TwitchOAuthInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TwitchOAuthInput.ForeColor = System.Drawing.Color.White;
-            this.TwitchOAuthInput.Location = new System.Drawing.Point(118, 51);
-            this.TwitchOAuthInput.Name = "TwitchOAuthInput";
-            this.TwitchOAuthInput.Size = new System.Drawing.Size(100, 20);
-            this.TwitchOAuthInput.TabIndex = 30;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(14, 17);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(114, 19);
+            this.label13.TabIndex = 20;
+            this.label13.Text = "Video Events";
             // 
-            // label12
+            // VideoRewards
             // 
-            this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(16, 55);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(72, 13);
-            this.label12.TabIndex = 32;
-            this.label12.Text = "Twitch OAuth";
+            this.VideoRewards.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(101)))));
+            this.VideoRewards.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.VideoRewards.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.VideoRewards.FormattingEnabled = true;
+            this.VideoRewards.Location = new System.Drawing.Point(18, 87);
+            this.VideoRewards.Name = "VideoRewards";
+            this.VideoRewards.Size = new System.Drawing.Size(120, 93);
+            this.VideoRewards.TabIndex = 17;
             // 
-            // TwitchUsernameInput
+            // VideoUrls
             // 
-            this.TwitchUsernameInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
-            this.TwitchUsernameInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TwitchUsernameInput.ForeColor = System.Drawing.Color.White;
-            this.TwitchUsernameInput.Location = new System.Drawing.Point(118, 15);
-            this.TwitchUsernameInput.Name = "TwitchUsernameInput";
-            this.TwitchUsernameInput.Size = new System.Drawing.Size(100, 20);
-            this.TwitchUsernameInput.TabIndex = 31;
+            this.VideoUrls.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(101)))));
+            this.VideoUrls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.VideoUrls.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.VideoUrls.FormattingEnabled = true;
+            this.VideoUrls.Location = new System.Drawing.Point(139, 87);
+            this.VideoUrls.Name = "VideoUrls";
+            this.VideoUrls.Size = new System.Drawing.Size(120, 93);
+            this.VideoUrls.TabIndex = 18;
             // 
-            // label11
+            // label9
             // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(17, 18);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(90, 13);
-            this.label11.TabIndex = 28;
-            this.label11.Text = "Twitch Username";
-            // 
-            // SpeechChatCheckbox
-            // 
-            this.SpeechChatCheckbox.AutoSize = true;
-            this.SpeechChatCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.SpeechChatCheckbox.ForeColor = System.Drawing.Color.White;
-            this.SpeechChatCheckbox.Location = new System.Drawing.Point(174, 21);
-            this.SpeechChatCheckbox.Name = "SpeechChatCheckbox";
-            this.SpeechChatCheckbox.Size = new System.Drawing.Size(83, 17);
-            this.SpeechChatCheckbox.TabIndex = 33;
-            this.SpeechChatCheckbox.Text = "SpeechChat";
-            this.SpeechChatCheckbox.UseVisualStyleBackColor = true;
-            this.SpeechChatCheckbox.Visible = false;
-            this.SpeechChatCheckbox.CheckedChanged += new System.EventHandler(this.SpeechChatCheckbox_CheckedChanged);
-            // 
-            // ChatTextBox
-            // 
-            this.ChatTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(101)))));
-            this.ChatTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ChatTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChatTextBox.ForeColor = System.Drawing.Color.Silver;
-            this.ChatTextBox.Location = new System.Drawing.Point(22, 87);
-            this.ChatTextBox.Name = "ChatTextBox";
-            this.ChatTextBox.ReadOnly = true;
-            this.ChatTextBox.Size = new System.Drawing.Size(235, 643);
-            this.ChatTextBox.TabIndex = 29;
-            this.ChatTextBox.Text = "";
-            this.ChatTextBox.Visible = false;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(18, 17);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(47, 19);
-            this.label10.TabIndex = 28;
-            this.label10.Text = "Chat";
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(3, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(194, 25);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "Channel Rewards";
             // 
             // panel5
             // 
@@ -663,40 +684,6 @@
             0,
             0});
             // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
-            this.panel4.Controls.Add(this.LogTextBox);
-            this.panel4.Controls.Add(this.label5);
-            this.panel4.Location = new System.Drawing.Point(651, 22);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(276, 740);
-            this.panel4.TabIndex = 29;
-            // 
-            // LogTextBox
-            // 
-            this.LogTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(101)))));
-            this.LogTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.LogTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogTextBox.ForeColor = System.Drawing.Color.Silver;
-            this.LogTextBox.Location = new System.Drawing.Point(22, 87);
-            this.LogTextBox.Name = "LogTextBox";
-            this.LogTextBox.ReadOnly = true;
-            this.LogTextBox.Size = new System.Drawing.Size(235, 641);
-            this.LogTextBox.TabIndex = 29;
-            this.LogTextBox.Text = "";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(18, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 19);
-            this.label5.TabIndex = 28;
-            this.label5.Text = "Logs";
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
@@ -759,6 +746,206 @@
             this.AudioEventsInfo.TabIndex = 28;
             this.AudioEventsInfo.Text = "Plays an audio when a reward is redeemed.";
             // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.panel7.Controls.Add(this.TTSSettingsButton);
+            this.panel7.Controls.Add(this.TTSSettingsPanel);
+            this.panel7.Controls.Add(this.TwitchLoginPanel);
+            this.panel7.Controls.Add(this.SpeechChatCheckbox);
+            this.panel7.Controls.Add(this.ChatTextBox);
+            this.panel7.Controls.Add(this.label10);
+            this.panel7.Location = new System.Drawing.Point(947, 22);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(276, 740);
+            this.panel7.TabIndex = 30;
+            // 
+            // TTSSettingsPanel
+            // 
+            this.TTSSettingsPanel.Controls.Add(this.label15);
+            this.TTSSettingsPanel.Controls.Add(this.TTSSubscribersOnlyCheckbox);
+            this.TTSSettingsPanel.Controls.Add(this.label14);
+            this.TTSSettingsPanel.Controls.Add(this.SpeechChatComboBox);
+            this.TTSSettingsPanel.Location = new System.Drawing.Point(41, 230);
+            this.TTSSettingsPanel.Name = "TTSSettingsPanel";
+            this.TTSSettingsPanel.Size = new System.Drawing.Size(199, 145);
+            this.TTSSettingsPanel.TabIndex = 38;
+            this.TTSSettingsPanel.Visible = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(4, 36);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(37, 13);
+            this.label15.TabIndex = 40;
+            this.label15.Text = "Voice";
+            // 
+            // TTSSubscribersOnlyCheckbox
+            // 
+            this.TTSSubscribersOnlyCheckbox.AutoSize = true;
+            this.TTSSubscribersOnlyCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.TTSSubscribersOnlyCheckbox.ForeColor = System.Drawing.Color.White;
+            this.TTSSubscribersOnlyCheckbox.Location = new System.Drawing.Point(7, 93);
+            this.TTSSubscribersOnlyCheckbox.Name = "TTSSubscribersOnlyCheckbox";
+            this.TTSSubscribersOnlyCheckbox.Size = new System.Drawing.Size(103, 17);
+            this.TTSSubscribersOnlyCheckbox.TabIndex = 39;
+            this.TTSSubscribersOnlyCheckbox.Text = "Subscribers Only";
+            this.TTSSubscribersOnlyCheckbox.UseVisualStyleBackColor = true;
+            this.TTSSubscribersOnlyCheckbox.CheckedChanged += new System.EventHandler(this.TTSSubscribersOnlyCheckbox_CheckedChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(3, 6);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(113, 19);
+            this.label14.TabIndex = 37;
+            this.label14.Text = "TTS Settings";
+            // 
+            // SpeechChatComboBox
+            // 
+            this.SpeechChatComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.SpeechChatComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SpeechChatComboBox.ForeColor = System.Drawing.Color.White;
+            this.SpeechChatComboBox.FormattingEnabled = true;
+            this.SpeechChatComboBox.Location = new System.Drawing.Point(7, 52);
+            this.SpeechChatComboBox.Name = "SpeechChatComboBox";
+            this.SpeechChatComboBox.Size = new System.Drawing.Size(121, 21);
+            this.SpeechChatComboBox.TabIndex = 35;
+            this.SpeechChatComboBox.Visible = false;
+            this.SpeechChatComboBox.SelectedIndexChanged += new System.EventHandler(this.SpeechChatComboBox_SelectedIndexChanged);
+            // 
+            // TwitchLoginPanel
+            // 
+            this.TwitchLoginPanel.Controls.Add(this.TwitchConnectButton);
+            this.TwitchLoginPanel.Controls.Add(this.TwitchOAuthInput);
+            this.TwitchLoginPanel.Controls.Add(this.label12);
+            this.TwitchLoginPanel.Controls.Add(this.TwitchUsernameInput);
+            this.TwitchLoginPanel.Controls.Add(this.label11);
+            this.TwitchLoginPanel.Location = new System.Drawing.Point(22, 87);
+            this.TwitchLoginPanel.Name = "TwitchLoginPanel";
+            this.TwitchLoginPanel.Size = new System.Drawing.Size(235, 137);
+            this.TwitchLoginPanel.TabIndex = 34;
+            // 
+            // TwitchOAuthInput
+            // 
+            this.TwitchOAuthInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.TwitchOAuthInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TwitchOAuthInput.ForeColor = System.Drawing.Color.White;
+            this.TwitchOAuthInput.Location = new System.Drawing.Point(118, 51);
+            this.TwitchOAuthInput.Name = "TwitchOAuthInput";
+            this.TwitchOAuthInput.Size = new System.Drawing.Size(100, 20);
+            this.TwitchOAuthInput.TabIndex = 30;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(16, 55);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(72, 13);
+            this.label12.TabIndex = 32;
+            this.label12.Text = "Twitch OAuth";
+            // 
+            // TwitchUsernameInput
+            // 
+            this.TwitchUsernameInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.TwitchUsernameInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TwitchUsernameInput.ForeColor = System.Drawing.Color.White;
+            this.TwitchUsernameInput.Location = new System.Drawing.Point(118, 15);
+            this.TwitchUsernameInput.Name = "TwitchUsernameInput";
+            this.TwitchUsernameInput.Size = new System.Drawing.Size(100, 20);
+            this.TwitchUsernameInput.TabIndex = 31;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(17, 18);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(90, 13);
+            this.label11.TabIndex = 28;
+            this.label11.Text = "Twitch Username";
+            // 
+            // SpeechChatCheckbox
+            // 
+            this.SpeechChatCheckbox.AutoSize = true;
+            this.SpeechChatCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SpeechChatCheckbox.ForeColor = System.Drawing.Color.White;
+            this.SpeechChatCheckbox.Location = new System.Drawing.Point(181, 21);
+            this.SpeechChatCheckbox.Name = "SpeechChatCheckbox";
+            this.SpeechChatCheckbox.Size = new System.Drawing.Size(45, 17);
+            this.SpeechChatCheckbox.TabIndex = 33;
+            this.SpeechChatCheckbox.Text = "TTS";
+            this.SpeechChatCheckbox.UseVisualStyleBackColor = true;
+            this.SpeechChatCheckbox.Visible = false;
+            this.SpeechChatCheckbox.CheckedChanged += new System.EventHandler(this.SpeechChatCheckbox_CheckedChanged);
+            // 
+            // ChatTextBox
+            // 
+            this.ChatTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(101)))));
+            this.ChatTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ChatTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChatTextBox.ForeColor = System.Drawing.Color.Silver;
+            this.ChatTextBox.Location = new System.Drawing.Point(22, 87);
+            this.ChatTextBox.Name = "ChatTextBox";
+            this.ChatTextBox.ReadOnly = true;
+            this.ChatTextBox.Size = new System.Drawing.Size(235, 643);
+            this.ChatTextBox.TabIndex = 29;
+            this.ChatTextBox.Text = "";
+            this.ChatTextBox.Visible = false;
+            this.ChatTextBox.TextChanged += new System.EventHandler(this.ChatTextBox_TextChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(18, 17);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(47, 19);
+            this.label10.TabIndex = 28;
+            this.label10.Text = "Chat";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.panel4.Controls.Add(this.LogTextBox);
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Location = new System.Drawing.Point(651, 22);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(276, 740);
+            this.panel4.TabIndex = 29;
+            // 
+            // LogTextBox
+            // 
+            this.LogTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(101)))));
+            this.LogTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LogTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogTextBox.ForeColor = System.Drawing.Color.Silver;
+            this.LogTextBox.Location = new System.Drawing.Point(22, 87);
+            this.LogTextBox.Name = "LogTextBox";
+            this.LogTextBox.ReadOnly = true;
+            this.LogTextBox.Size = new System.Drawing.Size(235, 641);
+            this.LogTextBox.TabIndex = 29;
+            this.LogTextBox.Text = "";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(18, 17);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 19);
+            this.label5.TabIndex = 28;
+            this.label5.Text = "Logs";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ChannelPointsPlus.Properties.Resources.ChannelRewardsSystem;
@@ -768,29 +955,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 29;
             this.pictureBox1.TabStop = false;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(36)))), ((int)(((byte)(45)))));
-            this.panel6.Controls.Add(this.label9);
-            this.panel6.Controls.Add(this.panel5);
-            this.panel6.Controls.Add(this.panel3);
-            this.panel6.Controls.Add(this.panel2);
-            this.panel6.Location = new System.Drawing.Point(13, 13);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(619, 752);
-            this.panel6.TabIndex = 31;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(3, 9);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(194, 25);
-            this.label9.TabIndex = 29;
-            this.label9.Text = "Channel Rewards";
             // 
             // frmMain
             // 
@@ -814,22 +978,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.trkVolume)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SceneChangeDuration)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.TwitchLoginPanel.ResumeLayout(false);
-            this.TwitchLoginPanel.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SceneSourceChangeDuration)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.TTSSettingsPanel.ResumeLayout(false);
+            this.TTSSettingsPanel.PerformLayout();
+            this.TwitchLoginPanel.ResumeLayout(false);
+            this.TwitchLoginPanel.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -892,6 +1060,18 @@
         private System.Windows.Forms.ComboBox SpeechChatComboBox;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ListBox VideoRewards;
+        private System.Windows.Forms.ListBox VideoUrls;
+        private System.Windows.Forms.Button AddVideoButton;
+        private System.Windows.Forms.Button DeleteVideoButton;
+        private System.Windows.Forms.Button TTSSettingsButton;
+        private System.Windows.Forms.Panel TTSSettingsPanel;
+        private System.Windows.Forms.CheckBox TTSSubscribersOnlyCheckbox;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
     }
 }
 

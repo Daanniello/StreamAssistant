@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using TwitchLib.Client;
@@ -14,11 +15,12 @@ namespace ChannelPointsPlus
     {
         private frmMain _mainForm;
         private TwitchClient client;
+        private string _username;
 
         public TwitchChatManager(frmMain mainForm, string username, string OAuth)
         {
             _mainForm = mainForm;
-            
+            _username = username;
 
             ConnectionCredentials credentials = new ConnectionCredentials(username, OAuth);
             var clientOptions = new ClientOptions
@@ -28,7 +30,7 @@ namespace ChannelPointsPlus
             };
             WebSocketClient customClient = new WebSocketClient(clientOptions);
             client = new TwitchClient(customClient);
-            client.Initialize(credentials, "silverhazei");
+            client.Initialize(credentials, username);
 
             client.OnMessageReceived += Client_OnMessageReceived;
             client.OnConnected += Client_OnConnected;
@@ -47,10 +49,22 @@ namespace ChannelPointsPlus
             _mainForm.ChatMessageLog($"Connected with user: {e.BotUsername}");
         }
 
-        private void Client_OnMessageReceived(object sender, TwitchLib.Client.Events.OnMessageReceivedArgs e)
+        private async void Client_OnMessageReceived(object sender, TwitchLib.Client.Events.OnMessageReceivedArgs e)
         {
+
+            if (_mainForm.ttsSubscribersOnly)
+            {               
+                if (e.ChatMessage.IsSubscriber)
+                {
+                    if (_mainForm.speechChat.isTurnedOn) _mainForm.speechChat.ReadMessage(e.ChatMessage.Message);
+                }
+            }
+            else
+            {
+                if (_mainForm.speechChat.isTurnedOn) _mainForm.speechChat.ReadMessage(e.ChatMessage.Message);
+            }
+
             _mainForm.ChatMessageLog($"{ e.ChatMessage.Username}: {e.ChatMessage.Message}");
-            if (_mainForm.speechChat.isTurnedOn) _mainForm.speechChat.ReadMessage(e.ChatMessage.Message);
         }
     }
 }

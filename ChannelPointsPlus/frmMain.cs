@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Windows.Media;
 
 namespace ChannelPointsPlus
 {
@@ -19,16 +20,23 @@ namespace ChannelPointsPlus
 
         public Dictionary<string, string> bindingsAudio = new Dictionary<string, string>();
         public Dictionary<string, string> bindingsScene = new Dictionary<string, string>();
+        public Dictionary<string, string> bindingsVideo = new Dictionary<string, string>();
         public Dictionary<string, string> bindingsSceneSource = new Dictionary<string, string>();
         private int volumeLevel, savedVolumeLevel;
         private int boxSelectionAudio = 0;
         private int boxSelectionScene = 0;
+        private int boxSelectionVideo = 0;
         private int boxSelectionSceneSource = 0;
         public SceneChanger sceneChanger;
         public SceneSourceChanger sceneSourceChanger;
         public AudioPlayer audioPlayer;
         public SlobsPipeClient slobsClient;
         public SpeechChat speechChat;
+        public VideoPlayer videoPlayer;
+
+        public bool ttsSubscribersOnly = false;
+
+        private bool TTSSettingsTabOpen = false;
 
         public frmMain()
         {
@@ -37,9 +45,9 @@ namespace ChannelPointsPlus
 
         private async void frmMain_Load(object sender, EventArgs e)
         {
-            slobsClient = new SlobsPipeClient("slobs");  
+            slobsClient = new SlobsPipeClient("slobs");
 
-
+            videoPlayer = new VideoPlayer(this);
             audioPlayer = new AudioPlayer(this);
             sceneChanger = new SceneChanger(this);
             sceneSourceChanger = new SceneSourceChanger(this);
@@ -60,6 +68,7 @@ namespace ChannelPointsPlus
             reloadAudioListItems();
             reloadSceneListItems();
             reloadSceneSourceListItems();
+            reloadVideoListItems();
 
             txtVolume.Text = volumeLevel.ToString();
             trkVolume.Value = volumeLevel;
@@ -91,16 +100,18 @@ namespace ChannelPointsPlus
         public void Log(string logMessage)
         {
             this.Invoke(new MethodInvoker(() => LogTextBox.AppendText(logMessage + "\n")));
+            //TODO Add Log to a log file
         }
 
         public void ChatMessageLog(string logMessage)
         {
             this.Invoke(new MethodInvoker(() => ChatTextBox.AppendText(logMessage + "\n")));
+            //TODO Add Log to a log file
         }
 
         private void frmMain_OnClosing(object sender, FormClosingEventArgs e)
         {
-            trayIcon.Visible = false;
+            trayIcon.Visible = false;            
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
@@ -246,6 +257,34 @@ namespace ChannelPointsPlus
             saveBindingsScene();
         }
 
+        private void reloadVideoListItems()
+        {
+            VideoRewards.Items.Clear();
+            VideoUrls.Items.Clear();
+
+            foreach (KeyValuePair<string, string> kvp in bindingsVideo)
+            {
+                VideoRewards.Items.Add(kvp.Key);
+                string[] val = kvp.Value.Split('\\');
+                VideoUrls.Items.Add(val[val.Length - 1]);
+            }
+
+            if (boxSelectionVideo > (bindingsVideo.Count - 1)) boxSelectionVideo = (bindingsVideo.Count - 1);
+
+            if (bindingsVideo.Count == 0)
+            {
+                //TODO: Set scene add reactions to false 
+            }
+            else
+            {
+                //TODO: Set scene add reactions to true
+                VideoRewards.SelectedIndex = boxSelectionVideo;
+                VideoUrls.SelectedIndex = boxSelectionVideo;
+
+            }
+            saveBindingsVideo();
+        }
+
         private static void LogEvent(object sender, EventArgs e)
         {
 
@@ -275,6 +314,16 @@ namespace ChannelPointsPlus
                 buildString += kvp.Key + "|" + kvp.Value + "\n";
             }
             File.WriteAllText("settingsScene.txt", buildString);
+        }
+
+        private void saveBindingsVideo()
+        {
+            String buildString = "";
+            foreach (KeyValuePair<string, string> kvp in bindingsVideo)
+            {
+                buildString += kvp.Key + "|" + kvp.Value + "\n";
+            }
+            File.WriteAllText("settingsVideo.txt", buildString);
         }
 
         /// <summary>
@@ -457,6 +506,16 @@ namespace ChannelPointsPlus
             reloadSceneListItems();
         }
 
+        private void AddVideoButton_Click(object sender, EventArgs e)
+        {
+            string rewardName = Prompt.ShowDialog("Enter the twitch Channel Points reward name EXACTLY as it is on twitch.", "Channel Reward Name");
+            string videoName = Prompt.ShowDialog("Enter a youtube link", "Youtube Link");
+
+            bindingsVideo.Add(rewardName, videoName);
+            reloadVideoListItems();
+        }
+
+
         private void DeleteSceneButton_Click(object sender, EventArgs e)
         {
             Log($"Deleted item in SceneList [{SceneRewards.SelectedItem.ToString()}]");
@@ -486,6 +545,14 @@ namespace ChannelPointsPlus
             reloadSceneSourceListItems();            
         }
 
+        private void DeleteVideoButton_Click(object sender, EventArgs e)
+        {
+            Log($"Deleted item in VideoList [{VideoRewards.SelectedItem.ToString()}]");
+
+            bindingsVideo.Remove(VideoRewards.SelectedItem.ToString());
+            reloadVideoListItems();
+        }
+
         private void TwitchConnectButton_Click(object sender, EventArgs e)
         {
             ConnectTwitchChat(TwitchUsernameInput.Text, TwitchOAuthInput.Text);
@@ -500,7 +567,7 @@ namespace ChannelPointsPlus
             ChatTextBox.Visible = true;
             SpeechChatCheckbox.Visible = true;
             TwitchLoginPanel.Visible = false;
-            speechChat = new SpeechChat();
+            speechChat = new SpeechChat(this);
             SpeechChatComboBox.Visible = true;
             SpeechChatComboBox.Items.AddRange(speechChat.GetInstalledVoices().ToArray());
         }
@@ -523,6 +590,34 @@ namespace ChannelPointsPlus
         {
             speechChat.SelectVoice(sender.SelectedItem);
             ChatMessageLog($"Voice changed to {sender.SelectedItem}");
+        }
+
+
+        private void TTSSettingsButton_Click(object sender, EventArgs e)
+        {
+            if (TTSSettingsTabOpen)
+            {
+                TTSSettingsPanel.Visible = false;
+                TTSSettingsTabOpen = false;
+            }
+            else
+            {
+                TTSSettingsPanel.Visible = true;
+                TTSSettingsTabOpen = true;
+            }
+            
+        }
+
+        private void TTSSubscribersOnlyCheckbox_CheckedChanged(dynamic sender, EventArgs e)
+        {
+            if (sender.CheckState == CheckState.Checked) ttsSubscribersOnly = true;
+            if (sender.CheckState == CheckState.Unchecked) ttsSubscribersOnly = false;
+
+            ChatMessageLog($"TTS Sub only mode is turned {ttsSubscribersOnly}");
+        }
+
+        private void ChatTextBox_TextChanged(object sender, EventArgs e)
+        {            
         }
 
         /// <summary>
