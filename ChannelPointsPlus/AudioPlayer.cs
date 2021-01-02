@@ -53,7 +53,10 @@ namespace ChannelPointsPlus
 
         public void StopAllPlayers()
         {
-           
+           foreach(var audioPlay in allPlayers)
+            {
+                audioPlay.Stop();
+            }
         }
 
         /// <summary>

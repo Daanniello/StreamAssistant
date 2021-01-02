@@ -53,6 +53,7 @@
             this.AddVideoButton = new System.Windows.Forms.Button();
             this.DeleteVideoButton = new System.Windows.Forms.Button();
             this.TTSSettingsButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SceneRewards = new System.Windows.Forms.ListBox();
             this.SceneNames = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -256,9 +257,9 @@
             this.btnSettings.ForeColor = System.Drawing.Color.Silver;
             this.btnSettings.Location = new System.Drawing.Point(74, 10);
             this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(35, 35);
+            this.btnSettings.Size = new System.Drawing.Size(71, 35);
             this.btnSettings.TabIndex = 13;
-            this.btnSettings.Text = "⚙️";
+            this.btnSettings.Text = "Settings ⚙️";
             this.toolTip1.SetToolTip(this.btnSettings, "Opens the settings dialog.");
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
@@ -402,6 +403,20 @@
             this.TTSSettingsButton.UseVisualStyleBackColor = false;
             this.TTSSettingsButton.Click += new System.EventHandler(this.TTSSettingsButton_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.Silver;
+            this.button1.Location = new System.Drawing.Point(151, 10);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(128, 35);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "Start-Up Programs ⚙";
+            this.toolTip1.SetToolTip(this.button1, "Opens the settings dialog.");
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // SceneRewards
             // 
             this.SceneRewards.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(101)))));
@@ -412,6 +427,7 @@
             this.SceneRewards.Name = "SceneRewards";
             this.SceneRewards.Size = new System.Drawing.Size(120, 93);
             this.SceneRewards.TabIndex = 17;
+            this.SceneRewards.SelectedIndexChanged += new System.EventHandler(this.SceneRewards_SelectedIndexChanged);
             // 
             // SceneNames
             // 
@@ -423,6 +439,7 @@
             this.SceneNames.Name = "SceneNames";
             this.SceneNames.Size = new System.Drawing.Size(120, 93);
             this.SceneNames.TabIndex = 18;
+            this.SceneNames.SelectedIndexChanged += new System.EventHandler(this.SceneNames_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -637,6 +654,7 @@
             this.SceneSourceRewards.Name = "SceneSourceRewards";
             this.SceneSourceRewards.Size = new System.Drawing.Size(120, 93);
             this.SceneSourceRewards.TabIndex = 17;
+            this.SceneSourceRewards.SelectedIndexChanged += new System.EventHandler(this.SceneSourceRewards_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -658,6 +676,7 @@
             this.SceneSourceNames.Name = "SceneSourceNames";
             this.SceneSourceNames.Size = new System.Drawing.Size(120, 93);
             this.SceneSourceNames.TabIndex = 18;
+            this.SceneSourceNames.SelectedIndexChanged += new System.EventHandler(this.SceneSourceNames_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -962,6 +981,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(69)))), ((int)(((byte)(208)))));
             this.ClientSize = new System.Drawing.Size(1242, 831);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ExitButton);
@@ -1072,6 +1092,7 @@
         private System.Windows.Forms.CheckBox TTSSubscribersOnlyCheckbox;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button button1;
     }
 }
 

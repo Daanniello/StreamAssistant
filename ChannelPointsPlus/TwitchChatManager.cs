@@ -51,7 +51,7 @@ namespace ChannelPointsPlus
 
         private async void Client_OnMessageReceived(object sender, TwitchLib.Client.Events.OnMessageReceivedArgs e)
         {
-
+            
             if (_mainForm.ttsSubscribersOnly)
             {               
                 if (e.ChatMessage.IsSubscriber)

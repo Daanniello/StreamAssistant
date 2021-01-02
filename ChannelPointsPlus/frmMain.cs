@@ -45,6 +45,8 @@ namespace ChannelPointsPlus
 
         private async void frmMain_Load(object sender, EventArgs e)
         {
+            new ProgramStartUp();
+
             slobsClient = new SlobsPipeClient("slobs");
 
             videoPlayer = new VideoPlayer(this);
@@ -366,7 +368,7 @@ namespace ChannelPointsPlus
         /// </summary>
         private void lstbxSoundsRewards_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lstbxSoundsRewards.SelectedIndex = boxSelectionAudio;
+            lstbxSoundsPaths.SelectedIndex = lstbxSoundsRewards.SelectedIndex;
         }
 
         int hoveredIndexRewards = -1;
@@ -397,7 +399,7 @@ namespace ChannelPointsPlus
         /// </summary>
         private void lstbxSoundsPaths_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lstbxSoundsPaths.SelectedIndex = boxSelectionAudio;
+            lstbxSoundsRewards.SelectedIndex = lstbxSoundsPaths.SelectedIndex;
         }
 
         int hoveredIndexPaths = -1;
@@ -618,6 +620,32 @@ namespace ChannelPointsPlus
 
         private void ChatTextBox_TextChanged(object sender, EventArgs e)
         {            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var frmStartUpPrograms =  new frmStartUpPrograms();
+            frmStartUpPrograms.Show();
+        }
+
+        private void SceneRewards_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SceneNames.SelectedIndex = SceneRewards.SelectedIndex;
+        }
+
+        private void SceneNames_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           SceneRewards.SelectedIndex = SceneNames.SelectedIndex;
+        }
+
+        private void SceneSourceRewards_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SceneSourceNames.SelectedIndex = SceneSourceRewards.SelectedIndex;
+        }
+
+        private void SceneSourceNames_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SceneSourceRewards.SelectedIndex = SceneSourceNames.SelectedIndex;
         }
 
         /// <summary>
