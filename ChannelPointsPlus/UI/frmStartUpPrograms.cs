@@ -93,5 +93,10 @@ namespace ChannelPointsPlus
 
             ReloadProgramsList();
         }
+
+        private void SpeechChatCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

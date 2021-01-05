@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace ChannelPointsPlus
 {
-    public class SpeechChat
+    public class SpeechChatManager
     {
         private frmMain _mainForm;
         private SpeechSynthesizer synthesizer;
         public bool isTurnedOn = false;
 
-        public SpeechChat(frmMain mainForm)
+        public SpeechChatManager(frmMain mainForm)
         {
             _mainForm = mainForm;
             synthesizer = new SpeechSynthesizer();

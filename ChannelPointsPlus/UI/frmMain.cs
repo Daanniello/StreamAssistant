@@ -31,7 +31,7 @@ namespace ChannelPointsPlus
         public SceneSourceChanger sceneSourceChanger;
         public AudioPlayer audioPlayer;
         public SlobsPipeClient slobsClient;
-        public SpeechChat speechChat;
+        public SpeechChatManager speechChat;
         public VideoPlayer videoPlayer;
 
         public bool ttsSubscribersOnly = false;
@@ -527,7 +527,7 @@ namespace ChannelPointsPlus
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void AddSceneSourceButton_Click(object sender, EventArgs e)
@@ -569,7 +569,7 @@ namespace ChannelPointsPlus
             ChatTextBox.Visible = true;
             SpeechChatCheckbox.Visible = true;
             TwitchLoginPanel.Visible = false;
-            speechChat = new SpeechChat(this);
+            speechChat = new SpeechChatManager(this);
             SpeechChatComboBox.Visible = true;
             SpeechChatComboBox.Items.AddRange(speechChat.GetInstalledVoices().ToArray());
         }
@@ -646,6 +646,11 @@ namespace ChannelPointsPlus
         private void SceneSourceNames_SelectedIndexChanged(object sender, EventArgs e)
         {
             SceneSourceRewards.SelectedIndex = SceneSourceNames.SelectedIndex;
+        }
+
+        private void SceneChangeDuration_ValueChanged(object sender, EventArgs e)
+        {
+
         }
 
         /// <summary>

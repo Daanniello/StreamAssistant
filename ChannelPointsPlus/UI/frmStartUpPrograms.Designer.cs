@@ -139,6 +139,7 @@ namespace ChannelPointsPlus
             this.SpeechChatCheckbox.TabIndex = 38;
             this.SpeechChatCheckbox.Text = "Always start programs at start";
             this.SpeechChatCheckbox.UseVisualStyleBackColor = true;
+            this.SpeechChatCheckbox.CheckedChanged += new System.EventHandler(this.SpeechChatCheckbox_CheckedChanged);
             // 
             // frmStartUpPrograms
             // 

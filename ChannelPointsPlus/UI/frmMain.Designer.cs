@@ -379,7 +379,7 @@
             // 
             this.DeleteVideoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteVideoButton.ForeColor = System.Drawing.Color.Silver;
-            this.DeleteVideoButton.Location = new System.Drawing.Point(179, 188);
+            this.DeleteVideoButton.Location = new System.Drawing.Point(215, 188);
             this.DeleteVideoButton.Name = "DeleteVideoButton";
             this.DeleteVideoButton.Size = new System.Drawing.Size(80, 23);
             this.DeleteVideoButton.TabIndex = 22;
@@ -469,14 +469,20 @@
             this.SceneChangeDuration.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SceneChangeDuration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.SceneChangeDuration.Location = new System.Drawing.Point(104, 221);
+            this.SceneChangeDuration.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.SceneChangeDuration.Name = "SceneChangeDuration";
             this.SceneChangeDuration.Size = new System.Drawing.Size(100, 20);
             this.SceneChangeDuration.TabIndex = 24;
             this.SceneChangeDuration.Value = new decimal(new int[] {
-            30,
+            180,
             0,
             0,
             0});
+            this.SceneChangeDuration.ValueChanged += new System.EventHandler(this.SceneChangeDuration_ValueChanged);
             // 
             // label3
             // 
@@ -544,9 +550,9 @@
             this.panel8.Controls.Add(this.VideoUrls);
             this.panel8.Controls.Add(this.AddVideoButton);
             this.panel8.Controls.Add(this.DeleteVideoButton);
-            this.panel8.Location = new System.Drawing.Point(19, 402);
+            this.panel8.Location = new System.Drawing.Point(3, 402);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(276, 350);
+            this.panel8.Size = new System.Drawing.Size(316, 347);
             this.panel8.TabIndex = 30;
             // 
             // richTextBox2
@@ -579,7 +585,7 @@
             this.VideoRewards.FormattingEnabled = true;
             this.VideoRewards.Location = new System.Drawing.Point(18, 87);
             this.VideoRewards.Name = "VideoRewards";
-            this.VideoRewards.Size = new System.Drawing.Size(120, 93);
+            this.VideoRewards.Size = new System.Drawing.Size(137, 93);
             this.VideoRewards.TabIndex = 17;
             // 
             // VideoUrls
@@ -588,9 +594,9 @@
             this.VideoUrls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.VideoUrls.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.VideoUrls.FormattingEnabled = true;
-            this.VideoUrls.Location = new System.Drawing.Point(139, 87);
+            this.VideoUrls.Location = new System.Drawing.Point(156, 87);
             this.VideoUrls.Name = "VideoUrls";
-            this.VideoUrls.Size = new System.Drawing.Size(120, 93);
+            this.VideoUrls.Size = new System.Drawing.Size(139, 93);
             this.VideoUrls.TabIndex = 18;
             // 
             // label9
