@@ -168,29 +168,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TwitchRewardEvents\AudioPlayer.cs" />
-    <Compile Include="Forms\frmLogin.cs">
+    <Compile Include="UI\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmLogin.Designer.cs">
+    <Compile Include="UI\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmMain.cs">
+    <Compile Include="UI\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmMain.Designer.cs">
+    <Compile Include="UI\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmOptions.cs">
+    <Compile Include="UI\frmOptions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmOptions.Designer.cs">
+    <Compile Include="UI\frmOptions.Designer.cs">
       <DependentUpon>frmOptions.cs</DependentUpon>
     </Compile>
     <Compile Include="ProgramStartUp.cs" />
-    <Compile Include="Forms\frmStartUpPrograms.cs">
+    <Compile Include="UI\frmStartUpPrograms.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmStartUpPrograms.Designer.cs">
+    <Compile Include="UI\frmStartUpPrograms.Designer.cs">
       <DependentUpon>frmStartUpPrograms.cs</DependentUpon>
     </Compile>
     <Compile Include="TwitchRewardEvents\VideoPlayer.cs" />
@@ -203,19 +203,19 @@
     </Compile>
     <Compile Include="TwitchRewardEvents\SceneChanger.cs" />
     <Compile Include="TwitchRewardEvents\SceneSourceChanger.cs" />
-    <Compile Include="SpeechChatManager.cs" />
+    <Compile Include="Managers\SpeechChatManager.cs" />
     <Compile Include="Managers\TwitchChatManager.cs" />
     <Compile Include="Managers\TwitchPointsRewardsManager.cs" />
-    <EmbeddedResource Include="Forms\frmLogin.resx">
+    <EmbeddedResource Include="UI\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmMain.resx">
+    <EmbeddedResource Include="UI\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmOptions.resx">
+    <EmbeddedResource Include="UI\frmOptions.resx">
       <DependentUpon>frmOptions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmStartUpPrograms.resx">
+    <EmbeddedResource Include="UI\frmStartUpPrograms.resx">
       <DependentUpon>frmStartUpPrograms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
