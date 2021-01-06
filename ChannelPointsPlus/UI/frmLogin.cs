@@ -38,7 +38,7 @@ namespace ChannelPointsPlus
         private void TwitchConnectButton_Click(object sender, EventArgs e)
         {
             //Super simple login
-            if(UsernameInput.Text == "silverhaze" && PasswordInput.Text == "silverhaze")
+            if(true/*UsernameInput.Text == "silverhaze" && PasswordInput.Text == "silverhaze"*/)
             {
                 var frmMain = new frmMain();
                 frmMain.Show();
@@ -54,6 +54,11 @@ namespace ChannelPointsPlus
         private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
