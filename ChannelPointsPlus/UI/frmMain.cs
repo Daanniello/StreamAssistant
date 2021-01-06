@@ -70,7 +70,7 @@ namespace ChannelPointsPlus
                 }                
             }
 
-            //Creates log file after checking if the log directory exists, maybe move log directory creation to some sort of first-run / initial setup section of the app
+            //Creates log file after checking if the log directory exists
             directory = Path.Combine(AppContext.BaseDirectory + "Logs\\");
             if (!Directory.Exists(directory))
             {
@@ -78,7 +78,7 @@ namespace ChannelPointsPlus
             }
             logName = "Log_" + DateTime.Today.ToString("MM.dd.yyyy") + ".txt";
             logPath = Path.Combine(directory, logName);
-            File.AppendAllText(logPath, "----Log for " + DateTime.Today + "----\n");
+            File.AppendAllText(logPath, "----Log for " + DateTime.Now + "----\n");
 
             volumeLevel = savedVolumeLevel = Convert.ToInt32(Properties.Settings.Default.savedVolumeLevel);
             reloadAudioListItems();
@@ -116,13 +116,13 @@ namespace ChannelPointsPlus
         public void Log(string logMessage)
         {
             this.Invoke(new MethodInvoker(() => LogTextBox.AppendText(logMessage + "\n")));
-            File.AppendAllText(logPath, logMessage + "\n");
+            File.AppendAllText(logPath, DateTime.Now.ToString("[h:mm:ss tt] ") + logMessage + "\n");
         }
 
         public void ChatMessageLog(string logMessage)
         {
             this.Invoke(new MethodInvoker(() => ChatTextBox.AppendText(logMessage + "\n")));
-            File.AppendAllText(logPath, logMessage + "\n");
+            File.AppendAllText(logPath, DateTime.Now.ToString("[h:mm:ss tt] ") + logMessage + "\n");
         }
 
         private void frmMain_OnClosing(object sender, FormClosingEventArgs e)
