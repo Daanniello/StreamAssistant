@@ -38,6 +38,10 @@ namespace ChannelPointsPlus
 
         private bool TTSSettingsTabOpen = false;
 
+        private String directory;
+        private String logName;
+        private String logPath;
+
         public frmMain()
         {
             InitializeComponent();          
@@ -65,6 +69,16 @@ namespace ChannelPointsPlus
                     ConnectTwitchChat(split[0], split[1]);
                 }                
             }
+
+            //Creates log file after checking if the log directory exists, maybe move log directory creation to some sort of first-run / initial setup section of the app
+            directory = Path.Combine(AppContext.BaseDirectory + "Logs\\");
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+            logName = "Log_" + DateTime.Today.ToString("MM.dd.yyyy") + ".txt";
+            logPath = Path.Combine(directory, logName);
+            File.AppendAllText(logPath, "----Log for " + DateTime.Today + "----\n");
 
             volumeLevel = savedVolumeLevel = Convert.ToInt32(Properties.Settings.Default.savedVolumeLevel);
             reloadAudioListItems();
@@ -102,13 +116,13 @@ namespace ChannelPointsPlus
         public void Log(string logMessage)
         {
             this.Invoke(new MethodInvoker(() => LogTextBox.AppendText(logMessage + "\n")));
-            //TODO Add Log to a log file
+            File.AppendAllText(logPath, logMessage + "\n");
         }
 
         public void ChatMessageLog(string logMessage)
         {
             this.Invoke(new MethodInvoker(() => ChatTextBox.AppendText(logMessage + "\n")));
-            //TODO Add Log to a log file
+            File.AppendAllText(logPath, logMessage + "\n");
         }
 
         private void frmMain_OnClosing(object sender, FormClosingEventArgs e)
