@@ -116,13 +116,13 @@ namespace ChannelPointsPlus
         public void Log(string logMessage)
         {
             this.Invoke(new MethodInvoker(() => LogTextBox.AppendText(logMessage + "\n")));
-            File.AppendAllText(logPath, DateTime.Now.ToString("[h:mm:ss tt] ") + logMessage + "\n");
+            File.AppendAllText(logPath, DateTime.Now.ToString("[h:mm:ss tt] ") + "[Event Log] " + logMessage + "\n");
         }
 
         public void ChatMessageLog(string logMessage)
         {
             this.Invoke(new MethodInvoker(() => ChatTextBox.AppendText(logMessage + "\n")));
-            File.AppendAllText(logPath, DateTime.Now.ToString("[h:mm:ss tt] ") + logMessage + "\n");
+            File.AppendAllText(logPath, DateTime.Now.ToString("[h:mm:ss tt] ") + "[Chat Log] " + logMessage + "\n");
         }
 
         private void frmMain_OnClosing(object sender, FormClosingEventArgs e)
