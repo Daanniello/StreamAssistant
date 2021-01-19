@@ -621,6 +621,7 @@
             this.RandomPickerMessage.Size = new System.Drawing.Size(236, 61);
             this.RandomPickerMessage.TabIndex = 30;
             this.RandomPickerMessage.Text = "";
+            this.RandomPickerMessage.TextChanged += new System.EventHandler(this.RandomPickerMessage_TextChanged);
             // 
             // label23
             // 

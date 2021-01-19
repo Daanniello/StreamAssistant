@@ -720,6 +720,11 @@ namespace ChannelPointsPlus
 
         }
 
+        private void RandomPickerMessage_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
         /// <summary>
         /// Prompts user for the Channel Points Reward name and then opens an OpenFileDialog to select the file.
