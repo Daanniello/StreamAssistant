@@ -1,4 +1,6 @@
-﻿using SLOBSharp.Client;
+﻿using ChannelPointsPlus.APIs;
+using ChannelPointsPlus.Managers;
+using SLOBSharp.Client;
 using SLOBSharp.Client.Requests;
 using System;
 using System.Collections.Generic;
@@ -33,6 +35,9 @@ namespace ChannelPointsPlus
         public SlobsPipeClient slobsClient;
         public SpeechChatManager speechChat;
         public VideoPlayer videoPlayer;
+        public TwitchChatManager twitchChatManager;
+        public RandomPickerManager randomPickerManager;
+        public TwitchApi TwitchApi;
 
         public bool ttsSubscribersOnly = false;
 
@@ -116,13 +121,19 @@ namespace ChannelPointsPlus
         public void Log(string logMessage)
         {
             this.Invoke(new MethodInvoker(() => LogTextBox.AppendText(logMessage + "\n")));
-            File.AppendAllText(logPath, DateTime.Now.ToString("[h:mm:ss tt] ") + "[Event Log] " + logMessage + "\n");
+            //TODO fix writing if the file is busy
+            //LogToTextFile(logMessage, "[Event Log]");
         }
 
         public void ChatMessageLog(string logMessage)
         {
             this.Invoke(new MethodInvoker(() => ChatTextBox.AppendText(logMessage + "\n")));
-            File.AppendAllText(logPath, DateTime.Now.ToString("[h:mm:ss tt] ") + "[Chat Log] " + logMessage + "\n");
+            LogToTextFile(logMessage, "[Chat Log]");
+        }
+
+        private void LogToTextFile(string logMessage, string logType)
+        {
+            File.AppendAllText(logPath, $"{DateTime.Now.ToString("[h:mm:ss tt] ")} {logType}" + logMessage + "\n");
         }
 
         private void frmMain_OnClosing(object sender, FormClosingEventArgs e)
@@ -579,7 +590,8 @@ namespace ChannelPointsPlus
 
         private void ConnectTwitchChat(string username, string oauth)
         {
-            new TwitchChatManager(this, username, oauth);
+            TwitchApi = new TwitchApi(this, username, oauth);
+            twitchChatManager = new TwitchChatManager(this, TwitchApi);
             ChatTextBox.Visible = true;
             SpeechChatCheckbox.Visible = true;
             TwitchLoginPanel.Visible = false;
@@ -666,6 +678,48 @@ namespace ChannelPointsPlus
         {
 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RandomPickerStartButton_Click(object sender, EventArgs e)
+        {
+            if (twitchChatManager != null)
+            {
+                randomPickerManager = new RandomPickerManager(this, TwitchApi);
+                randomPickerManager.Start(RandomPickerDurationInput.Value, RandomPickerAllViewersCheckbox.Checked, RandomPickerRequirementsInput.Text);
+            }
+        }
+
+        public void updateRandomPickerTimer(string timeLeft)
+        {
+            this.Invoke(new MethodInvoker(() => RandomPickerTimeLeft.Text = timeLeft));
+        }
+        public void updateRandomPickerWinner(string username, string message)
+        {
+            this.Invoke(new MethodInvoker(() => RandomPickerWinner.Text = username));
+            this.Invoke(new MethodInvoker(() => RandomPickerMessage.Text = message));
+        }
+
+        private void RandomPickerEndButton_Click(object sender, EventArgs e)
+        {
+            randomPickerManager.End();
+        }
+
+        private void checkBox1_CheckedChanged(dynamic sender, EventArgs e)
+        {
+            if (sender.CheckState == CheckState.Checked) RandomPickerRequirementsInput.Enabled = false;
+            if (sender.CheckState == CheckState.Unchecked) RandomPickerRequirementsInput.Enabled = true;
+
+        }
+
 
         /// <summary>
         /// Prompts user for the Channel Points Reward name and then opens an OpenFileDialog to select the file.

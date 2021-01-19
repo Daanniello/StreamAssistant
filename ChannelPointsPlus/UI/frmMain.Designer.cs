@@ -54,6 +54,8 @@
             this.DeleteVideoButton = new System.Windows.Forms.Button();
             this.TTSSettingsButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.RandomPickerStartButton = new System.Windows.Forms.Button();
+            this.RandomPickerEndButton = new System.Windows.Forms.Button();
             this.SceneRewards = new System.Windows.Forms.ListBox();
             this.SceneNames = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -63,6 +65,19 @@
             this.label4 = new System.Windows.Forms.Label();
             this.ExitButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.RandomPickerAllViewersCheckbox = new System.Windows.Forms.CheckBox();
+            this.RandomPickerMessage = new System.Windows.Forms.RichTextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.RandomPickerWinner = new System.Windows.Forms.Label();
+            this.RandomPickerTimeLeft = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.RandomPickerDurationInput = new System.Windows.Forms.NumericUpDown();
+            this.label17 = new System.Windows.Forms.Label();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.RandomPickerRequirementsInput = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
@@ -103,6 +118,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.trkVolume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SceneChangeDuration)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RandomPickerDurationInput)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -417,6 +434,34 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // RandomPickerStartButton
+            // 
+            this.RandomPickerStartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RandomPickerStartButton.ForeColor = System.Drawing.Color.Silver;
+            this.RandomPickerStartButton.Location = new System.Drawing.Point(21, 188);
+            this.RandomPickerStartButton.Name = "RandomPickerStartButton";
+            this.RandomPickerStartButton.Size = new System.Drawing.Size(80, 23);
+            this.RandomPickerStartButton.TabIndex = 28;
+            this.RandomPickerStartButton.Text = "Start";
+            this.toolTip1.SetToolTip(this.RandomPickerStartButton, "Add a new sound to the list.\r\nFirsts asks for the reward name then opens a file s" +
+        "elect dialog.");
+            this.RandomPickerStartButton.UseVisualStyleBackColor = true;
+            this.RandomPickerStartButton.Click += new System.EventHandler(this.RandomPickerStartButton_Click);
+            // 
+            // RandomPickerEndButton
+            // 
+            this.RandomPickerEndButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RandomPickerEndButton.ForeColor = System.Drawing.Color.Silver;
+            this.RandomPickerEndButton.Location = new System.Drawing.Point(177, 188);
+            this.RandomPickerEndButton.Name = "RandomPickerEndButton";
+            this.RandomPickerEndButton.Size = new System.Drawing.Size(80, 23);
+            this.RandomPickerEndButton.TabIndex = 34;
+            this.RandomPickerEndButton.Text = "End";
+            this.toolTip1.SetToolTip(this.RandomPickerEndButton, "Add a new sound to the list.\r\nFirsts asks for the reward name then opens a file s" +
+        "elect dialog.");
+            this.RandomPickerEndButton.UseVisualStyleBackColor = true;
+            this.RandomPickerEndButton.Click += new System.EventHandler(this.RandomPickerEndButton_Click);
+            // 
             // SceneRewards
             // 
             this.SceneRewards.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(101)))));
@@ -520,6 +565,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(36)))), ((int)(((byte)(45)))));
+            this.panel1.Controls.Add(this.panel9);
             this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.panel7);
             this.panel1.Controls.Add(this.panel4);
@@ -527,6 +573,168 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1252, 780);
             this.panel1.TabIndex = 28;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.panel9.Controls.Add(this.RandomPickerAllViewersCheckbox);
+            this.panel9.Controls.Add(this.RandomPickerMessage);
+            this.panel9.Controls.Add(this.label23);
+            this.panel9.Controls.Add(this.label22);
+            this.panel9.Controls.Add(this.RandomPickerWinner);
+            this.panel9.Controls.Add(this.RandomPickerTimeLeft);
+            this.panel9.Controls.Add(this.RandomPickerEndButton);
+            this.panel9.Controls.Add(this.RandomPickerStartButton);
+            this.panel9.Controls.Add(this.label18);
+            this.panel9.Controls.Add(this.RandomPickerDurationInput);
+            this.panel9.Controls.Add(this.label17);
+            this.panel9.Controls.Add(this.richTextBox3);
+            this.panel9.Controls.Add(this.RandomPickerRequirementsInput);
+            this.panel9.Controls.Add(this.label16);
+            this.panel9.Location = new System.Drawing.Point(651, 412);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(276, 350);
+            this.panel9.TabIndex = 30;
+            // 
+            // RandomPickerAllViewersCheckbox
+            // 
+            this.RandomPickerAllViewersCheckbox.AutoSize = true;
+            this.RandomPickerAllViewersCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.RandomPickerAllViewersCheckbox.ForeColor = System.Drawing.Color.White;
+            this.RandomPickerAllViewersCheckbox.Location = new System.Drawing.Point(168, 71);
+            this.RandomPickerAllViewersCheckbox.Name = "RandomPickerAllViewersCheckbox";
+            this.RandomPickerAllViewersCheckbox.Size = new System.Drawing.Size(95, 17);
+            this.RandomPickerAllViewersCheckbox.TabIndex = 39;
+            this.RandomPickerAllViewersCheckbox.Text = "Add all viewers";
+            this.RandomPickerAllViewersCheckbox.UseVisualStyleBackColor = true;
+            this.RandomPickerAllViewersCheckbox.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // RandomPickerMessage
+            // 
+            this.RandomPickerMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(101)))));
+            this.RandomPickerMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RandomPickerMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RandomPickerMessage.ForeColor = System.Drawing.Color.Silver;
+            this.RandomPickerMessage.Location = new System.Drawing.Point(21, 279);
+            this.RandomPickerMessage.Name = "RandomPickerMessage";
+            this.RandomPickerMessage.ReadOnly = true;
+            this.RandomPickerMessage.Size = new System.Drawing.Size(236, 61);
+            this.RandomPickerMessage.TabIndex = 30;
+            this.RandomPickerMessage.Text = "";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.ForeColor = System.Drawing.Color.White;
+            this.label23.Location = new System.Drawing.Point(125, 161);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(49, 13);
+            this.label23.TabIndex = 28;
+            this.label23.Text = "Seconds";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(19, 71);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(92, 13);
+            this.label22.TabIndex = 38;
+            this.label22.Text = "Join reqruirements";
+            // 
+            // RandomPickerWinner
+            // 
+            this.RandomPickerWinner.AutoSize = true;
+            this.RandomPickerWinner.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RandomPickerWinner.ForeColor = System.Drawing.Color.White;
+            this.RandomPickerWinner.Location = new System.Drawing.Point(18, 252);
+            this.RandomPickerWinner.Name = "RandomPickerWinner";
+            this.RandomPickerWinner.Size = new System.Drawing.Size(71, 24);
+            this.RandomPickerWinner.TabIndex = 36;
+            this.RandomPickerWinner.Text = "Winner";
+            // 
+            // RandomPickerTimeLeft
+            // 
+            this.RandomPickerTimeLeft.AutoSize = true;
+            this.RandomPickerTimeLeft.ForeColor = System.Drawing.Color.White;
+            this.RandomPickerTimeLeft.Location = new System.Drawing.Point(19, 228);
+            this.RandomPickerTimeLeft.Name = "RandomPickerTimeLeft";
+            this.RandomPickerTimeLeft.Size = new System.Drawing.Size(51, 13);
+            this.RandomPickerTimeLeft.TabIndex = 35;
+            this.RandomPickerTimeLeft.Text = "Time Left";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.ForeColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(19, 142);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(47, 13);
+            this.label18.TabIndex = 28;
+            this.label18.Text = "Duration";
+            // 
+            // RandomPickerDurationInput
+            // 
+            this.RandomPickerDurationInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(101)))));
+            this.RandomPickerDurationInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.RandomPickerDurationInput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.RandomPickerDurationInput.Location = new System.Drawing.Point(22, 158);
+            this.RandomPickerDurationInput.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.RandomPickerDurationInput.Name = "RandomPickerDurationInput";
+            this.RandomPickerDurationInput.Size = new System.Drawing.Size(100, 20);
+            this.RandomPickerDurationInput.TabIndex = 28;
+            this.RandomPickerDurationInput.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.ForeColor = System.Drawing.Color.Silver;
+            this.label17.Location = new System.Drawing.Point(19, 90);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(141, 13);
+            this.label17.TabIndex = 28;
+            this.label17.Text = "Example: !join, https//:*.com";
+            // 
+            // richTextBox3
+            // 
+            this.richTextBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.richTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox3.ForeColor = System.Drawing.Color.Silver;
+            this.richTextBox3.Location = new System.Drawing.Point(22, 39);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(255, 42);
+            this.richTextBox3.TabIndex = 28;
+            this.richTextBox3.Text = "Pick a random viewer in chat\n";
+            // 
+            // RandomPickerRequirementsInput
+            // 
+            this.RandomPickerRequirementsInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.RandomPickerRequirementsInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.RandomPickerRequirementsInput.ForeColor = System.Drawing.Color.White;
+            this.RandomPickerRequirementsInput.Location = new System.Drawing.Point(22, 110);
+            this.RandomPickerRequirementsInput.Name = "RandomPickerRequirementsInput";
+            this.RandomPickerRequirementsInput.Size = new System.Drawing.Size(235, 20);
+            this.RandomPickerRequirementsInput.TabIndex = 33;
+            this.RandomPickerRequirementsInput.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(18, 17);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(132, 19);
+            this.label16.TabIndex = 28;
+            this.label16.Text = "Random Picker";
             // 
             // panel6
             // 
@@ -944,7 +1152,7 @@
             this.panel4.Controls.Add(this.label5);
             this.panel4.Location = new System.Drawing.Point(651, 22);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(276, 740);
+            this.panel4.Size = new System.Drawing.Size(276, 383);
             this.panel4.TabIndex = 29;
             // 
             // LogTextBox
@@ -956,7 +1164,7 @@
             this.LogTextBox.Location = new System.Drawing.Point(22, 87);
             this.LogTextBox.Name = "LogTextBox";
             this.LogTextBox.ReadOnly = true;
-            this.LogTextBox.Size = new System.Drawing.Size(235, 641);
+            this.LogTextBox.Size = new System.Drawing.Size(235, 288);
             this.LogTextBox.TabIndex = 29;
             this.LogTextBox.Text = "";
             // 
@@ -1004,6 +1212,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.trkVolume)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SceneChangeDuration)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RandomPickerDurationInput)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel8.ResumeLayout(false);
@@ -1099,6 +1310,21 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.TextBox RandomPickerRequirementsInput;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label RandomPickerWinner;
+        private System.Windows.Forms.Label RandomPickerTimeLeft;
+        private System.Windows.Forms.Button RandomPickerEndButton;
+        private System.Windows.Forms.Button RandomPickerStartButton;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.NumericUpDown RandomPickerDurationInput;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.RichTextBox RandomPickerMessage;
+        private System.Windows.Forms.CheckBox RandomPickerAllViewersCheckbox;
     }
 }
 
