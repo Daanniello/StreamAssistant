@@ -142,7 +142,7 @@ namespace ChannelPointsPlus
             catch (IOException)
             {
                 logEvent.WaitOne();
-		        LogToTextFile(logMessage, logType);
+		LogToTextFile(logMessage, logType);
             }
         }
 
