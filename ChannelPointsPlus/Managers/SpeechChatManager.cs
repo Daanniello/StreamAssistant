@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Speech.Synthesis;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace ChannelPointsPlus
 {
@@ -12,7 +12,9 @@ namespace ChannelPointsPlus
     {
         private frmMain _mainForm;
         private SpeechSynthesizer synthesizer;
+        private AutoResetEvent ttsEvent = new AutoResetEvent(false);
         public bool isTurnedOn = false;
+        public bool isSpeaking = false;
 
         public SpeechChatManager(frmMain mainForm)
         {
@@ -22,8 +24,21 @@ namespace ChannelPointsPlus
         }
 
         public async void ReadMessage(string message)
-        {            
-            if (!message.StartsWith("!") && isTurnedOn == true) synthesizer.Speak(message);
+        {
+            if (!message.StartsWith("!") && isTurnedOn == true)
+            {
+                if (isSpeaking == false)
+                {
+                    isSpeaking = true;
+                    synthesizer.Speak(message);
+                    isSpeaking = false;
+                    ttsEvent.Set();
+                } else
+                {
+                    ttsEvent.WaitOne();
+                    ReadMessage(message);
+                }
+            }
         }
 
         public List<string> GetInstalledVoices()

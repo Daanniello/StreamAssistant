@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Media;
 
@@ -43,6 +44,7 @@ namespace ChannelPointsPlus
 
         private bool TTSSettingsTabOpen = false;
 
+        private AutoResetEvent logEvent = new AutoResetEvent(false);
         private String directory;
         private String logName;
         private String logPath;
@@ -121,8 +123,7 @@ namespace ChannelPointsPlus
         public void Log(string logMessage)
         {
             this.Invoke(new MethodInvoker(() => LogTextBox.AppendText(logMessage + "\n")));
-            //TODO fix writing if the file is busy
-            //LogToTextFile(logMessage, "[Event Log]");
+            LogToTextFile(logMessage, "[Event Log]");
         }
 
         public void ChatMessageLog(string logMessage)
@@ -133,7 +134,15 @@ namespace ChannelPointsPlus
 
         private void LogToTextFile(string logMessage, string logType)
         {
-            File.AppendAllText(logPath, $"{DateTime.Now.ToString("[h:mm:ss tt] ")} {logType}" + logMessage + "\n");
+            try
+            {
+                File.AppendAllText(logPath, $"{DateTime.Now.ToString("[h:mm:ss tt] ")} {logType}" + logMessage + "\n");
+                logEvent.Set();
+            }
+            catch (IOException)
+            {
+                logEvent.WaitOne();
+            }
         }
 
         private void frmMain_OnClosing(object sender, FormClosingEventArgs e)
