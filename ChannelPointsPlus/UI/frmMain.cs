@@ -1,4 +1,4 @@
-﻿using ChannelPointsPlus.APIs;
+using ChannelPointsPlus.APIs;
 using ChannelPointsPlus.Managers;
 using SLOBSharp.Client;
 using SLOBSharp.Client.Requests;
