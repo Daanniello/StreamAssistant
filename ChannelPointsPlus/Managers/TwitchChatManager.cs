@@ -30,7 +30,8 @@ namespace ChannelPointsPlus
 
         private async void Client_OnMessageReceived(object sender, TwitchLib.Client.Events.OnMessageReceivedArgs e)
         {
-            
+            _mainForm.ChatMessageLog($"{ e.ChatMessage.Username}: {e.ChatMessage.Message}");
+
             if (_mainForm.ttsSubscribersOnly)
             {               
                 if (e.ChatMessage.IsSubscriber)
@@ -42,8 +43,6 @@ namespace ChannelPointsPlus
             {
                 if (_mainForm.speechChat.isTurnedOn) _mainForm.speechChat.ReadMessage(e.ChatMessage.Message);
             }
-
-            _mainForm.ChatMessageLog($"{ e.ChatMessage.Username}: {e.ChatMessage.Message}");
         }      
     }
 }
