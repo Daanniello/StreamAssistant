@@ -129,7 +129,7 @@ namespace ChannelPointsPlus.Managers
                     var recentSongsInfoBeatSaver = JsonConvert.DeserializeObject(recentSongsJsonDataBeatSaver);
                     var bsrCode = JObject.Parse(recentSongsInfoBeatSaver.ToString())["key"].ToString();
 
-                    return $"!bsr {bsrCode}";
+                    return $"!modadd {bsrCode}";
                 }
             }
             catch (Exception ex)
