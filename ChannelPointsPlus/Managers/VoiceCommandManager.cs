@@ -14,6 +14,7 @@ namespace ChannelPointsPlus.Managers
     {
         private frmMain _mainForm;
         private ManualResetEvent _shouldRecognize;
+        private VoiceCommands _voiceCommands;
 
         public VoiceCommandManager(frmMain mainForm)
         {
@@ -34,10 +35,10 @@ namespace ChannelPointsPlus.Managers
             speechRecognition.SetInputToDefaultAudioDevice();
 
             //Adds all the voice commands
-            var voiceCommands = new VoiceCommands();
-            foreach(var command in voiceCommands.voiceCommands)
+            _voiceCommands = new VoiceCommands(_mainForm);
+            foreach(var command in _voiceCommands.voiceCommands)
             {
-                speechRecognition.LoadGrammar(command.Value);
+                speechRecognition.LoadGrammar(command.Key);
             }
 
             //Add the event to call when something is recognized 
@@ -53,28 +54,31 @@ namespace ChannelPointsPlus.Managers
 
         private void SpeechRecognition_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
-            if (e.Result.Grammar.Name == "ttson") _mainForm.SetSpeechChat(true);
-            if (e.Result.Grammar.Name == "ttsoff") _mainForm.SetSpeechChat(false);
-
+            foreach(var command in _voiceCommands.voiceCommands)
+            {
+                if (e.Result.Grammar.Name == command.Key.Name) command.Value.Invoke();
+            }
             //Turns off the recording
             //_shouldRecognize.Set();
         }
-    }
 
-    class VoiceCommands
-    {
-        public Dictionary<string, Grammar> voiceCommands = new Dictionary<string, Grammar>();
-        public VoiceCommands()
+        class VoiceCommands
         {
-            //TTS Voice commands
-            Add("ttson", "turn tts on");
-            Add("ttsoff", "turn tts off");
-        }
+            public Dictionary<Grammar, Action> voiceCommands = new Dictionary<Grammar, Action>();
+            public VoiceCommands(frmMain mainForm)
+            {
+                //THIS IS WHERE ALL THE COMMANDS ARE BEING MADE
+                //COMMAND NAME, TEXT TO RECOGNIZE, ACTION TO EXECUTE
+                //TTS Voice commands with the method to execute
+                AddNewCommand("ttson", "turn tts on", () => { mainForm.SetSpeechChat(true); });
+                AddNewCommand("ttsoff", "turn tts off", () => { mainForm.SetSpeechChat(false); });
+            }
 
-        private void Add(string name, string command)
-        {
-            //Always add 'Hey streamassistant' to remove potential mistakes in voice
-            voiceCommands.Add(name, new Grammar(new GrammarBuilder($"hey streamassistant, {command}")) { Name = name });            
+            private void AddNewCommand(string name, string command, Action methodToExcecute)
+            {
+                //Always add 'Hey streamassistant' to remove potential mistakes in voice
+                voiceCommands.Add(new Grammar(new GrammarBuilder($"hey streamassistant, {command}")) { Name = name }, methodToExcecute);
+            }
         }
     }
 }
