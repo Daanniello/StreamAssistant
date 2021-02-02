@@ -72,8 +72,26 @@ namespace ChannelPointsPlus.Managers
                 //THIS IS WHERE ALL THE COMMANDS ARE BEING MADE
                 //COMMAND NAME, TEXT TO RECOGNIZE, ACTION TO EXECUTE
                 //TTS Voice commands with the method to execute
-                AddNewCommand("ttson", "turn tts on", () => { mainForm.SetSpeechChat(true); });
-                AddNewCommand("ttsoff", "turn tts off", () => { mainForm.SetSpeechChat(false); });
+                AddNewCommand("ttsOn", "turn tts on", () => { mainForm.SetSpeechChat(true); });
+                AddNewCommand("ttsOff", "turn tts off", () => { mainForm.SetSpeechChat(false); });
+                
+                //Add all scene switched to the commands
+                foreach (var scenes in mainForm.bindingsScene)
+                {
+                    AddNewCommand(scenes.Key, $"switch to {scenes.Key}", () => {
+                        mainForm.bindingsScene.TryGetValue(scenes.Key, out string output);
+                        mainForm.sceneChanger.ChangeScene(output, 60);
+                    });
+                }
+
+                //Add all scenesource activates to the commands
+                foreach (var scenes in mainForm.bindingsSceneSource)
+                {
+                    AddNewCommand(scenes.Key, $"activate {scenes.Key}", () => {
+                        mainForm.bindingsSceneSource.TryGetValue(scenes.Key, out string output);
+                        mainForm.sceneSourceChanger.ChangeSceneSource(output, 60);
+                    });
+                }
             }
 
             private void AddNewCommand(string name, string command, Action methodToExcecute)
