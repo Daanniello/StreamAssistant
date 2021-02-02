@@ -80,7 +80,7 @@ namespace ChannelPointsPlus.Managers
                 {
                     AddNewCommand(scenes.Key, $"switch to {scenes.Key}", () => {
                         mainForm.bindingsScene.TryGetValue(scenes.Key, out string output);
-                        mainForm.sceneChanger.ChangeScene(output, 60);
+                        mainForm.sceneChanger.ChangeScene(output, mainForm.GetSceneDuration());
                     });
                 }
 
@@ -89,7 +89,7 @@ namespace ChannelPointsPlus.Managers
                 {
                     AddNewCommand(scenes.Key, $"activate {scenes.Key}", () => {
                         mainForm.bindingsSceneSource.TryGetValue(scenes.Key, out string output);
-                        mainForm.sceneSourceChanger.ChangeSceneSource(output, 60);
+                        mainForm.sceneSourceChanger.ChangeSceneSource(output, mainForm.GetSceneSourceDuration());
                     });
                 }
             }
