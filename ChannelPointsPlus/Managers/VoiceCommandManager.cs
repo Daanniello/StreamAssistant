@@ -65,6 +65,8 @@ namespace ChannelPointsPlus.Managers
         class VoiceCommands
         {
             public Dictionary<Grammar, Action> voiceCommands = new Dictionary<Grammar, Action>();
+
+            //TODO: a framework where we dont have to add other classes in here :c 
             public VoiceCommands(frmMain mainForm)
             {
                 //THIS IS WHERE ALL THE COMMANDS ARE BEING MADE
