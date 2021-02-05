@@ -17,10 +17,7 @@ namespace ChannelPointsPlus
 
             client.OnPubSubServiceConnected += onPubSubServiceConnected;
             client.OnListenResponse += onListenResponse;
-            client.OnRewardRedeemed += OnRewardRedeemed;
-            
-            
-
+            client.OnRewardRedeemed += OnRewardRedeemed;                        
 
             if (File.Exists("resetid.txt")) { Properties.Settings.Default.savedChannelID = ""; File.Delete("resetid.txt"); }
             if (Properties.Settings.Default.savedChannelID == "")

@@ -35,7 +35,7 @@ namespace ChannelPointsPlus.APIs
             
             client.OnConnected += Client_OnConnected;
             client.OnDisconnected += Client_OnDisconnected;
-
+           
             client.Connect();
         }
 
