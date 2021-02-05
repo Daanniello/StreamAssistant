@@ -56,6 +56,8 @@ namespace ChannelPointsPlus
 
         private async void frmMain_Load(object sender, EventArgs e)
         {
+            new VoiceCommandManager(this);
+
             new ProgramStartUp();
 
             slobsClient = new SlobsPipeClient("slobs");
@@ -612,16 +614,15 @@ namespace ChannelPointsPlus
 
         private void SpeechChatCheckbox_CheckedChanged(dynamic sender, EventArgs e)
         {
-            if(sender.CheckState == CheckState.Checked)
-            {
-                speechChat.isTurnedOn = true;
-                ChatMessageLog("SpeechChat is turned on!");
-            }
-            else
-            {
-                speechChat.isTurnedOn = false;
-                ChatMessageLog("SpeechChat is turned off!");
-            }
+            if(sender.CheckState == CheckState.Checked) SetSpeechChat(true);
+            else SetSpeechChat(false);
+        }
+
+        public void SetSpeechChat(bool enabled)
+        {            
+            speechChat.isTurnedOn = enabled;
+            this.Invoke(new MethodInvoker(() => SpeechChatCheckbox.Checked = enabled));
+            ChatMessageLog($"SpeechChat is turned {(enabled ? "on" : "off")}");
         }
 
         private void SpeechChatComboBox_SelectedIndexChanged(dynamic sender, EventArgs e)

@@ -169,6 +169,7 @@
   <ItemGroup>
     <Compile Include="APIs\TwitchApi.cs" />
     <Compile Include="Managers\RandomPickerManager.cs" />
+    <Compile Include="Managers\VoiceCommandManager.cs" />
     <Compile Include="TwitchRewardEvents\AudioPlayer.cs" />
     <Compile Include="UI\frmLogin.cs">
       <SubType>Form</SubType>
