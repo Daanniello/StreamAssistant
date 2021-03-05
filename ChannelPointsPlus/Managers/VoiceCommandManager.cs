@@ -109,8 +109,8 @@ namespace ChannelPointsPlus.Managers
                 //THIS IS WHERE ALL THE COMMANDS ARE BEING MADE
                 //COMMAND NAME, TEXT TO RECOGNIZE, ACTION TO EXECUTE
                 //TTS Voice commands with the method to execute
-                AddNewCommand("tts has been turned on", "turn speachchat on", () => { mainForm.SetSpeechChat(true); });
-                AddNewCommand("tts has been turned off", "turn speachchat off", () => { mainForm.SetSpeechChat(false); });
+                AddNewCommand("tts has been turned on", "turn on speachchat", () => { mainForm.SetSpeechChat(true); });
+                AddNewCommand("tts has been turned off", "turn off speachchat", () => { mainForm.SetSpeechChat(false); });
                 
                 //Add all scene switched to the commands
                 foreach (var scenes in mainForm.bindingsScene)
