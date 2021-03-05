@@ -36,6 +36,7 @@ namespace ChannelPointsPlus
         public SlobsPipeClient slobsClient;
         public SpeechChatManager speechChat;
         public VideoPlayer videoPlayer;
+        public VoiceCommandManager voiceCommandManager;
         public TwitchChatManager twitchChatManager;
         public RandomPickerManager randomPickerManager;
         public TwitchApi TwitchApi;
@@ -56,9 +57,10 @@ namespace ChannelPointsPlus
 
         private async void frmMain_Load(object sender, EventArgs e)
         {
-            new VoiceCommandManager(this);
+          
 
             new ProgramStartUp();
+            voiceCommandManager = new VoiceCommandManager(this);
 
             slobsClient = new SlobsPipeClient("slobs");
 
@@ -719,6 +721,11 @@ namespace ChannelPointsPlus
             this.Invoke(new MethodInvoker(() => RandomPickerMessage.Text = message));
         }
 
+        public void AddRandomPickerWinnerDescription(string message)
+        {
+            this.Invoke(new MethodInvoker(() => RandomPickerMessage.Text += "\n" + message));
+        }
+
         private void RandomPickerEndButton_Click(object sender, EventArgs e)
         {
             randomPickerManager.End();
@@ -734,6 +741,11 @@ namespace ChannelPointsPlus
         private void RandomPickerMessage_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void PickRandomMapButton_Click(object sender, EventArgs e)
+        {
+            new RandomPickerManager(this, TwitchApi).RequestRandomBeatMap();
         }
 
 

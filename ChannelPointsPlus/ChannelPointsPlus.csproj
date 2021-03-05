@@ -167,6 +167,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIs\BeatSaverApi.cs" />
+    <Compile Include="APIs\ScoreSaberApi.cs" />
     <Compile Include="APIs\TwitchApi.cs" />
     <Compile Include="Managers\RandomPickerManager.cs" />
     <Compile Include="Managers\VoiceCommandManager.cs" />

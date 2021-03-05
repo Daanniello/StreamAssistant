@@ -115,6 +115,9 @@
             this.LogTextBox = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.PickRandomMapButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trkVolume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SceneChangeDuration)).BeginInit();
             this.panel1.SuspendLayout();
@@ -131,6 +134,7 @@
             this.TwitchLoginPanel.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // trayIcon
@@ -565,13 +569,14 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(36)))), ((int)(((byte)(45)))));
+            this.panel1.Controls.Add(this.panel10);
             this.panel1.Controls.Add(this.panel9);
             this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.panel7);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Location = new System.Drawing.Point(-1, 54);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1252, 780);
+            this.panel1.Size = new System.Drawing.Size(1252, 958);
             this.panel1.TabIndex = 28;
             // 
             // panel9
@@ -615,10 +620,10 @@
             this.RandomPickerMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.RandomPickerMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RandomPickerMessage.ForeColor = System.Drawing.Color.Silver;
-            this.RandomPickerMessage.Location = new System.Drawing.Point(21, 279);
+            this.RandomPickerMessage.Location = new System.Drawing.Point(21, 244);
             this.RandomPickerMessage.Name = "RandomPickerMessage";
             this.RandomPickerMessage.ReadOnly = true;
-            this.RandomPickerMessage.Size = new System.Drawing.Size(236, 61);
+            this.RandomPickerMessage.Size = new System.Drawing.Size(236, 96);
             this.RandomPickerMessage.TabIndex = 30;
             this.RandomPickerMessage.Text = "";
             this.RandomPickerMessage.TextChanged += new System.EventHandler(this.RandomPickerMessage_TextChanged);
@@ -648,7 +653,7 @@
             this.RandomPickerWinner.AutoSize = true;
             this.RandomPickerWinner.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RandomPickerWinner.ForeColor = System.Drawing.Color.White;
-            this.RandomPickerWinner.Location = new System.Drawing.Point(18, 252);
+            this.RandomPickerWinner.Location = new System.Drawing.Point(18, 217);
             this.RandomPickerWinner.Name = "RandomPickerWinner";
             this.RandomPickerWinner.Size = new System.Drawing.Size(71, 24);
             this.RandomPickerWinner.TabIndex = 36;
@@ -658,7 +663,7 @@
             // 
             this.RandomPickerTimeLeft.AutoSize = true;
             this.RandomPickerTimeLeft.ForeColor = System.Drawing.Color.White;
-            this.RandomPickerTimeLeft.Location = new System.Drawing.Point(19, 228);
+            this.RandomPickerTimeLeft.Location = new System.Drawing.Point(109, 193);
             this.RandomPickerTimeLeft.Name = "RandomPickerTimeLeft";
             this.RandomPickerTimeLeft.Size = new System.Drawing.Size(51, 13);
             this.RandomPickerTimeLeft.TabIndex = 35;
@@ -1190,12 +1195,47 @@
             this.pictureBox1.TabIndex = 29;
             this.pictureBox1.TabStop = false;
             // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.panel10.Controls.Add(this.PickRandomMapButton);
+            this.panel10.Controls.Add(this.label19);
+            this.panel10.Location = new System.Drawing.Point(651, 770);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(276, 161);
+            this.panel10.TabIndex = 32;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(18, 17);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(250, 19);
+            this.label19.TabIndex = 28;
+            this.label19.Text = "Pick Random Beat Saber map";
+            // 
+            // PickRandomMapButton
+            // 
+            this.PickRandomMapButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PickRandomMapButton.ForeColor = System.Drawing.Color.Silver;
+            this.PickRandomMapButton.Location = new System.Drawing.Point(65, 70);
+            this.PickRandomMapButton.Name = "PickRandomMapButton";
+            this.PickRandomMapButton.Size = new System.Drawing.Size(137, 45);
+            this.PickRandomMapButton.TabIndex = 40;
+            this.PickRandomMapButton.Text = "Pick random map";
+            this.toolTip1.SetToolTip(this.PickRandomMapButton, "Add a new sound to the list.\r\nFirsts asks for the reward name then opens a file s" +
+        "elect dialog.");
+            this.PickRandomMapButton.UseVisualStyleBackColor = true;
+            this.PickRandomMapButton.Click += new System.EventHandler(this.PickRandomMapButton_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(69)))), ((int)(((byte)(208)))));
-            this.ClientSize = new System.Drawing.Size(1242, 831);
+            this.ClientSize = new System.Drawing.Size(1242, 1007);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
@@ -1236,6 +1276,8 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1326,6 +1368,9 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.RichTextBox RandomPickerMessage;
         private System.Windows.Forms.CheckBox RandomPickerAllViewersCheckbox;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Button PickRandomMapButton;
+        private System.Windows.Forms.Label label19;
     }
 }
 

@@ -41,6 +41,11 @@ namespace ChannelPointsPlus
             }
         }
 
+        public async void ReadMessageForced(string message)
+        {
+            synthesizer.Speak(message);
+        }
+
         public List<string> GetInstalledVoices()
         {
             var voices = new List<string>();

@@ -104,39 +104,48 @@ namespace ChannelPointsPlus.Managers
             {
                 var scoresaberId = description.Replace("&sort=2", "").Split('/').Last();
 
-                using (var client = new HttpClient())
-                {
-                    var recentSongDataRaw = await client.GetStringAsync($"https://new.scoresaber.com/api/player/{scoresaberId}/scores/recent/1");
-                    var result = JsonConvert.DeserializeObject(recentSongDataRaw);
-                    var scores = JObject.Parse(result.ToString())["scores"].First();
-                    var songHash = scores["songHash"].ToString();
 
-                    var request = new HttpRequestMessage()
-                    {
-                        RequestUri = new Uri($"https://beatsaver.com/api/maps/by-hash/{songHash}"),
-                        Method = HttpMethod.Get,
-                    };
+                var scores = await ScoreSaberApi.GetRecentSongDataAsync(scoresaberId);
 
-                    var productValue = new ProductInfoHeaderValue("ScraperBot", "1.0");
-                    var commentValue = new ProductInfoHeaderValue("(+http://www.example.com/ScraperBot.html)");
+                var songHash = scores["songHash"].ToString();
+                var difficulty = scores["difficultyRaw"].ToString();
+                var mods = scores["mods"].ToString();
 
-                    client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("*/*"));
-                    client.DefaultRequestHeaders.UserAgent.Add(productValue);
-                    client.DefaultRequestHeaders.UserAgent.Add(commentValue);
+                var songInfo = await BeatSaverApi.GetSongByHash(songHash);
+                var bsrCode = songInfo["key"].ToString();
 
-                    var httpResponseMessage2 = await client.SendAsync(request);                    
-                    var recentSongsJsonDataBeatSaver = await httpResponseMessage2.Content.ReadAsStringAsync();
-                    var recentSongsInfoBeatSaver = JsonConvert.DeserializeObject(recentSongsJsonDataBeatSaver);
-                    var bsrCode = JObject.Parse(recentSongsInfoBeatSaver.ToString())["key"].ToString();
+                mainForm.AddRandomPickerWinnerDescription($"Difficulty: {difficulty}\nMods: {mods}");
 
-                    return $"!modadd {bsrCode}";
-                }
+                return $"!modadd {bsrCode}";
+
             }
             catch (Exception ex)
             {
                 return $"Could not request the map automatically :c";
             }
 
+        }
+
+        public async void RequestRandomBeatMap()
+        {
+            //Gets the latest song from beatsaver and get the key out of that
+            var latestSongInfo = await BeatSaverApi.GetMostRecentSongInfo();
+            var key = latestSongInfo["key"].ToString();
+            //Converts the hex key to a real number 
+            var mapAmount = Convert.ToInt32(key, 16);
+            //Generates a new random hex key that is between the amount of maps available
+            //Also retries max 10 times and checks if the key matches a real map
+            var randomGenerator = new Random();
+            var randomKey = "";
+            var retryAmount = 0;
+            do
+            {
+                var randomMapNumber = randomGenerator.Next(0, mapAmount);
+                randomKey = string.Format("{0:x}", randomMapNumber);                
+            } while (await BeatSaverApi.GetSongByKey(randomKey) == null && retryAmount++ < 10);            
+
+            //Requests the bsr key into twitch chat 
+            twitchApi.SendMessageInChannel($"!modadd {randomKey}");
         }
 
         private async void Client_OnMessageReceived(object sender, TwitchLib.Client.Events.OnMessageReceivedArgs e)
