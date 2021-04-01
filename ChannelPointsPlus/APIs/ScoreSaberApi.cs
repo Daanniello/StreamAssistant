@@ -24,13 +24,13 @@ namespace ChannelPointsPlus.APIs
                 {
                     var recentSongDataRaw = await client.GetStringAsync($"https://new.scoresaber.com/api/player/{scoresaberID}/scores/recent/1");
                     var result = JsonConvert.DeserializeObject(recentSongDataRaw);
-                    var scores = JObject.Parse(result.ToString())["scores"].First();
+                    var scores = JObject.Parse(result.ToString())["scores"].First();                    
 
                     return scores;
             }
             }
             catch
-            {
+            {                
                 return null;
             }                
         }

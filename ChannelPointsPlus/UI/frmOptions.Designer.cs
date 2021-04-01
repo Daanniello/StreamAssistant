@@ -64,7 +64,7 @@
             // 
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(238, 222);
+            this.btnClose.Location = new System.Drawing.Point(252, 259);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 2;
@@ -88,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(36)))), ((int)(((byte)(45)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.ClientSize = new System.Drawing.Size(339, 294);
             this.ControlBox = false;
             this.Controls.Add(this.ResetTwitchLoginButton);
@@ -100,7 +100,7 @@
             this.MinimumSize = new System.Drawing.Size(341, 296);
             this.Name = "frmOptions";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Silverhaze\'s Channel Points SFX Program";
+            this.Text = "StreamAssistant";
             this.Load += new System.EventHandler(this.frmOptions_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
