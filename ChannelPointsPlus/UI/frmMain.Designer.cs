@@ -603,10 +603,11 @@
             this.MetroTabControl.Controls.Add(this.metroTabPage2);
             this.MetroTabControl.Controls.Add(this.metroTabPage3);
             this.MetroTabControl.Controls.Add(this.metroTabPage4);
+            this.MetroTabControl.FontSize = MetroFramework.MetroTabControlSize.Tall;
             this.MetroTabControl.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.MetroTabControl.Location = new System.Drawing.Point(3, 2);
             this.MetroTabControl.Name = "MetroTabControl";
-            this.MetroTabControl.SelectedIndex = 2;
+            this.MetroTabControl.SelectedIndex = 1;
             this.MetroTabControl.Size = new System.Drawing.Size(949, 789);
             this.MetroTabControl.Style = MetroFramework.MetroColorStyle.Purple;
             this.MetroTabControl.TabIndex = 33;
@@ -655,9 +656,9 @@
             this.richTextBox2.ForeColor = System.Drawing.Color.Silver;
             this.richTextBox2.Location = new System.Drawing.Point(18, 42);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(255, 39);
+            this.richTextBox2.Size = new System.Drawing.Size(416, 39);
             this.richTextBox2.TabIndex = 27;
-            this.richTextBox2.Text = "Add a video on stream when a reward has been claimed.";
+            this.richTextBox2.Text = "Adds media on a browser source. NOT FINISHED YET.";
             // 
             // label13
             // 
@@ -717,10 +718,9 @@
             this.richTextBox1.ForeColor = System.Drawing.Color.Silver;
             this.richTextBox1.Location = new System.Drawing.Point(18, 42);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(255, 39);
+            this.richTextBox1.Size = new System.Drawing.Size(402, 39);
             this.richTextBox1.TabIndex = 27;
-            this.richTextBox1.Text = "Changes a scene\'s source to visible for a certain duration. Changes back to the o" +
-    "ld scene when it ends.";
+            this.richTextBox1.Text = "Enables an item inside the current scene, for a certain duration. ";
             // 
             // label6
             // 
@@ -729,9 +729,9 @@
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(14, 17);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(242, 19);
+            this.label6.Size = new System.Drawing.Size(160, 19);
             this.label6.TabIndex = 20;
-            this.label6.Text = "Scene Source Change Events";
+            this.label6.Text = "Scene Item Events";
             // 
             // SceneSourceRewards
             // 
@@ -817,10 +817,9 @@
             this.SceneChangeEventsInfo.ForeColor = System.Drawing.Color.Silver;
             this.SceneChangeEventsInfo.Location = new System.Drawing.Point(18, 42);
             this.SceneChangeEventsInfo.Name = "SceneChangeEventsInfo";
-            this.SceneChangeEventsInfo.Size = new System.Drawing.Size(221, 33);
+            this.SceneChangeEventsInfo.Size = new System.Drawing.Size(402, 33);
             this.SceneChangeEventsInfo.TabIndex = 27;
-            this.SceneChangeEventsInfo.Text = "Changes scene for a certain duration. Changes back to the old scene when it ends." +
-    "";
+            this.SceneChangeEventsInfo.Text = "Switches from scenes, for a certain duration.";
             // 
             // panel2
             // 
@@ -854,13 +853,14 @@
             this.AudioEventsInfo.Name = "AudioEventsInfo";
             this.AudioEventsInfo.Size = new System.Drawing.Size(221, 33);
             this.AudioEventsInfo.TabIndex = 28;
-            this.AudioEventsInfo.Text = "Plays an audio when a reward is redeemed.";
+            this.AudioEventsInfo.Text = "Plays an audio.";
             // 
             // metroTabPage2
             // 
             this.metroTabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.metroTabPage2.Controls.Add(this.panel9);
             this.metroTabPage2.Controls.Add(this.panel10);
+            this.metroTabPage2.HorizontalScrollbar = true;
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.HorizontalScrollbarSize = 10;
@@ -870,6 +870,7 @@
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "Tools";
             this.metroTabPage2.UseCustomBackColor = true;
+            this.metroTabPage2.VerticalScrollbar = true;
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
@@ -1043,7 +1044,7 @@
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel10.Controls.Add(this.PickRandomMapButton);
             this.panel10.Controls.Add(this.label19);
-            this.panel10.Location = new System.Drawing.Point(554, 13);
+            this.panel10.Location = new System.Drawing.Point(452, 15);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(276, 161);
             this.panel10.TabIndex = 32;
