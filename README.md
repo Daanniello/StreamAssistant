@@ -2,11 +2,11 @@
 
 A Tool to make your life as a streamer easier.
 
-Install it here https://github.com/Daanniello/ChannelPointsPlus/releases
+Install it here https://github.com/Daanniello/StreamAssistant/releases
 
 
 # How to setup 
-1. Download the latest 'publish.rar' from https://github.com/Daanniello/ChannelPointsPlus/releases
+1. Download the latest 'publish.rar' from https://github.com/Daanniello/StreamAssistant/releases
 
 2. Start the 'setup.exe' and follow the progress
 
