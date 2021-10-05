@@ -59,7 +59,7 @@ namespace ChannelPointsPlus.Managers
                 {
                     new Task(() => { RecognizeCommands(); }).Start();
 
-                    _mainForm.speechChat.ReadMessageForced("Yes Mr Silverhaze");
+                    _mainForm.speechChat.ReadMessageForced("Yes Mr.");
                 }
             }
         }

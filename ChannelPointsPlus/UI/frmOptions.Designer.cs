@@ -40,9 +40,10 @@
             this.cbTrayMini.Checked = true;
             this.cbTrayMini.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbTrayMini.ForeColor = System.Drawing.Color.White;
-            this.cbTrayMini.Location = new System.Drawing.Point(12, 12);
+            this.cbTrayMini.Location = new System.Drawing.Point(16, 15);
+            this.cbTrayMini.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbTrayMini.Name = "cbTrayMini";
-            this.cbTrayMini.Size = new System.Drawing.Size(101, 17);
+            this.cbTrayMini.Size = new System.Drawing.Size(121, 20);
             this.cbTrayMini.TabIndex = 0;
             this.cbTrayMini.Text = "Minimize to tray.";
             this.cbTrayMini.UseVisualStyleBackColor = true;
@@ -52,9 +53,10 @@
             // 
             this.btnResetID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetID.ForeColor = System.Drawing.Color.White;
-            this.btnResetID.Location = new System.Drawing.Point(12, 47);
+            this.btnResetID.Location = new System.Drawing.Point(16, 58);
+            this.btnResetID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnResetID.Name = "btnResetID";
-            this.btnResetID.Size = new System.Drawing.Size(101, 23);
+            this.btnResetID.Size = new System.Drawing.Size(135, 28);
             this.btnResetID.TabIndex = 1;
             this.btnResetID.Text = "Reset ChannelID";
             this.btnResetID.UseVisualStyleBackColor = true;
@@ -62,11 +64,13 @@
             // 
             // btnClose
             // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(252, 259);
+            this.btnClose.Location = new System.Drawing.Point(336, 319);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.Size = new System.Drawing.Size(100, 28);
             this.btnClose.TabIndex = 2;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -76,9 +80,10 @@
             // 
             this.ResetTwitchLoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ResetTwitchLoginButton.ForeColor = System.Drawing.Color.White;
-            this.ResetTwitchLoginButton.Location = new System.Drawing.Point(12, 76);
+            this.ResetTwitchLoginButton.Location = new System.Drawing.Point(16, 94);
+            this.ResetTwitchLoginButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ResetTwitchLoginButton.Name = "ResetTwitchLoginButton";
-            this.ResetTwitchLoginButton.Size = new System.Drawing.Size(120, 23);
+            this.ResetTwitchLoginButton.Size = new System.Drawing.Size(160, 28);
             this.ResetTwitchLoginButton.TabIndex = 3;
             this.ResetTwitchLoginButton.Text = "Reset Twitch Login";
             this.ResetTwitchLoginButton.UseVisualStyleBackColor = true;
@@ -86,10 +91,10 @@
             // 
             // frmOptions
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.ClientSize = new System.Drawing.Size(339, 294);
+            this.ClientSize = new System.Drawing.Size(452, 362);
             this.ControlBox = false;
             this.Controls.Add(this.ResetTwitchLoginButton);
             this.Controls.Add(this.cbTrayMini);
@@ -97,7 +102,8 @@
             this.Controls.Add(this.btnClose);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MinimumSize = new System.Drawing.Size(341, 296);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(449, 355);
             this.Name = "frmOptions";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "StreamAssistant";
