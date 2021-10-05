@@ -12,6 +12,8 @@ namespace ChannelPointsPlus.APIs
 {
     public class BeatSaverApi
     {
+        private static string baseUrl = "https://api.beatsaver.com";
+
         public BeatSaverApi()
         {
 
@@ -25,7 +27,7 @@ namespace ChannelPointsPlus.APIs
                 {
                     var request = new HttpRequestMessage()
                     {
-                        RequestUri = new Uri($"https://beatsaver.com/api/maps/by-hash/{songHash}"),
+                        RequestUri = new Uri($"{baseUrl}/maps/hash/{songHash}"),
                         Method = HttpMethod.Get,
                     };
 
@@ -58,7 +60,7 @@ namespace ChannelPointsPlus.APIs
                 {
                     var request = new HttpRequestMessage()
                     {
-                        RequestUri = new Uri($"https://beatsaver.com/api/maps/latest/"),
+                        RequestUri = new Uri($"{baseUrl}/maps/latest"),
                         Method = HttpMethod.Get,
                     };
 

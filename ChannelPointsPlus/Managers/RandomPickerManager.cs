@@ -130,7 +130,7 @@ namespace ChannelPointsPlus.Managers
         {
             //Gets the latest song from beatsaver and get the key out of that
             var latestSongInfo = await BeatSaverApi.GetMostRecentSongInfo();
-            var key = latestSongInfo["key"].ToString();
+            var key = latestSongInfo["id"].ToString();
             //Converts the hex key to a real number 
             var mapAmount = Convert.ToInt32(key, 16);
             //Generates a new random hex key that is between the amount of maps available
