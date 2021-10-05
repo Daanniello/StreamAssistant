@@ -30,6 +30,7 @@ Thats it!
 - It logs your whole streams chat and events after you finished streaming
 - It integrates directly with Streamlabs without any permissions. (Local API). 
 - It allows you to connect channel points rewards with events like scene switches or scene item activations or sounds that will play when someone claims a reward with channel points.
+- It can start up all your streaming programs that are in your routine when starting up StreamAssistant
 - It has some fun tools for Beat Saber
 
 # Please help <3 
