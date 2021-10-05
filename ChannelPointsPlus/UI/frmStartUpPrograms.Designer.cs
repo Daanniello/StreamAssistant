@@ -42,7 +42,7 @@ namespace ChannelPointsPlus
             // 
             // AddProgramButton
             // 
-            this.AddProgramButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.AddProgramButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.AddProgramButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddProgramButton.ForeColor = System.Drawing.Color.Silver;
             this.AddProgramButton.Location = new System.Drawing.Point(12, 75);
@@ -90,7 +90,7 @@ namespace ChannelPointsPlus
             // 
             // StartUpListBox
             // 
-            this.StartUpListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(101)))));
+            this.StartUpListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
             this.StartUpListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.StartUpListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StartUpListBox.ForeColor = System.Drawing.Color.White;
@@ -104,10 +104,10 @@ namespace ChannelPointsPlus
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.Silver;
-            this.button1.Location = new System.Drawing.Point(686, 403);
+            this.button1.Location = new System.Drawing.Point(331, 75);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 35);
             this.button1.TabIndex = 36;
@@ -117,7 +117,7 @@ namespace ChannelPointsPlus
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.Silver;
             this.button2.Location = new System.Drawing.Point(117, 75);
@@ -145,7 +145,7 @@ namespace ChannelPointsPlus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(36)))), ((int)(((byte)(45)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.SpeechChatCheckbox);
             this.Controls.Add(this.button2);

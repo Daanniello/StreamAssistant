@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Speech.Synthesis;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace ChannelPointsPlus
 {
@@ -12,6 +13,7 @@ namespace ChannelPointsPlus
     {
         private frmMain _mainForm;
         private SpeechSynthesizer synthesizer;
+        private SpeechSynthesizer forcedSynthesizer;
         private AutoResetEvent ttsEvent = new AutoResetEvent(false);
         public bool isTurnedOn = false;
         public bool isSpeaking = false;
@@ -20,25 +22,51 @@ namespace ChannelPointsPlus
         {
             _mainForm = mainForm;
             synthesizer = new SpeechSynthesizer();
-            synthesizer.SetOutputToDefaultAudioDevice();            
+            synthesizer.SetOutputToDefaultAudioDevice();
+
+            forcedSynthesizer = new SpeechSynthesizer();
+            forcedSynthesizer.SetOutputToDefaultAudioDevice();
         }
 
         public async void ReadMessage(string message)
         {
-            if (!message.StartsWith("!") && isTurnedOn == true)
+            try
             {
-                if (isSpeaking == false)
+                if (!message.StartsWith("!") && isTurnedOn == true)
                 {
-                    isSpeaking = true;
-                    synthesizer.Speak(message);
-                    isSpeaking = false;
-                    ttsEvent.Set();
-                } else
-                {
-                    ttsEvent.WaitOne();
-                    ReadMessage(message);
+                    if (isSpeaking == false)
+                    {
+                        isSpeaking = true;
+                        synthesizer.Speak(message);
+                        isSpeaking = false;
+                        ttsEvent.Set();
+                    }
+                    else
+                    {
+                        ttsEvent.WaitOne();
+                        ReadMessage(message);
+                    }
                 }
             }
+            catch(Exception ex)
+            {
+                _mainForm.LogException(ex.Message);
+            }            
+        }
+
+        public async void ReadMessageForced(string message)
+        {
+            try
+            {
+                synthesizer.Pause();
+                forcedSynthesizer.Speak(message);
+                await Task.Delay(1000);
+                synthesizer.Resume();
+            }
+            catch (Exception ex)
+            {
+                _mainForm.LogException(ex.Message);
+            }         
         }
 
         public List<string> GetInstalledVoices()
@@ -55,6 +83,7 @@ namespace ChannelPointsPlus
         public void SelectVoice(string name)
         {
             synthesizer.SelectVoice(name);
+            forcedSynthesizer.SelectVoice(name);
         }
     }
 }

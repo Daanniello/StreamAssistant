@@ -44,22 +44,22 @@ namespace ChannelPointsPlus
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(36)))), ((int)(((byte)(45)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.panel1.Controls.Add(this.TwitchConnectButton);
             this.panel1.Controls.Add(this.PasswordInput);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.UsernameInput);
             this.panel1.Controls.Add(this.label11);
-            this.panel1.Location = new System.Drawing.Point(-4, 45);
+            this.panel1.Location = new System.Drawing.Point(6, 71);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(330, 408);
+            this.panel1.Size = new System.Drawing.Size(309, 372);
             this.panel1.TabIndex = 0;
             // 
             // TwitchConnectButton
             // 
             this.TwitchConnectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TwitchConnectButton.ForeColor = System.Drawing.Color.Silver;
-            this.TwitchConnectButton.Location = new System.Drawing.Point(99, 222);
+            this.TwitchConnectButton.Location = new System.Drawing.Point(83, 201);
             this.TwitchConnectButton.Name = "TwitchConnectButton";
             this.TwitchConnectButton.Size = new System.Drawing.Size(134, 35);
             this.TwitchConnectButton.TabIndex = 36;
@@ -69,11 +69,11 @@ namespace ChannelPointsPlus
             // 
             // PasswordInput
             // 
-            this.PasswordInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.PasswordInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.PasswordInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PasswordInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PasswordInput.ForeColor = System.Drawing.Color.White;
-            this.PasswordInput.Location = new System.Drawing.Point(43, 156);
+            this.PasswordInput.Location = new System.Drawing.Point(30, 155);
             this.PasswordInput.Name = "PasswordInput";
             this.PasswordInput.Size = new System.Drawing.Size(250, 29);
             this.PasswordInput.TabIndex = 35;
@@ -85,7 +85,7 @@ namespace ChannelPointsPlus
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(119, 129);
+            this.label1.Location = new System.Drawing.Point(106, 128);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 24);
             this.label1.TabIndex = 34;
@@ -93,11 +93,11 @@ namespace ChannelPointsPlus
             // 
             // UsernameInput
             // 
-            this.UsernameInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.UsernameInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.UsernameInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UsernameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UsernameInput.ForeColor = System.Drawing.Color.White;
-            this.UsernameInput.Location = new System.Drawing.Point(43, 81);
+            this.UsernameInput.Location = new System.Drawing.Point(30, 80);
             this.UsernameInput.Name = "UsernameInput";
             this.UsernameInput.Size = new System.Drawing.Size(250, 29);
             this.UsernameInput.TabIndex = 33;
@@ -107,7 +107,7 @@ namespace ChannelPointsPlus
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(117, 54);
+            this.label11.Location = new System.Drawing.Point(104, 53);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(97, 24);
             this.label11.TabIndex = 32;
@@ -128,7 +128,7 @@ namespace ChannelPointsPlus
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(74, 12);
+            this.label2.Location = new System.Drawing.Point(74, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 29);
             this.label2.TabIndex = 36;
@@ -136,10 +136,10 @@ namespace ChannelPointsPlus
             // 
             // ExitButton
             // 
-            this.ExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(56)))), ((int)(((byte)(63)))));
+            this.ExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExitButton.ForeColor = System.Drawing.Color.Silver;
-            this.ExitButton.Location = new System.Drawing.Point(240, 6);
+            this.ExitButton.Location = new System.Drawing.Point(240, 20);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(75, 35);
             this.ExitButton.TabIndex = 37;

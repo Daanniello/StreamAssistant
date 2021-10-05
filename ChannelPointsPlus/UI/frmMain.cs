@@ -36,6 +36,7 @@ namespace ChannelPointsPlus
         public SlobsPipeClient slobsClient;
         public SpeechChatManager speechChat;
         public VideoPlayer videoPlayer;
+        public VoiceCommandManager voiceCommandManager;
         public TwitchChatManager twitchChatManager;
         public RandomPickerManager randomPickerManager;
         public TwitchApi TwitchApi;
@@ -51,14 +52,13 @@ namespace ChannelPointsPlus
 
         public frmMain()
         {
-            InitializeComponent();          
+            InitializeComponent();
         }
 
         private async void frmMain_Load(object sender, EventArgs e)
         {
-            new VoiceCommandManager(this);
-
             new ProgramStartUp();
+            voiceCommandManager = new VoiceCommandManager(this);
 
             slobsClient = new SlobsPipeClient("slobs");
 
@@ -72,11 +72,11 @@ namespace ChannelPointsPlus
             if (File.Exists("settingsTwitch.txt"))
             {
                 String[] loadSettings = File.ReadAllLines("settingsTwitch.txt");
-                for(var x = 0; x < 1; x++)
+                for (var x = 0; x < 1; x++)
                 {
                     string[] split = loadSettings[x].Split('|');
                     ConnectTwitchChat(split[0], split[1]);
-                }                
+                }
             }
 
             //Creates log file after checking if the log directory exists
@@ -94,6 +94,7 @@ namespace ChannelPointsPlus
             reloadSceneListItems();
             reloadSceneSourceListItems();
             reloadVideoListItems();
+            LoadTtsSettings();
 
             txtVolume.Text = volumeLevel.ToString();
             trkVolume.Value = volumeLevel;
@@ -134,6 +135,12 @@ namespace ChannelPointsPlus
             LogToTextFile(logMessage, "[Chat Log]");
         }
 
+        public void LogException(string logMessage)
+        {
+            this.Invoke(new MethodInvoker(() => LogTextBox.AppendText(logMessage + "\n")));
+            LogToTextFile(logMessage, "[Error Log]");
+        }
+
         private void LogToTextFile(string logMessage, string logType)
         {
             try
@@ -144,13 +151,13 @@ namespace ChannelPointsPlus
             catch (IOException)
             {
                 logEvent.WaitOne();
-		LogToTextFile(logMessage, logType);
+                LogToTextFile(logMessage, logType);
             }
         }
 
         private void frmMain_OnClosing(object sender, FormClosingEventArgs e)
         {
-            trayIcon.Visible = false;            
+            trayIcon.Visible = false;
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
@@ -236,7 +243,7 @@ namespace ChannelPointsPlus
                 btnEditTitle.Enabled = true;
                 lstbxSoundsRewards.SelectedIndex = boxSelectionAudio;
                 lstbxSoundsPaths.SelectedIndex = boxSelectionAudio;
-          
+
             }
             saveBindingsAudio();
         }
@@ -263,7 +270,7 @@ namespace ChannelPointsPlus
             {
                 //TODO: Set scene add reactions to true
                 SceneSourceRewards.SelectedIndex = boxSelectionAudio;
-                SceneSourceNames.SelectedIndex = boxSelectionAudio;                
+                SceneSourceNames.SelectedIndex = boxSelectionAudio;
             }
             saveBindingsSceneSource();
         }
@@ -291,7 +298,7 @@ namespace ChannelPointsPlus
                 //TODO: Set scene add reactions to true
                 SceneRewards.SelectedIndex = boxSelectionAudio;
                 SceneNames.SelectedIndex = boxSelectionAudio;
-                
+
             }
             saveBindingsScene();
         }
@@ -363,6 +370,27 @@ namespace ChannelPointsPlus
                 buildString += kvp.Key + "|" + kvp.Value + "\n";
             }
             File.WriteAllText("settingsVideo.txt", buildString);
+        }
+
+        private void SaveTtsSettings()
+        {
+            var speechChatCheckBox = "SpeechChatCheckBox | " + SpeechChatCheckbox.Checked;
+            var speechChatVoiceSelection = "SpeechChatVoice | " + SpeechChatComboBox.SelectedIndex;
+
+            File.WriteAllText("settingsTTS.txt", speechChatCheckBox + "\n" + speechChatVoiceSelection);
+        }
+
+        private void LoadTtsSettings()
+        {
+            if (File.Exists("settingsTTS.txt"))
+            {
+                String[] loadSettings = File.ReadAllLines("settingsTTS.txt");
+                foreach (var setting in loadSettings)
+                {
+                    if (setting.Contains("SpeechChatCheckBox")) SpeechChatCheckbox.Checked = (setting.Split('|').Last().Trim() == "True" ? true : false);
+                    if (setting.Contains("SpeechChatVoice")) SpeechChatComboBox.SelectedIndex = Convert.ToInt32(setting.Split('|').Last().Trim());
+                }
+            }
         }
 
         /// <summary>
@@ -470,7 +498,7 @@ namespace ChannelPointsPlus
         {
             Log($"Deleted item in AudioList [{lstbxSoundsRewards.SelectedItem.ToString()}]");
             bindingsAudio.Remove(lstbxSoundsRewards.SelectedItem.ToString());
-            reloadAudioListItems();           
+            reloadAudioListItems();
         }
 
         /// <summary>
@@ -559,11 +587,12 @@ namespace ChannelPointsPlus
         {
             Log($"Deleted item in SceneList [{SceneRewards.SelectedItem.ToString()}]");
             bindingsScene.Remove(SceneRewards.SelectedItem.ToString());
-            reloadSceneListItems();      
+            reloadSceneListItems();
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
+            SaveTtsSettings();
             Application.Exit();
         }
 
@@ -581,7 +610,7 @@ namespace ChannelPointsPlus
             Log($"Deleted item in SceneSourceList [{SceneSourceRewards.SelectedItem.ToString()}]");
 
             bindingsSceneSource.Remove(SceneSourceRewards.SelectedItem.ToString());
-            reloadSceneSourceListItems();            
+            reloadSceneSourceListItems();
         }
 
         private void DeleteVideoButton_Click(object sender, EventArgs e)
@@ -614,12 +643,12 @@ namespace ChannelPointsPlus
 
         private void SpeechChatCheckbox_CheckedChanged(dynamic sender, EventArgs e)
         {
-            if(sender.CheckState == CheckState.Checked) SetSpeechChat(true);
+            if (sender.CheckState == CheckState.Checked) SetSpeechChat(true);
             else SetSpeechChat(false);
         }
 
         public void SetSpeechChat(bool enabled)
-        {            
+        {
             speechChat.isTurnedOn = enabled;
             this.Invoke(new MethodInvoker(() => SpeechChatCheckbox.Checked = enabled));
             ChatMessageLog($"SpeechChat is turned {(enabled ? "on" : "off")}");
@@ -644,7 +673,7 @@ namespace ChannelPointsPlus
                 TTSSettingsPanel.Visible = true;
                 TTSSettingsTabOpen = true;
             }
-            
+
         }
 
         private void TTSSubscribersOnlyCheckbox_CheckedChanged(dynamic sender, EventArgs e)
@@ -656,12 +685,12 @@ namespace ChannelPointsPlus
         }
 
         private void ChatTextBox_TextChanged(object sender, EventArgs e)
-        {            
+        {
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var frmStartUpPrograms =  new frmStartUpPrograms();
+            var frmStartUpPrograms = new frmStartUpPrograms();
             frmStartUpPrograms.Show();
         }
 
@@ -672,7 +701,7 @@ namespace ChannelPointsPlus
 
         private void SceneNames_SelectedIndexChanged(object sender, EventArgs e)
         {
-           SceneRewards.SelectedIndex = SceneNames.SelectedIndex;
+            SceneRewards.SelectedIndex = SceneNames.SelectedIndex;
         }
 
         private void SceneSourceRewards_SelectedIndexChanged(object sender, EventArgs e)
@@ -683,21 +712,6 @@ namespace ChannelPointsPlus
         private void SceneSourceNames_SelectedIndexChanged(object sender, EventArgs e)
         {
             SceneSourceRewards.SelectedIndex = SceneSourceNames.SelectedIndex;
-        }
-
-        private void SceneChangeDuration_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void richTextBox4_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void RandomPickerStartButton_Click(object sender, EventArgs e)
@@ -719,6 +733,11 @@ namespace ChannelPointsPlus
             this.Invoke(new MethodInvoker(() => RandomPickerMessage.Text = message));
         }
 
+        public void AddRandomPickerWinnerDescription(string message)
+        {
+            this.Invoke(new MethodInvoker(() => RandomPickerMessage.Text += "\n" + message));
+        }
+
         private void RandomPickerEndButton_Click(object sender, EventArgs e)
         {
             randomPickerManager.End();
@@ -734,6 +753,24 @@ namespace ChannelPointsPlus
         private void RandomPickerMessage_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void PickRandomMapButton_Click(object sender, EventArgs e)
+        {
+            new RandomPickerManager(this, TwitchApi).RequestRandomBeatMap();
+        }
+
+        private void CheckBoxVoiceCommands_CheckedChanged(dynamic sender, EventArgs e)
+        {
+            if (sender.CheckState == CheckState.Checked) { 
+                voiceCommandManager.SetVoiceCommands(true);
+                ChatMessageLog("Voice commands turned on!");
+            }
+            else
+            {
+                voiceCommandManager.SetVoiceCommands(false);
+                ChatMessageLog("Voice commands turned off!");
+            }
         }
 
 
