@@ -8,7 +8,10 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Windows.Threading;
 
 namespace ChannelPointsPlus.Managers
 {
@@ -28,7 +31,7 @@ namespace ChannelPointsPlus.Managers
             this.twitchApi = twitchApi;
         }
 
-        public async void Start(decimal duration, bool allViewers, string requirement = null)
+        public async void Start(decimal duration, bool allViewers, bool AutomaticMapRequest, string requirement = null)
         {
             this.requirement = requirement;
             if (requirement == null || requirement == "")
@@ -58,6 +61,7 @@ namespace ChannelPointsPlus.Managers
                 {
                     joinedViewers.Add(new RandomPickerViewer(null, viewer, ""));
                 }
+                mainForm.UpdateCompetitorsList(joinedViewers);
             }
             var endTime = DateTime.Now;
             endTime = endTime.AddSeconds(Convert.ToDouble(duration));
@@ -68,13 +72,12 @@ namespace ChannelPointsPlus.Managers
                 await Task.Delay(1000);
             } while (DateTime.Now < endTime && isInProcess);
 
-            if (isInProcess == true) End();
+            if (isInProcess == true) End(AutomaticMapRequest);
             isInProcess = false;
         }
 
-        public async void End()
+        public async void End(bool AutomaticMapRequest)
         {
-
 
             isInProcess = false;
             mainForm.updateRandomPickerTimer("Time left: Ended");
@@ -94,15 +97,19 @@ namespace ChannelPointsPlus.Managers
             mainForm.updateRandomPickerWinner(winner.username, winner.message);
             twitchApi.SendMessageInChannel($"Random picker ended. The winner is {winner.username}");
 
-            var message = await RequestBeatSaberMapFromDescription(winner.message);
-            twitchApi.SendMessageInChannel(message);
+            //Beat Saber feature to request a map directly after by Scoresaber ID
+            if (AutomaticMapRequest)
+            {
+                var message = await RequestBeatSaberMapFromDescription(winner.message);
+                twitchApi.SendMessageInChannel(message);
+            }
         }
 
         private async Task<string> RequestBeatSaberMapFromDescription(string description)
         {
             try
             {
-                var scoresaberId = description.Replace("&sort=2", "").Split('/').Last();
+                var scoresaberId = Regex.Replace(description.Replace("&sort=2", "").Split('/').Last(), "[^0-9.]", "");
 
 
                 var scores = await ScoreSaberApi.GetRecentSongDataAsync(scoresaberId);
@@ -112,7 +119,7 @@ namespace ChannelPointsPlus.Managers
                 var mods = scores["mods"].ToString();
 
                 var songInfo = await BeatSaverApi.GetSongByHash(songHash);
-                var bsrCode = songInfo["key"].ToString();
+                var bsrCode = songInfo["id"].ToString();
 
                 mainForm.AddRandomPickerWinnerDescription($"Difficulty: {difficulty}\nMods: {mods}");
 
@@ -141,8 +148,8 @@ namespace ChannelPointsPlus.Managers
             do
             {
                 var randomMapNumber = randomGenerator.Next(0, mapAmount);
-                randomKey = string.Format("{0:x}", randomMapNumber);                
-            } while (await BeatSaverApi.GetSongByKey(randomKey) == null && retryAmount++ < 10);            
+                randomKey = string.Format("{0:x}", randomMapNumber);
+            } while (await BeatSaverApi.GetSongByKey(randomKey) == null && retryAmount++ < 10);
 
             //Requests the bsr key into twitch chat 
             twitchApi.SendMessageInChannel($"!modadd {randomKey}");
@@ -161,12 +168,15 @@ namespace ChannelPointsPlus.Managers
                 if (!e.ChatMessage.Message.Contains(req)) isAllowed = false;
             }
             if (isAllowed)
-            {
+            {         
                 if (joinedViewers.Where(x => x.userId == e.ChatMessage.UserId).Count() == 0) joinedViewers.Add(new RandomPickerViewer(e.ChatMessage.UserId, e.ChatMessage.Username, e.ChatMessage.Message));
+                mainForm.UpdateCompetitorsList(joinedViewers);
             }
+
+
         }
 
-        private class RandomPickerViewer
+        public class RandomPickerViewer
         {
             public string userId;
             public string username;

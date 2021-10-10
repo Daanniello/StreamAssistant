@@ -12,7 +12,7 @@ namespace ChannelPointsPlus
     public class SpeechChatManager
     {
         private frmMain _mainForm;
-        private SpeechSynthesizer synthesizer;
+        public SpeechSynthesizer synthesizer;
         private SpeechSynthesizer forcedSynthesizer;
         private AutoResetEvent ttsEvent = new AutoResetEvent(false);
         public bool isTurnedOn = false;
@@ -37,7 +37,14 @@ namespace ChannelPointsPlus
                     if (isSpeaking == false)
                     {
                         isSpeaking = true;
-                        synthesizer.Speak(message);
+                        try
+                        {
+                            synthesizer.Speak(message);
+                        }
+                        catch
+                        {
+
+                        }
                         isSpeaking = false;
                         ttsEvent.Set();
                     }
@@ -48,10 +55,10 @@ namespace ChannelPointsPlus
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _mainForm.LogException(ex.Message);
-            }            
+            }
         }
 
         public async void ReadMessageForced(string message)
@@ -66,7 +73,18 @@ namespace ChannelPointsPlus
             catch (Exception ex)
             {
                 _mainForm.LogException(ex.Message);
-            }         
+            }
+        }
+
+        public void SkipSpeech()
+        {
+            if (synthesizer.GetCurrentlySpokenPrompt() != null) synthesizer.SpeakAsyncCancel(synthesizer.GetCurrentlySpokenPrompt());
+        }
+
+        public void ResetSpeech()
+        {
+            if (synthesizer.GetCurrentlySpokenPrompt() != null) synthesizer.SpeakAsyncCancel(synthesizer.GetCurrentlySpokenPrompt());
+            ttsEvent.Set();
         }
 
         public List<string> GetInstalledVoices()
@@ -84,6 +102,11 @@ namespace ChannelPointsPlus
         {
             synthesizer.SelectVoice(name);
             forcedSynthesizer.SelectVoice(name);
+        }
+
+        public void SetVoiceRate(int rate)
+        {
+            synthesizer.Rate = rate;
         }
     }
 }

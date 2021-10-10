@@ -87,6 +87,8 @@
             this.AudioEventsInfo = new System.Windows.Forms.RichTextBox();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.ViewerListLabel = new System.Windows.Forms.Label();
+            this.AutomaticMapRequestCheckBox = new System.Windows.Forms.CheckBox();
             this.RandomPickerAllViewersCheckbox = new System.Windows.Forms.CheckBox();
             this.RandomPickerMessage = new System.Windows.Forms.RichTextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -95,7 +97,6 @@
             this.RandomPickerTimeLeft = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.RandomPickerDurationInput = new System.Windows.Forms.NumericUpDown();
-            this.label17 = new System.Windows.Forms.Label();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.RandomPickerRequirementsInput = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -107,8 +108,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.SkipTTSButton = new System.Windows.Forms.Button();
+            this.ResetTTSButton = new System.Windows.Forms.Button();
             this.CheckBoxVoiceCommands = new System.Windows.Forms.CheckBox();
             this.TTSSettingsPanel = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.TTSSpeedTrackBar = new MetroFramework.Controls.MetroTrackBar();
+            this.SpeakOutUsernamecCeckBox = new System.Windows.Forms.CheckBox();
             this.label15 = new System.Windows.Forms.Label();
             this.TTSSubscribersOnlyCheckbox = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -122,6 +128,7 @@
             this.ChatTextBox = new System.Windows.Forms.RichTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.InfoBox = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.trkVolume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SceneChangeDuration)).BeginInit();
             this.panel1.SuspendLayout();
@@ -423,7 +430,7 @@
             this.TTSSettingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.TTSSettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TTSSettingsButton.ForeColor = System.Drawing.Color.Silver;
-            this.TTSSettingsButton.Location = new System.Drawing.Point(255, 11);
+            this.TTSSettingsButton.Location = new System.Drawing.Point(248, 15);
             this.TTSSettingsButton.Name = "TTSSettingsButton";
             this.TTSSettingsButton.Size = new System.Drawing.Size(25, 25);
             this.TTSSettingsButton.TabIndex = 30;
@@ -450,7 +457,7 @@
             // 
             this.RandomPickerStartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RandomPickerStartButton.ForeColor = System.Drawing.Color.Silver;
-            this.RandomPickerStartButton.Location = new System.Drawing.Point(22, 217);
+            this.RandomPickerStartButton.Location = new System.Drawing.Point(22, 210);
             this.RandomPickerStartButton.Name = "RandomPickerStartButton";
             this.RandomPickerStartButton.Size = new System.Drawing.Size(80, 23);
             this.RandomPickerStartButton.TabIndex = 28;
@@ -464,7 +471,7 @@
             // 
             this.RandomPickerEndButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RandomPickerEndButton.ForeColor = System.Drawing.Color.Silver;
-            this.RandomPickerEndButton.Location = new System.Drawing.Point(320, 217);
+            this.RandomPickerEndButton.Location = new System.Drawing.Point(320, 210);
             this.RandomPickerEndButton.Name = "RandomPickerEndButton";
             this.RandomPickerEndButton.Size = new System.Drawing.Size(80, 23);
             this.RandomPickerEndButton.TabIndex = 34;
@@ -607,7 +614,7 @@
             this.MetroTabControl.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.MetroTabControl.Location = new System.Drawing.Point(3, 2);
             this.MetroTabControl.Name = "MetroTabControl";
-            this.MetroTabControl.SelectedIndex = 1;
+            this.MetroTabControl.SelectedIndex = 2;
             this.MetroTabControl.Size = new System.Drawing.Size(949, 789);
             this.MetroTabControl.Style = MetroFramework.MetroColorStyle.Purple;
             this.MetroTabControl.TabIndex = 33;
@@ -624,9 +631,9 @@
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.HorizontalScrollbarSize = 10;
-            this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage1.Location = new System.Drawing.Point(4, 44);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(941, 747);
+            this.metroTabPage1.Size = new System.Drawing.Size(941, 741);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "Events";
             this.metroTabPage1.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -864,9 +871,9 @@
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.HorizontalScrollbarSize = 10;
-            this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage2.Location = new System.Drawing.Point(4, 44);
             this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(941, 747);
+            this.metroTabPage2.Size = new System.Drawing.Size(941, 741);
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "Tools";
             this.metroTabPage2.UseCustomBackColor = true;
@@ -879,6 +886,8 @@
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.ViewerListLabel);
+            this.panel9.Controls.Add(this.AutomaticMapRequestCheckBox);
             this.panel9.Controls.Add(this.RandomPickerAllViewersCheckbox);
             this.panel9.Controls.Add(this.RandomPickerMessage);
             this.panel9.Controls.Add(this.label23);
@@ -889,14 +898,38 @@
             this.panel9.Controls.Add(this.RandomPickerStartButton);
             this.panel9.Controls.Add(this.label18);
             this.panel9.Controls.Add(this.RandomPickerDurationInput);
-            this.panel9.Controls.Add(this.label17);
             this.panel9.Controls.Add(this.richTextBox3);
             this.panel9.Controls.Add(this.RandomPickerRequirementsInput);
             this.panel9.Controls.Add(this.label16);
             this.panel9.Location = new System.Drawing.Point(14, 15);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(419, 406);
+            this.panel9.Size = new System.Drawing.Size(419, 422);
             this.panel9.TabIndex = 30;
+            // 
+            // ViewerListLabel
+            // 
+            this.ViewerListLabel.AutoSize = true;
+            this.ViewerListLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ViewerListLabel.ForeColor = System.Drawing.Color.White;
+            this.ViewerListLabel.Location = new System.Drawing.Point(18, 381);
+            this.ViewerListLabel.Name = "ViewerListLabel";
+            this.ViewerListLabel.Size = new System.Drawing.Size(137, 24);
+            this.ViewerListLabel.TabIndex = 41;
+            this.ViewerListLabel.Text = "Competitors (0)";
+            // 
+            // AutomaticMapRequestCheckBox
+            // 
+            this.AutomaticMapRequestCheckBox.AutoSize = true;
+            this.AutomaticMapRequestCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.AutomaticMapRequestCheckBox.ForeColor = System.Drawing.Color.White;
+            this.AutomaticMapRequestCheckBox.Location = new System.Drawing.Point(21, 176);
+            this.AutomaticMapRequestCheckBox.Name = "AutomaticMapRequestCheckBox";
+            this.AutomaticMapRequestCheckBox.Size = new System.Drawing.Size(190, 17);
+            this.AutomaticMapRequestCheckBox.TabIndex = 40;
+            this.AutomaticMapRequestCheckBox.Text = "Request Recent Map automatically";
+            this.AutomaticMapRequestCheckBox.UseVisualStyleBackColor = true;
+            this.AutomaticMapRequestCheckBox.MouseLeave += new System.EventHandler(this.AutomaticMapRequestCheckBox_MouseLeave);
+            this.AutomaticMapRequestCheckBox.MouseHover += new System.EventHandler(this.AutomaticMapRequestCheckBox_MouseHover);
             // 
             // RandomPickerAllViewersCheckbox
             // 
@@ -917,7 +950,7 @@
             this.RandomPickerMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.RandomPickerMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RandomPickerMessage.ForeColor = System.Drawing.Color.Silver;
-            this.RandomPickerMessage.Location = new System.Drawing.Point(21, 290);
+            this.RandomPickerMessage.Location = new System.Drawing.Point(21, 275);
             this.RandomPickerMessage.Name = "RandomPickerMessage";
             this.RandomPickerMessage.ReadOnly = true;
             this.RandomPickerMessage.Size = new System.Drawing.Size(378, 96);
@@ -929,7 +962,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.ForeColor = System.Drawing.Color.White;
-            this.label23.Location = new System.Drawing.Point(125, 172);
+            this.label23.Location = new System.Drawing.Point(124, 143);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(49, 13);
             this.label23.TabIndex = 28;
@@ -950,7 +983,7 @@
             this.RandomPickerWinner.AutoSize = true;
             this.RandomPickerWinner.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RandomPickerWinner.ForeColor = System.Drawing.Color.White;
-            this.RandomPickerWinner.Location = new System.Drawing.Point(18, 263);
+            this.RandomPickerWinner.Location = new System.Drawing.Point(18, 248);
             this.RandomPickerWinner.Name = "RandomPickerWinner";
             this.RandomPickerWinner.Size = new System.Drawing.Size(71, 24);
             this.RandomPickerWinner.TabIndex = 36;
@@ -960,7 +993,7 @@
             // 
             this.RandomPickerTimeLeft.AutoSize = true;
             this.RandomPickerTimeLeft.ForeColor = System.Drawing.Color.White;
-            this.RandomPickerTimeLeft.Location = new System.Drawing.Point(178, 222);
+            this.RandomPickerTimeLeft.Location = new System.Drawing.Point(178, 215);
             this.RandomPickerTimeLeft.Name = "RandomPickerTimeLeft";
             this.RandomPickerTimeLeft.Size = new System.Drawing.Size(51, 13);
             this.RandomPickerTimeLeft.TabIndex = 35;
@@ -970,7 +1003,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(19, 153);
+            this.label18.Location = new System.Drawing.Point(18, 124);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(47, 13);
             this.label18.TabIndex = 28;
@@ -981,7 +1014,7 @@
             this.RandomPickerDurationInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.RandomPickerDurationInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.RandomPickerDurationInput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.RandomPickerDurationInput.Location = new System.Drawing.Point(22, 169);
+            this.RandomPickerDurationInput.Location = new System.Drawing.Point(21, 140);
             this.RandomPickerDurationInput.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -995,16 +1028,6 @@
             0,
             0,
             0});
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.ForeColor = System.Drawing.Color.Silver;
-            this.label17.Location = new System.Drawing.Point(19, 90);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(141, 13);
-            this.label17.TabIndex = 28;
-            this.label17.Text = "Example: !join, https//:*.com";
             // 
             // richTextBox3
             // 
@@ -1022,10 +1045,12 @@
             this.RandomPickerRequirementsInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.RandomPickerRequirementsInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.RandomPickerRequirementsInput.ForeColor = System.Drawing.Color.White;
-            this.RandomPickerRequirementsInput.Location = new System.Drawing.Point(22, 110);
+            this.RandomPickerRequirementsInput.Location = new System.Drawing.Point(21, 94);
             this.RandomPickerRequirementsInput.Name = "RandomPickerRequirementsInput";
             this.RandomPickerRequirementsInput.Size = new System.Drawing.Size(235, 20);
             this.RandomPickerRequirementsInput.TabIndex = 33;
+            this.RandomPickerRequirementsInput.MouseLeave += new System.EventHandler(this.RandomPickerRequirementsInput_MouseLeave);
+            this.RandomPickerRequirementsInput.MouseHover += new System.EventHandler(this.RandomPickerRequirementsInput_MouseHover);
             // 
             // label16
             // 
@@ -1067,9 +1092,9 @@
             this.metroTabPage3.HorizontalScrollbarBarColor = true;
             this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.HorizontalScrollbarSize = 10;
-            this.metroTabPage3.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage3.Location = new System.Drawing.Point(4, 44);
             this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(941, 747);
+            this.metroTabPage3.Size = new System.Drawing.Size(941, 741);
             this.metroTabPage3.TabIndex = 2;
             this.metroTabPage3.Text = "Logs";
             this.metroTabPage3.UseCustomBackColor = true;
@@ -1123,9 +1148,9 @@
             this.metroTabPage4.HorizontalScrollbarBarColor = true;
             this.metroTabPage4.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage4.HorizontalScrollbarSize = 10;
-            this.metroTabPage4.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage4.Location = new System.Drawing.Point(4, 44);
             this.metroTabPage4.Name = "metroTabPage4";
-            this.metroTabPage4.Size = new System.Drawing.Size(941, 747);
+            this.metroTabPage4.Size = new System.Drawing.Size(941, 741);
             this.metroTabPage4.TabIndex = 3;
             this.metroTabPage4.Text = "Settings";
             this.metroTabPage4.UseCustomBackColor = true;
@@ -1136,6 +1161,8 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.panel7.Controls.Add(this.SkipTTSButton);
+            this.panel7.Controls.Add(this.ResetTTSButton);
             this.panel7.Controls.Add(this.CheckBoxVoiceCommands);
             this.panel7.Controls.Add(this.TTSSettingsButton);
             this.panel7.Controls.Add(this.TTSSettingsPanel);
@@ -1148,12 +1175,38 @@
             this.panel7.Size = new System.Drawing.Size(295, 787);
             this.panel7.TabIndex = 30;
             // 
+            // SkipTTSButton
+            // 
+            this.SkipTTSButton.BackColor = System.Drawing.Color.DarkRed;
+            this.SkipTTSButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SkipTTSButton.ForeColor = System.Drawing.Color.Silver;
+            this.SkipTTSButton.Location = new System.Drawing.Point(65, 739);
+            this.SkipTTSButton.Name = "SkipTTSButton";
+            this.SkipTTSButton.Size = new System.Drawing.Size(75, 35);
+            this.SkipTTSButton.TabIndex = 43;
+            this.SkipTTSButton.Text = "Skip TTS";
+            this.SkipTTSButton.UseVisualStyleBackColor = false;
+            this.SkipTTSButton.Click += new System.EventHandler(this.SkipTTSButton_Click);
+            // 
+            // ResetTTSButton
+            // 
+            this.ResetTTSButton.BackColor = System.Drawing.Color.DarkRed;
+            this.ResetTTSButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ResetTTSButton.ForeColor = System.Drawing.Color.Silver;
+            this.ResetTTSButton.Location = new System.Drawing.Point(144, 739);
+            this.ResetTTSButton.Name = "ResetTTSButton";
+            this.ResetTTSButton.Size = new System.Drawing.Size(75, 35);
+            this.ResetTTSButton.TabIndex = 42;
+            this.ResetTTSButton.Text = "Reset TTS";
+            this.ResetTTSButton.UseVisualStyleBackColor = false;
+            this.ResetTTSButton.Click += new System.EventHandler(this.ResetTTSButton_Click);
+            // 
             // CheckBoxVoiceCommands
             // 
             this.CheckBoxVoiceCommands.AutoSize = true;
             this.CheckBoxVoiceCommands.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CheckBoxVoiceCommands.ForeColor = System.Drawing.Color.White;
-            this.CheckBoxVoiceCommands.Location = new System.Drawing.Point(93, 15);
+            this.CheckBoxVoiceCommands.Location = new System.Drawing.Point(85, 20);
             this.CheckBoxVoiceCommands.Name = "CheckBoxVoiceCommands";
             this.CheckBoxVoiceCommands.Size = new System.Drawing.Size(105, 17);
             this.CheckBoxVoiceCommands.TabIndex = 39;
@@ -1165,6 +1218,9 @@
             // 
             this.TTSSettingsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.TTSSettingsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TTSSettingsPanel.Controls.Add(this.label9);
+            this.TTSSettingsPanel.Controls.Add(this.TTSSpeedTrackBar);
+            this.TTSSettingsPanel.Controls.Add(this.SpeakOutUsernamecCeckBox);
             this.TTSSettingsPanel.Controls.Add(this.label15);
             this.TTSSettingsPanel.Controls.Add(this.TTSSubscribersOnlyCheckbox);
             this.TTSSettingsPanel.Controls.Add(this.label14);
@@ -1174,6 +1230,43 @@
             this.TTSSettingsPanel.Size = new System.Drawing.Size(246, 177);
             this.TTSSettingsPanel.TabIndex = 38;
             this.TTSSettingsPanel.Visible = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(4, 140);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(68, 13);
+            this.label9.TabIndex = 33;
+            this.label9.Text = "Voice Speed";
+            // 
+            // TTSSpeedTrackBar
+            // 
+            this.TTSSpeedTrackBar.BackColor = System.Drawing.Color.Transparent;
+            this.TTSSpeedTrackBar.Location = new System.Drawing.Point(78, 137);
+            this.TTSSpeedTrackBar.Maximum = 10;
+            this.TTSSpeedTrackBar.Minimum = -10;
+            this.TTSSpeedTrackBar.Name = "TTSSpeedTrackBar";
+            this.TTSSpeedTrackBar.Size = new System.Drawing.Size(140, 23);
+            this.TTSSpeedTrackBar.TabIndex = 42;
+            this.TTSSpeedTrackBar.Text = "TTSSpeedTrackBar";
+            this.TTSSpeedTrackBar.UseCustomBackColor = true;
+            this.TTSSpeedTrackBar.Value = 0;
+            this.TTSSpeedTrackBar.ValueChanged += new System.EventHandler(this.TTSSpeedTrackBar_ValueChanged);
+            // 
+            // SpeakOutUsernamecCeckBox
+            // 
+            this.SpeakOutUsernamecCeckBox.AutoSize = true;
+            this.SpeakOutUsernamecCeckBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SpeakOutUsernamecCeckBox.ForeColor = System.Drawing.Color.White;
+            this.SpeakOutUsernamecCeckBox.Location = new System.Drawing.Point(7, 114);
+            this.SpeakOutUsernamecCeckBox.Name = "SpeakOutUsernamecCeckBox";
+            this.SpeakOutUsernamecCeckBox.Size = new System.Drawing.Size(126, 17);
+            this.SpeakOutUsernamecCeckBox.TabIndex = 41;
+            this.SpeakOutUsernamecCeckBox.Text = "Speak Out Username";
+            this.SpeakOutUsernamecCeckBox.UseVisualStyleBackColor = true;
+            this.SpeakOutUsernamecCeckBox.CheckedChanged += new System.EventHandler(this.SpeakOutUsernamecCeckBox_CheckedChanged);
             // 
             // label15
             // 
@@ -1220,7 +1313,6 @@
             this.SpeechChatComboBox.Name = "SpeechChatComboBox";
             this.SpeechChatComboBox.Size = new System.Drawing.Size(121, 21);
             this.SpeechChatComboBox.TabIndex = 35;
-            this.SpeechChatComboBox.Visible = false;
             this.SpeechChatComboBox.SelectedIndexChanged += new System.EventHandler(this.SpeechChatComboBox_SelectedIndexChanged);
             // 
             // TwitchLoginPanel
@@ -1282,7 +1374,7 @@
             this.SpeechChatCheckbox.AutoSize = true;
             this.SpeechChatCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.SpeechChatCheckbox.ForeColor = System.Drawing.Color.White;
-            this.SpeechChatCheckbox.Location = new System.Drawing.Point(204, 15);
+            this.SpeechChatCheckbox.Location = new System.Drawing.Point(196, 20);
             this.SpeechChatCheckbox.Name = "SpeechChatCheckbox";
             this.SpeechChatCheckbox.Size = new System.Drawing.Size(45, 17);
             this.SpeechChatCheckbox.TabIndex = 33;
@@ -1327,12 +1419,26 @@
             this.pictureBox1.TabIndex = 29;
             this.pictureBox1.TabStop = false;
             // 
+            // InfoBox
+            // 
+            this.InfoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(69)))), ((int)(((byte)(208)))));
+            this.InfoBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.InfoBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoBox.ForeColor = System.Drawing.Color.White;
+            this.InfoBox.Location = new System.Drawing.Point(70, 8);
+            this.InfoBox.Name = "InfoBox";
+            this.InfoBox.Size = new System.Drawing.Size(802, 42);
+            this.InfoBox.TabIndex = 41;
+            this.InfoBox.Text = "Info:";
+            this.InfoBox.Visible = false;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(69)))), ((int)(((byte)(208)))));
             this.ClientSize = new System.Drawing.Size(1242, 840);
+            this.Controls.Add(this.InfoBox);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ExitButton);
@@ -1460,7 +1566,6 @@
         private System.Windows.Forms.Button RandomPickerStartButton;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.NumericUpDown RandomPickerDurationInput;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.RichTextBox RandomPickerMessage;
         private System.Windows.Forms.CheckBox RandomPickerAllViewersCheckbox;
@@ -1473,6 +1578,14 @@
         private MetroFramework.Controls.MetroTabPage metroTabPage3;
         private MetroFramework.Controls.MetroTabPage metroTabPage4;
         private System.Windows.Forms.CheckBox CheckBoxVoiceCommands;
+        private System.Windows.Forms.CheckBox AutomaticMapRequestCheckBox;
+        private System.Windows.Forms.RichTextBox InfoBox;
+        private System.Windows.Forms.Label ViewerListLabel;
+        private System.Windows.Forms.CheckBox SpeakOutUsernamecCeckBox;
+        private System.Windows.Forms.Button ResetTTSButton;
+        private System.Windows.Forms.Button SkipTTSButton;
+        private MetroFramework.Controls.MetroTrackBar TTSSpeedTrackBar;
+        private System.Windows.Forms.Label label9;
     }
 }
 

@@ -8,8 +8,10 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media;
+using static ChannelPointsPlus.Managers.RandomPickerManager;
 
 namespace ChannelPointsPlus
 {
@@ -42,6 +44,7 @@ namespace ChannelPointsPlus
         public TwitchApi TwitchApi;
 
         public bool ttsSubscribersOnly = false;
+        public bool ttsSpeakOutUsername = false;
 
         private bool TTSSettingsTabOpen = false;
 
@@ -94,6 +97,7 @@ namespace ChannelPointsPlus
             reloadSceneListItems();
             reloadSceneSourceListItems();
             reloadVideoListItems();
+
             LoadTtsSettings();
 
             txtVolume.Text = volumeLevel.ToString();
@@ -382,6 +386,8 @@ namespace ChannelPointsPlus
 
         private void LoadTtsSettings()
         {
+            TTSSettingsButton.Visible = speechChat == null ? false : true;
+
             if (File.Exists("settingsTTS.txt"))
             {
                 String[] loadSettings = File.ReadAllLines("settingsTTS.txt");
@@ -391,6 +397,9 @@ namespace ChannelPointsPlus
                     if (setting.Contains("SpeechChatVoice")) SpeechChatComboBox.SelectedIndex = Convert.ToInt32(setting.Split('|').Last().Trim());
                 }
             }
+
+            ResetTTSButton.Visible = SpeechChatCheckbox.Checked;
+            SkipTTSButton.Visible = SpeechChatCheckbox.Checked;
         }
 
         /// <summary>
@@ -639,13 +648,9 @@ namespace ChannelPointsPlus
             speechChat = new SpeechChatManager(this);
             SpeechChatComboBox.Visible = true;
             SpeechChatComboBox.Items.AddRange(speechChat.GetInstalledVoices().ToArray());
+            TTSSettingsButton.Visible = true;
         }
 
-        private void SpeechChatCheckbox_CheckedChanged(dynamic sender, EventArgs e)
-        {
-            if (sender.CheckState == CheckState.Checked) SetSpeechChat(true);
-            else SetSpeechChat(false);
-        }
 
         public void SetSpeechChat(bool enabled)
         {
@@ -674,14 +679,6 @@ namespace ChannelPointsPlus
                 TTSSettingsTabOpen = true;
             }
 
-        }
-
-        private void TTSSubscribersOnlyCheckbox_CheckedChanged(dynamic sender, EventArgs e)
-        {
-            if (sender.CheckState == CheckState.Checked) ttsSubscribersOnly = true;
-            if (sender.CheckState == CheckState.Unchecked) ttsSubscribersOnly = false;
-
-            ChatMessageLog($"TTS Sub only mode is turned {ttsSubscribersOnly}");
         }
 
         private void ChatTextBox_TextChanged(object sender, EventArgs e)
@@ -719,7 +716,7 @@ namespace ChannelPointsPlus
             if (twitchChatManager != null)
             {
                 randomPickerManager = new RandomPickerManager(this, TwitchApi);
-                randomPickerManager.Start(RandomPickerDurationInput.Value, RandomPickerAllViewersCheckbox.Checked, RandomPickerRequirementsInput.Text);
+                randomPickerManager.Start(RandomPickerDurationInput.Value, RandomPickerAllViewersCheckbox.Checked, AutomaticMapRequestCheckBox.Checked, RandomPickerRequirementsInput.Text);
             }
         }
 
@@ -740,15 +737,18 @@ namespace ChannelPointsPlus
 
         private void RandomPickerEndButton_Click(object sender, EventArgs e)
         {
-            randomPickerManager.End();
+            randomPickerManager.End(AutomaticMapRequestCheckBox.Checked);
         }
 
-        private void checkBox1_CheckedChanged(dynamic sender, EventArgs e)
+
+        public void UpdateCompetitorsList(List<RandomPickerViewer> List)
         {
-            if (sender.CheckState == CheckState.Checked) RandomPickerRequirementsInput.Enabled = false;
-            if (sender.CheckState == CheckState.Unchecked) RandomPickerRequirementsInput.Enabled = true;
-
+            this.Invoke(new MethodInvoker(() =>
+            {
+                ViewerListLabel.Text = $"Competitors ({List.Count()})";
+            }));
         }
+
 
         private void RandomPickerMessage_TextChanged(object sender, EventArgs e)
         {
@@ -758,6 +758,23 @@ namespace ChannelPointsPlus
         private void PickRandomMapButton_Click(object sender, EventArgs e)
         {
             new RandomPickerManager(this, TwitchApi).RequestRandomBeatMap();
+        }
+
+        #region CheckedChanged
+        private void SpeechChatCheckbox_CheckedChanged(dynamic sender, EventArgs e)
+        {
+            if (sender.CheckState == CheckState.Checked)
+            {
+                ResetTTSButton.Visible = true;
+                SkipTTSButton.Visible = true;
+                SetSpeechChat(true);
+            }
+            else
+            {
+                ResetTTSButton.Visible = false;
+                SkipTTSButton.Visible = false;
+                SetSpeechChat(false);
+            }
         }
 
         private void CheckBoxVoiceCommands_CheckedChanged(dynamic sender, EventArgs e)
@@ -772,6 +789,53 @@ namespace ChannelPointsPlus
                 ChatMessageLog("Voice commands turned off!");
             }
         }
+
+        private void TTSSubscribersOnlyCheckbox_CheckedChanged(dynamic sender, EventArgs e)
+        {
+            if (sender.CheckState == CheckState.Checked) ttsSubscribersOnly = true;
+            if (sender.CheckState == CheckState.Unchecked) ttsSubscribersOnly = false;
+
+            ChatMessageLog($"TTS Sub only mode is turned {ttsSubscribersOnly}");
+        }
+
+        private void SpeakOutUsernamecCeckBox_CheckedChanged(dynamic sender, EventArgs e)
+        {
+            if (sender.CheckState == CheckState.Checked) ttsSpeakOutUsername = true;
+            if (sender.CheckState == CheckState.Unchecked) ttsSpeakOutUsername = false;
+
+            ChatMessageLog($"TTS Speaking out usernames is turned {ttsSpeakOutUsername}");
+        }
+
+        private void checkBox1_CheckedChanged(dynamic sender, EventArgs e)
+        {
+            if (sender.CheckState == CheckState.Checked) RandomPickerRequirementsInput.Enabled = false;
+            if (sender.CheckState == CheckState.Unchecked) RandomPickerRequirementsInput.Enabled = true;
+
+        }
+
+        #endregion
+
+        #region MouseHoverInfoBox
+        private void AutomaticMapRequestCheckBox_MouseHover(object sender, EventArgs e)
+        {
+            ShowInfoBox("When Enabled, the feature will get the winner his latest Beat Saber map ID by searching for an ID in the join statement. And automatically requests it in chat so it will be added in game.");
+        }
+
+        private void AutomaticMapRequestCheckBox_MouseLeave(object sender, EventArgs e)
+        {
+            HideInfoBox();
+        }
+        private void RandomPickerRequirementsInput_MouseHover(object sender, EventArgs e)
+        {
+            ShowInfoBox("The required command that viewers have to give to join. Use `*` to accept everything in between two statements.  For Example: `!join [ScoresaberID]`");
+
+        }
+        private void RandomPickerRequirementsInput_MouseLeave(object sender, EventArgs e)
+        {
+            HideInfoBox();
+        }
+
+        #endregion
 
 
         /// <summary>
@@ -795,6 +859,36 @@ namespace ChannelPointsPlus
                     reloadAudioListItems();
                 }
             }
+        }
+
+        private void ShowInfoBox(string info)
+        {
+            InfoBox.Text = $"Info: {info}";
+            InfoBox.Visible = true;
+        }
+
+        private async void ResetTTSButton_Click(object sender, EventArgs e)
+        {
+            //Reset TTS
+            twitchChatManager.isReseted = true;
+            speechChat.SkipSpeech();
+            await Task.Delay(1000);
+            twitchChatManager.isReseted = false;
+        }
+
+        private void SkipTTSButton_Click(object sender, EventArgs e)
+        {
+            speechChat.SkipSpeech();
+        }
+
+        private void TTSSpeedTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            speechChat.SetVoiceRate(TTSSpeedTrackBar.Value);
+        }
+
+        private void HideInfoBox()
+        {
+            InfoBox.Visible = false;
         }
     }
 
