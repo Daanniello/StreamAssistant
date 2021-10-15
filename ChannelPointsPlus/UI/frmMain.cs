@@ -101,6 +101,9 @@ namespace ChannelPointsPlus
 
             LoadTtsSettings();
 
+            //Adds the total Beat Saber map count on a label 
+            TotalMapsLabel.Text = $"Total Maps: {await BeatSaverApi.GetTotalMapCount()}";
+
             txtVolume.Text = volumeLevel.ToString();
             trkVolume.Value = volumeLevel;
 
@@ -758,7 +761,7 @@ namespace ChannelPointsPlus
 
         private void PickRandomMapButton_Click(object sender, EventArgs e)
         {
-            new RandomPickerManager(this, TwitchApi).RequestRandomBeatMap();
+            new RandomPickerManager(this, TwitchApi).RequestRandomBeatMap(Convert.ToInt32(StartMapsFromNumericUpDown.Value));
         }
 
         #region CheckedChanged

@@ -101,6 +101,9 @@
             this.RandomPickerRequirementsInput = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.StartMapsFromNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label21 = new System.Windows.Forms.Label();
+            this.TotalMapsLabel = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -148,6 +151,7 @@
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RandomPickerDurationInput)).BeginInit();
             this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StartMapsFromNumericUpDown)).BeginInit();
             this.metroTabPage3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.metroTabPage4.SuspendLayout();
@@ -490,7 +494,7 @@
             // 
             this.PickRandomMapButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PickRandomMapButton.ForeColor = System.Drawing.Color.Silver;
-            this.PickRandomMapButton.Location = new System.Drawing.Point(65, 70);
+            this.PickRandomMapButton.Location = new System.Drawing.Point(22, 126);
             this.PickRandomMapButton.Name = "PickRandomMapButton";
             this.PickRandomMapButton.Size = new System.Drawing.Size(137, 45);
             this.PickRandomMapButton.TabIndex = 40;
@@ -619,7 +623,7 @@
             this.MetroTabControl.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.MetroTabControl.Location = new System.Drawing.Point(3, 2);
             this.MetroTabControl.Name = "MetroTabControl";
-            this.MetroTabControl.SelectedIndex = 2;
+            this.MetroTabControl.SelectedIndex = 1;
             this.MetroTabControl.Size = new System.Drawing.Size(949, 789);
             this.MetroTabControl.Style = MetroFramework.MetroColorStyle.Purple;
             this.MetroTabControl.TabIndex = 33;
@@ -1072,12 +1076,51 @@
             // 
             this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel10.Controls.Add(this.StartMapsFromNumericUpDown);
+            this.panel10.Controls.Add(this.label21);
+            this.panel10.Controls.Add(this.TotalMapsLabel);
             this.panel10.Controls.Add(this.PickRandomMapButton);
             this.panel10.Controls.Add(this.label19);
             this.panel10.Location = new System.Drawing.Point(452, 15);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(276, 161);
+            this.panel10.Size = new System.Drawing.Size(284, 194);
             this.panel10.TabIndex = 32;
+            // 
+            // StartMapsFromNumericUpDown
+            // 
+            this.StartMapsFromNumericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.StartMapsFromNumericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.StartMapsFromNumericUpDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.StartMapsFromNumericUpDown.Location = new System.Drawing.Point(22, 94);
+            this.StartMapsFromNumericUpDown.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.StartMapsFromNumericUpDown.Name = "StartMapsFromNumericUpDown";
+            this.StartMapsFromNumericUpDown.Size = new System.Drawing.Size(100, 20);
+            this.StartMapsFromNumericUpDown.TabIndex = 42;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.ForeColor = System.Drawing.Color.White;
+            this.label21.Location = new System.Drawing.Point(19, 73);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(55, 13);
+            this.label21.TabIndex = 43;
+            this.label21.Text = "Start From";
+            // 
+            // TotalMapsLabel
+            // 
+            this.TotalMapsLabel.AutoSize = true;
+            this.TotalMapsLabel.ForeColor = System.Drawing.Color.White;
+            this.TotalMapsLabel.Location = new System.Drawing.Point(19, 39);
+            this.TotalMapsLabel.Name = "TotalMapsLabel";
+            this.TotalMapsLabel.Size = new System.Drawing.Size(72, 13);
+            this.TotalMapsLabel.TabIndex = 42;
+            this.TotalMapsLabel.Text = "Total Maps: 0";
+            this.TotalMapsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label19
             // 
@@ -1540,6 +1583,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.RandomPickerDurationInput)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StartMapsFromNumericUpDown)).EndInit();
             this.metroTabPage3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -1660,6 +1704,9 @@
         private System.Windows.Forms.Label VoiceSpeedLabel;
         private System.Windows.Forms.Label VoiceVolumeLabel;
         private System.Windows.Forms.CheckBox UseSaysCheckBox;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label TotalMapsLabel;
+        private System.Windows.Forms.NumericUpDown StartMapsFromNumericUpDown;
     }
 }
 

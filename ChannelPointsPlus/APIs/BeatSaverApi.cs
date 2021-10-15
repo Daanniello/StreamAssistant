@@ -117,5 +117,14 @@ namespace ChannelPointsPlus.APIs
                 return null;
             }
         }
+
+        public static async Task<int> GetTotalMapCount()
+        {
+            var latestSongInfo = await GetMostRecentSongInfo();
+            var key = latestSongInfo["id"].ToString();
+            //Converts the hex key to a real number 
+            var mapAmount = Convert.ToInt32(key, 16);
+            return mapAmount;
+        }
     }
 }

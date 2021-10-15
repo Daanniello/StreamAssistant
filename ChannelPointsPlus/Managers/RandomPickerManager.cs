@@ -133,13 +133,10 @@ namespace ChannelPointsPlus.Managers
 
         }
 
-        public async void RequestRandomBeatMap()
+        public async void RequestRandomBeatMap(int startFrom = 0)
         {
             //Gets the latest song from beatsaver and get the key out of that
-            var latestSongInfo = await BeatSaverApi.GetMostRecentSongInfo();
-            var key = latestSongInfo["id"].ToString();
-            //Converts the hex key to a real number 
-            var mapAmount = Convert.ToInt32(key, 16);
+            var mapAmount = await BeatSaverApi.GetTotalMapCount();
             //Generates a new random hex key that is between the amount of maps available
             //Also retries max 10 times and checks if the key matches a real map
             var randomGenerator = new Random();
@@ -147,7 +144,7 @@ namespace ChannelPointsPlus.Managers
             var retryAmount = 0;
             do
             {
-                var randomMapNumber = randomGenerator.Next(0, mapAmount);
+                var randomMapNumber = randomGenerator.Next(startFrom, mapAmount);
                 randomKey = string.Format("{0:x}", randomMapNumber);
             } while (await BeatSaverApi.GetSongByKey(randomKey) == null && retryAmount++ < 10);
 
