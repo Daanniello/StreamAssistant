@@ -761,8 +761,10 @@ namespace ChannelPointsPlus
 
         private async void PickRandomMapButton_Click(object sender, EventArgs e)
         {
+            PickRandomMapButton.Enabled = false;
             var result = await new RandomPickerManager(this, TwitchApi).RequestRandomBeatMap(Convert.ToInt32(StartMapsFromNumericUpDown.Value), MinimalRatingTrackBar.Value, MaximalRatingMetroTrackBar.Value);
             RandomMapPickResultLabel.Text = result;
+            PickRandomMapButton.Enabled = true;
         }
 
         #region CheckedChanged
