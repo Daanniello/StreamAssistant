@@ -108,5 +108,10 @@ namespace ChannelPointsPlus
         {
             synthesizer.Rate = rate;
         }
+
+        public void SetVoiceVolume(int rate)
+        {
+            synthesizer.Volume = rate;
+        }
     }
 }

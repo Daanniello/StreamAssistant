@@ -112,6 +112,11 @@
             this.ResetTTSButton = new System.Windows.Forms.Button();
             this.CheckBoxVoiceCommands = new System.Windows.Forms.CheckBox();
             this.TTSSettingsPanel = new System.Windows.Forms.Panel();
+            this.UseSaysCheckBox = new System.Windows.Forms.CheckBox();
+            this.VoiceSpeedLabel = new System.Windows.Forms.Label();
+            this.VoiceVolumeLabel = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.TTSVolumeTrackBar = new MetroFramework.Controls.MetroTrackBar();
             this.label9 = new System.Windows.Forms.Label();
             this.TTSSpeedTrackBar = new MetroFramework.Controls.MetroTrackBar();
             this.SpeakOutUsernamecCeckBox = new System.Windows.Forms.CheckBox();
@@ -1213,11 +1218,18 @@
             this.CheckBoxVoiceCommands.Text = "Voice commands";
             this.CheckBoxVoiceCommands.UseVisualStyleBackColor = true;
             this.CheckBoxVoiceCommands.CheckedChanged += new System.EventHandler(this.CheckBoxVoiceCommands_CheckedChanged);
+            this.CheckBoxVoiceCommands.MouseLeave += new System.EventHandler(this.CheckBoxVoiceCommands_MouseLeave);
+            this.CheckBoxVoiceCommands.MouseHover += new System.EventHandler(this.CheckBoxVoiceCommands_MouseHover);
             // 
             // TTSSettingsPanel
             // 
             this.TTSSettingsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.TTSSettingsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TTSSettingsPanel.Controls.Add(this.UseSaysCheckBox);
+            this.TTSSettingsPanel.Controls.Add(this.VoiceSpeedLabel);
+            this.TTSSettingsPanel.Controls.Add(this.VoiceVolumeLabel);
+            this.TTSSettingsPanel.Controls.Add(this.label17);
+            this.TTSSettingsPanel.Controls.Add(this.TTSVolumeTrackBar);
             this.TTSSettingsPanel.Controls.Add(this.label9);
             this.TTSSettingsPanel.Controls.Add(this.TTSSpeedTrackBar);
             this.TTSSettingsPanel.Controls.Add(this.SpeakOutUsernamecCeckBox);
@@ -1227,15 +1239,70 @@
             this.TTSSettingsPanel.Controls.Add(this.SpeechChatComboBox);
             this.TTSSettingsPanel.Location = new System.Drawing.Point(22, 67);
             this.TTSSettingsPanel.Name = "TTSSettingsPanel";
-            this.TTSSettingsPanel.Size = new System.Drawing.Size(246, 177);
+            this.TTSSettingsPanel.Size = new System.Drawing.Size(246, 213);
             this.TTSSettingsPanel.TabIndex = 38;
             this.TTSSettingsPanel.Visible = false;
+            // 
+            // UseSaysCheckBox
+            // 
+            this.UseSaysCheckBox.AutoSize = true;
+            this.UseSaysCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.UseSaysCheckBox.ForeColor = System.Drawing.Color.White;
+            this.UseSaysCheckBox.Location = new System.Drawing.Point(145, 138);
+            this.UseSaysCheckBox.Name = "UseSaysCheckBox";
+            this.UseSaysCheckBox.Size = new System.Drawing.Size(73, 17);
+            this.UseSaysCheckBox.TabIndex = 47;
+            this.UseSaysCheckBox.Text = "Use \'Says\'";
+            this.UseSaysCheckBox.UseVisualStyleBackColor = true;
+            this.UseSaysCheckBox.CheckedChanged += new System.EventHandler(this.UseSaysCheckBox_CheckedChanged);
+            // 
+            // VoiceSpeedLabel
+            // 
+            this.VoiceSpeedLabel.AutoSize = true;
+            this.VoiceSpeedLabel.ForeColor = System.Drawing.Color.White;
+            this.VoiceSpeedLabel.Location = new System.Drawing.Point(208, 112);
+            this.VoiceSpeedLabel.Name = "VoiceSpeedLabel";
+            this.VoiceSpeedLabel.Size = new System.Drawing.Size(13, 13);
+            this.VoiceSpeedLabel.TabIndex = 46;
+            this.VoiceSpeedLabel.Text = "0";
+            // 
+            // VoiceVolumeLabel
+            // 
+            this.VoiceVolumeLabel.AutoSize = true;
+            this.VoiceVolumeLabel.ForeColor = System.Drawing.Color.White;
+            this.VoiceVolumeLabel.Location = new System.Drawing.Point(208, 85);
+            this.VoiceVolumeLabel.Name = "VoiceVolumeLabel";
+            this.VoiceVolumeLabel.Size = new System.Drawing.Size(33, 13);
+            this.VoiceVolumeLabel.TabIndex = 45;
+            this.VoiceVolumeLabel.Text = "100%";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(0, 85);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(72, 13);
+            this.label17.TabIndex = 43;
+            this.label17.Text = "Voice Volume";
+            // 
+            // TTSVolumeTrackBar
+            // 
+            this.TTSVolumeTrackBar.BackColor = System.Drawing.Color.Transparent;
+            this.TTSVolumeTrackBar.Location = new System.Drawing.Point(74, 82);
+            this.TTSVolumeTrackBar.Name = "TTSVolumeTrackBar";
+            this.TTSVolumeTrackBar.Size = new System.Drawing.Size(128, 23);
+            this.TTSVolumeTrackBar.TabIndex = 44;
+            this.TTSVolumeTrackBar.Text = "metroTrackBar1";
+            this.TTSVolumeTrackBar.UseCustomBackColor = true;
+            this.TTSVolumeTrackBar.Value = 100;
+            this.TTSVolumeTrackBar.ValueChanged += new System.EventHandler(this.TTSVolumeTrackBar_ValueChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(4, 140);
+            this.label9.Location = new System.Drawing.Point(0, 112);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(68, 13);
             this.label9.TabIndex = 33;
@@ -1244,11 +1311,11 @@
             // TTSSpeedTrackBar
             // 
             this.TTSSpeedTrackBar.BackColor = System.Drawing.Color.Transparent;
-            this.TTSSpeedTrackBar.Location = new System.Drawing.Point(78, 137);
+            this.TTSSpeedTrackBar.Location = new System.Drawing.Point(74, 109);
             this.TTSSpeedTrackBar.Maximum = 10;
             this.TTSSpeedTrackBar.Minimum = -10;
             this.TTSSpeedTrackBar.Name = "TTSSpeedTrackBar";
-            this.TTSSpeedTrackBar.Size = new System.Drawing.Size(140, 23);
+            this.TTSSpeedTrackBar.Size = new System.Drawing.Size(128, 23);
             this.TTSSpeedTrackBar.TabIndex = 42;
             this.TTSSpeedTrackBar.Text = "TTSSpeedTrackBar";
             this.TTSSpeedTrackBar.UseCustomBackColor = true;
@@ -1260,7 +1327,7 @@
             this.SpeakOutUsernamecCeckBox.AutoSize = true;
             this.SpeakOutUsernamecCeckBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.SpeakOutUsernamecCeckBox.ForeColor = System.Drawing.Color.White;
-            this.SpeakOutUsernamecCeckBox.Location = new System.Drawing.Point(7, 114);
+            this.SpeakOutUsernamecCeckBox.Location = new System.Drawing.Point(3, 138);
             this.SpeakOutUsernamecCeckBox.Name = "SpeakOutUsernamecCeckBox";
             this.SpeakOutUsernamecCeckBox.Size = new System.Drawing.Size(126, 17);
             this.SpeakOutUsernamecCeckBox.TabIndex = 41;
@@ -1284,7 +1351,7 @@
             this.TTSSubscribersOnlyCheckbox.AutoSize = true;
             this.TTSSubscribersOnlyCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.TTSSubscribersOnlyCheckbox.ForeColor = System.Drawing.Color.White;
-            this.TTSSubscribersOnlyCheckbox.Location = new System.Drawing.Point(7, 93);
+            this.TTSSubscribersOnlyCheckbox.Location = new System.Drawing.Point(3, 161);
             this.TTSSubscribersOnlyCheckbox.Name = "TTSSubscribersOnlyCheckbox";
             this.TTSSubscribersOnlyCheckbox.Size = new System.Drawing.Size(103, 17);
             this.TTSSubscribersOnlyCheckbox.TabIndex = 39;
@@ -1309,11 +1376,13 @@
             this.SpeechChatComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SpeechChatComboBox.ForeColor = System.Drawing.Color.White;
             this.SpeechChatComboBox.FormattingEnabled = true;
-            this.SpeechChatComboBox.Location = new System.Drawing.Point(7, 52);
+            this.SpeechChatComboBox.Location = new System.Drawing.Point(3, 52);
             this.SpeechChatComboBox.Name = "SpeechChatComboBox";
-            this.SpeechChatComboBox.Size = new System.Drawing.Size(121, 21);
+            this.SpeechChatComboBox.Size = new System.Drawing.Size(238, 21);
             this.SpeechChatComboBox.TabIndex = 35;
             this.SpeechChatComboBox.SelectedIndexChanged += new System.EventHandler(this.SpeechChatComboBox_SelectedIndexChanged);
+            this.SpeechChatComboBox.MouseLeave += new System.EventHandler(this.SpeechChatComboBox_MouseLeave);
+            this.SpeechChatComboBox.MouseHover += new System.EventHandler(this.SpeechChatComboBox_MouseHover);
             // 
             // TwitchLoginPanel
             // 
@@ -1429,7 +1498,7 @@
             this.InfoBox.Name = "InfoBox";
             this.InfoBox.Size = new System.Drawing.Size(802, 42);
             this.InfoBox.TabIndex = 41;
-            this.InfoBox.Text = "Info:";
+            this.InfoBox.Text = "StreamAssistant:";
             this.InfoBox.Visible = false;
             // 
             // frmMain
@@ -1586,6 +1655,11 @@
         private System.Windows.Forms.Button SkipTTSButton;
         private MetroFramework.Controls.MetroTrackBar TTSSpeedTrackBar;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label17;
+        private MetroFramework.Controls.MetroTrackBar TTSVolumeTrackBar;
+        private System.Windows.Forms.Label VoiceSpeedLabel;
+        private System.Windows.Forms.Label VoiceVolumeLabel;
+        private System.Windows.Forms.CheckBox UseSaysCheckBox;
     }
 }
 

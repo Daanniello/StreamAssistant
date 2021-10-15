@@ -45,6 +45,7 @@ namespace ChannelPointsPlus
 
         public bool ttsSubscribersOnly = false;
         public bool ttsSpeakOutUsername = false;
+        public bool ttsUseSays = false;
 
         private bool TTSSettingsTabOpen = false;
 
@@ -813,6 +814,13 @@ namespace ChannelPointsPlus
 
         }
 
+        private void UseSaysCheckBox_CheckedChanged(dynamic sender, EventArgs e)
+        {
+            if (sender.CheckState == CheckState.Checked) ttsUseSays = true;
+            if (sender.CheckState == CheckState.Unchecked) ttsUseSays = false;
+            ChatMessageLog($"TTS Use 'Says' after username is turned {ttsUseSays}");
+        }
+
         #endregion
 
         #region MouseHoverInfoBox
@@ -831,6 +839,25 @@ namespace ChannelPointsPlus
 
         }
         private void RandomPickerRequirementsInput_MouseLeave(object sender, EventArgs e)
+        {
+            HideInfoBox();
+        }
+        private void CheckBoxVoiceCommands_MouseHover(object sender, EventArgs e)
+        {
+            ShowInfoBox("Speak `Hey Streamassistant` to wake it up. Then ask commands after. A list can be found here [Not implemented yet]");
+        }
+
+        private void CheckBoxVoiceCommands_MouseLeave(object sender, EventArgs e)
+        {
+            HideInfoBox();
+        }
+
+        private void SpeechChatComboBox_MouseHover(object sender, EventArgs e)
+        {
+            ShowInfoBox("To get more Voices, you would need to install them on your Windows device");
+        }
+
+        private void SpeechChatComboBox_MouseLeave(object sender, EventArgs e)
         {
             HideInfoBox();
         }
@@ -863,7 +890,7 @@ namespace ChannelPointsPlus
 
         private void ShowInfoBox(string info)
         {
-            InfoBox.Text = $"Info: {info}";
+            InfoBox.Text = $"StreamAssistant: {info}";
             InfoBox.Visible = true;
         }
 
@@ -884,6 +911,13 @@ namespace ChannelPointsPlus
         private void TTSSpeedTrackBar_ValueChanged(object sender, EventArgs e)
         {
             speechChat.SetVoiceRate(TTSSpeedTrackBar.Value);
+            VoiceSpeedLabel.Text = TTSSpeedTrackBar.Value.ToString();
+        }
+
+        private void TTSVolumeTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            speechChat.SetVoiceVolume(TTSVolumeTrackBar.Value);
+            VoiceVolumeLabel.Text = TTSVolumeTrackBar.Value.ToString() + "%";
         }
 
         private void HideInfoBox()

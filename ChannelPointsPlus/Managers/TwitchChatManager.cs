@@ -15,7 +15,7 @@ namespace ChannelPointsPlus
 {
     public class TwitchChatManager
     {
-        private frmMain _mainForm;                
+        private frmMain _mainForm;
         public TwitchApi _twitchApi;
         public bool isReseted = false;
 
@@ -27,7 +27,7 @@ namespace ChannelPointsPlus
             _twitchApi = twitchApi;
 
             _twitchApi.client.OnMessageReceived += Client_OnMessageReceived;
-        } 
+        }
 
         public async void Client_OnMessageReceived(object sender, TwitchLib.Client.Events.OnMessageReceivedArgs e)
         {
@@ -36,12 +36,12 @@ namespace ChannelPointsPlus
             if (isReseted) return;
 
             if (_mainForm.ttsSubscribersOnly)
-            {               
+            {
                 if (e.ChatMessage.IsSubscriber)
                 {
                     if (_mainForm.speechChat.isTurnedOn)
-                    {                       
-                        _mainForm.speechChat.ReadMessage(_mainForm.ttsSpeakOutUsername == true ? $"{(e.ChatMessage.Message.StartsWith("!") ? "!" + e.ChatMessage.Username : e.ChatMessage.Username)} says... {e.ChatMessage.Message}" : $"{e.ChatMessage.Message}");
+                    {
+                        _mainForm.speechChat.ReadMessage(_mainForm.ttsSpeakOutUsername == true ? $"{(e.ChatMessage.Message.StartsWith("!") ? "!" + e.ChatMessage.Username : e.ChatMessage.Username)} {(_mainForm.ttsUseSays ? "says" : "")}... {e.ChatMessage.Message}" : $"{e.ChatMessage.Message}");
                     }
                 }
             }
@@ -49,9 +49,9 @@ namespace ChannelPointsPlus
             {
                 if (_mainForm.speechChat.isTurnedOn)
                 {
-                    _mainForm.speechChat.ReadMessage(_mainForm.ttsSpeakOutUsername == true ? $"{(e.ChatMessage.Message.StartsWith("!") ? "!" + e.ChatMessage.Username : e.ChatMessage.Username)} says... {e.ChatMessage.Message}" : $"{e.ChatMessage.Message}");
+                    _mainForm.speechChat.ReadMessage(_mainForm.ttsSpeakOutUsername == true ? $"{(e.ChatMessage.Message.StartsWith("!") ? "!" + e.ChatMessage.Username : e.ChatMessage.Username)} {(_mainForm.ttsUseSays ? "says" : "")}... {e.ChatMessage.Message}" : $"{e.ChatMessage.Message}");
                 }
             }
-        }      
+        }
     }
 }
