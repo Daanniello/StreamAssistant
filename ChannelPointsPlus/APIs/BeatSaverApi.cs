@@ -93,7 +93,7 @@ namespace ChannelPointsPlus.APIs
                 {
                     var request = new HttpRequestMessage()
                     {
-                        RequestUri = new Uri($"https://beatsaver.com/api/maps/detail/{songKey}"),
+                        RequestUri = new Uri($"{baseUrl}/maps/id/{songKey}"),
                         Method = HttpMethod.Get,
                     };
 

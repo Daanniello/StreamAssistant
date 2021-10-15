@@ -101,6 +101,13 @@
             this.RandomPickerRequirementsInput = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.MaximalRatinglabel = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.MaximalRatingMetroTrackBar = new MetroFramework.Controls.MetroTrackBar();
+            this.RandomMapPickResultLabel = new System.Windows.Forms.Label();
+            this.MinimalRatingLabel = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.MinimalRatingTrackBar = new MetroFramework.Controls.MetroTrackBar();
             this.StartMapsFromNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label21 = new System.Windows.Forms.Label();
             this.TotalMapsLabel = new System.Windows.Forms.Label();
@@ -494,7 +501,7 @@
             // 
             this.PickRandomMapButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PickRandomMapButton.ForeColor = System.Drawing.Color.Silver;
-            this.PickRandomMapButton.Location = new System.Drawing.Point(22, 126);
+            this.PickRandomMapButton.Location = new System.Drawing.Point(22, 210);
             this.PickRandomMapButton.Name = "PickRandomMapButton";
             this.PickRandomMapButton.Size = new System.Drawing.Size(137, 45);
             this.PickRandomMapButton.TabIndex = 40;
@@ -1076,6 +1083,13 @@
             // 
             this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel10.Controls.Add(this.MaximalRatinglabel);
+            this.panel10.Controls.Add(this.label25);
+            this.panel10.Controls.Add(this.MaximalRatingMetroTrackBar);
+            this.panel10.Controls.Add(this.RandomMapPickResultLabel);
+            this.panel10.Controls.Add(this.MinimalRatingLabel);
+            this.panel10.Controls.Add(this.label20);
+            this.panel10.Controls.Add(this.MinimalRatingTrackBar);
             this.panel10.Controls.Add(this.StartMapsFromNumericUpDown);
             this.panel10.Controls.Add(this.label21);
             this.panel10.Controls.Add(this.TotalMapsLabel);
@@ -1083,8 +1097,81 @@
             this.panel10.Controls.Add(this.label19);
             this.panel10.Location = new System.Drawing.Point(452, 15);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(284, 194);
+            this.panel10.Size = new System.Drawing.Size(284, 287);
             this.panel10.TabIndex = 32;
+            // 
+            // MaximalRatinglabel
+            // 
+            this.MaximalRatinglabel.AutoSize = true;
+            this.MaximalRatinglabel.ForeColor = System.Drawing.Color.White;
+            this.MaximalRatinglabel.Location = new System.Drawing.Point(156, 180);
+            this.MaximalRatinglabel.Name = "MaximalRatinglabel";
+            this.MaximalRatinglabel.Size = new System.Drawing.Size(74, 13);
+            this.MaximalRatinglabel.TabIndex = 51;
+            this.MaximalRatinglabel.Text = "100% upvotes";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.ForeColor = System.Drawing.Color.White;
+            this.label25.Location = new System.Drawing.Point(19, 160);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(79, 13);
+            this.label25.TabIndex = 53;
+            this.label25.Text = "Maximal Rating";
+            // 
+            // MaximalRatingMetroTrackBar
+            // 
+            this.MaximalRatingMetroTrackBar.BackColor = System.Drawing.Color.Transparent;
+            this.MaximalRatingMetroTrackBar.Location = new System.Drawing.Point(22, 176);
+            this.MaximalRatingMetroTrackBar.Name = "MaximalRatingMetroTrackBar";
+            this.MaximalRatingMetroTrackBar.Size = new System.Drawing.Size(128, 23);
+            this.MaximalRatingMetroTrackBar.TabIndex = 52;
+            this.MaximalRatingMetroTrackBar.Text = "metroTrackBar1";
+            this.MaximalRatingMetroTrackBar.UseCustomBackColor = true;
+            this.MaximalRatingMetroTrackBar.Value = 100;
+            this.MaximalRatingMetroTrackBar.ValueChanged += new System.EventHandler(this.MaximalRatingMetroTrackBar_ValueChanged);
+            // 
+            // RandomMapPickResultLabel
+            // 
+            this.RandomMapPickResultLabel.AutoSize = true;
+            this.RandomMapPickResultLabel.ForeColor = System.Drawing.Color.White;
+            this.RandomMapPickResultLabel.Location = new System.Drawing.Point(19, 261);
+            this.RandomMapPickResultLabel.Name = "RandomMapPickResultLabel";
+            this.RandomMapPickResultLabel.Size = new System.Drawing.Size(0, 13);
+            this.RandomMapPickResultLabel.TabIndex = 50;
+            // 
+            // MinimalRatingLabel
+            // 
+            this.MinimalRatingLabel.AutoSize = true;
+            this.MinimalRatingLabel.ForeColor = System.Drawing.Color.White;
+            this.MinimalRatingLabel.Location = new System.Drawing.Point(156, 144);
+            this.MinimalRatingLabel.Name = "MinimalRatingLabel";
+            this.MinimalRatingLabel.Size = new System.Drawing.Size(68, 13);
+            this.MinimalRatingLabel.TabIndex = 48;
+            this.MinimalRatingLabel.Text = "60% upvotes";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.ForeColor = System.Drawing.Color.White;
+            this.label20.Location = new System.Drawing.Point(19, 124);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(76, 13);
+            this.label20.TabIndex = 49;
+            this.label20.Text = "Minimal Rating";
+            // 
+            // MinimalRatingTrackBar
+            // 
+            this.MinimalRatingTrackBar.BackColor = System.Drawing.Color.Transparent;
+            this.MinimalRatingTrackBar.Location = new System.Drawing.Point(22, 140);
+            this.MinimalRatingTrackBar.Name = "MinimalRatingTrackBar";
+            this.MinimalRatingTrackBar.Size = new System.Drawing.Size(128, 23);
+            this.MinimalRatingTrackBar.TabIndex = 48;
+            this.MinimalRatingTrackBar.Text = "metroTrackBar1";
+            this.MinimalRatingTrackBar.UseCustomBackColor = true;
+            this.MinimalRatingTrackBar.Value = 60;
+            this.MinimalRatingTrackBar.ValueChanged += new System.EventHandler(this.MinimalRatingTrackBar_ValueChanged);
             // 
             // StartMapsFromNumericUpDown
             // 
@@ -1707,6 +1794,13 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label TotalMapsLabel;
         private System.Windows.Forms.NumericUpDown StartMapsFromNumericUpDown;
+        private System.Windows.Forms.Label MinimalRatingLabel;
+        private System.Windows.Forms.Label label20;
+        private MetroFramework.Controls.MetroTrackBar MinimalRatingTrackBar;
+        private System.Windows.Forms.Label RandomMapPickResultLabel;
+        private System.Windows.Forms.Label MaximalRatinglabel;
+        private System.Windows.Forms.Label label25;
+        private MetroFramework.Controls.MetroTrackBar MaximalRatingMetroTrackBar;
     }
 }
 

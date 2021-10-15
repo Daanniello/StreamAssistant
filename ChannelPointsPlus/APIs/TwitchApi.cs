@@ -66,7 +66,11 @@ namespace ChannelPointsPlus.APIs
 
         public void SendMessageInChannel(string message)
         {
-            if (client.JoinedChannels.First().Channel == _username) client.SendMessage(client.JoinedChannels.First(), message);
+            if (client.JoinedChannels.First().Channel == _username)
+            {
+                client.SendMessage(client.JoinedChannels.First(), message);
+                _mainForm.ChatMessageLog(message);
+            }
         }
     }
 }

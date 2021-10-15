@@ -759,9 +759,10 @@ namespace ChannelPointsPlus
 
         }
 
-        private void PickRandomMapButton_Click(object sender, EventArgs e)
+        private async void PickRandomMapButton_Click(object sender, EventArgs e)
         {
-            new RandomPickerManager(this, TwitchApi).RequestRandomBeatMap(Convert.ToInt32(StartMapsFromNumericUpDown.Value));
+            var result = await new RandomPickerManager(this, TwitchApi).RequestRandomBeatMap(Convert.ToInt32(StartMapsFromNumericUpDown.Value), MinimalRatingTrackBar.Value, MaximalRatingMetroTrackBar.Value);
+            RandomMapPickResultLabel.Text = result;
         }
 
         #region CheckedChanged
@@ -921,6 +922,16 @@ namespace ChannelPointsPlus
         {
             speechChat.SetVoiceVolume(TTSVolumeTrackBar.Value);
             VoiceVolumeLabel.Text = TTSVolumeTrackBar.Value.ToString() + "%";
+        }
+
+        private void MinimalRatingTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            MinimalRatingLabel.Text = MinimalRatingTrackBar.Value + "% upvotes";
+        }
+
+        private void MaximalRatingMetroTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            MaximalRatinglabel.Text = MaximalRatingMetroTrackBar.Value + "% upvotes";
         }
 
         private void HideInfoBox()

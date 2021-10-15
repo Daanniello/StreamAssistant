@@ -133,7 +133,7 @@ namespace ChannelPointsPlus.Managers
 
         }
 
-        public async void RequestRandomBeatMap(int startFrom = 0)
+        public async Task<string> RequestRandomBeatMap(int startFrom = 0, int minimalRating = 60, int maximalRating = 100)
         {
             //Gets the latest song from beatsaver and get the key out of that
             var mapAmount = await BeatSaverApi.GetTotalMapCount();
@@ -142,14 +142,35 @@ namespace ChannelPointsPlus.Managers
             var randomGenerator = new Random();
             var randomKey = "";
             var retryAmount = 0;
+            var maxRetries = 50;
+            var repeat = false;
             do
             {
                 var randomMapNumber = randomGenerator.Next(startFrom, mapAmount);
-                randomKey = string.Format("{0:x}", randomMapNumber);
-            } while (await BeatSaverApi.GetSongByKey(randomKey) == null && retryAmount++ < 10);
+                randomKey = string.Format("{0:x}", randomMapNumber);                
+                try
+                {
+                    repeat = true;
+                    var MapJObject = await BeatSaverApi.GetSongByKey(randomKey);
+                    if (MapJObject["error"] == null)
+                    {
+                        var stats = MapJObject["stats"];
+                        var score = Convert.ToDouble(stats["score"]) * 100;
+
+                        if (score > minimalRating && score < maximalRating) repeat = false;
+                    }                    
+                }
+                catch
+                {
+                    repeat = true;
+                }                                
+            } while (repeat && retryAmount++ < maxRetries);
+
+            if (retryAmount > maxRetries) return $"No results within {maxRetries} tries";
 
             //Requests the bsr key into twitch chat 
             twitchApi.SendMessageInChannel($"!modadd {randomKey}");
+            return $"map {randomKey} has been picked";
         }
 
         private async void Client_OnMessageReceived(object sender, TwitchLib.Client.Events.OnMessageReceivedArgs e)
