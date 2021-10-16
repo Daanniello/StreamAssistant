@@ -18,25 +18,36 @@ namespace ChannelPointsPlus.APIs
         public TwitchClient client;
         public string _username;
 
-        public TwitchApi(frmMain mainForm, string username, string OAuth)
+        public TwitchApi(frmMain mainForm)
         {
-            _mainForm = mainForm;
-            _username = username;
+            _mainForm = mainForm;                                               
+        }
 
-            ConnectionCredentials credentials = new ConnectionCredentials(username, OAuth);
-            var clientOptions = new ClientOptions
+        public bool Connect(string username, string OAuth)
+        {
+            try
             {
-                MessagesAllowedInPeriod = 750,
-                ThrottlingPeriod = TimeSpan.FromSeconds(30)
-            };
-            WebSocketClient customClient = new WebSocketClient(clientOptions);
-            client = new TwitchClient(customClient);
-            client.Initialize(credentials, username);
-            
-            client.OnConnected += Client_OnConnected;
-            client.OnDisconnected += Client_OnDisconnected;
-           
-            client.Connect();
+                ConnectionCredentials credentials = new ConnectionCredentials(username, OAuth);
+                _username = username;
+                var clientOptions = new ClientOptions
+                {
+                    MessagesAllowedInPeriod = 750,
+                    ThrottlingPeriod = TimeSpan.FromSeconds(30)
+                };
+                WebSocketClient customClient = new WebSocketClient(clientOptions);
+                client = new TwitchClient(customClient);
+                client.Initialize(credentials, username);
+
+                client.OnConnected += Client_OnConnected;
+                client.OnDisconnected += Client_OnDisconnected;
+
+                client.Connect();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private void Client_OnDisconnected(object sender, TwitchLib.Communication.Events.OnDisconnectedEventArgs e)

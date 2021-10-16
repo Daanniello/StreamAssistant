@@ -390,18 +390,20 @@ namespace ChannelPointsPlus
 
         private void LoadTtsSettings()
         {
-            TTSSettingsButton.Visible = speechChat == null ? false : true;
-
-            if (File.Exists("settingsTTS.txt"))
+            if (speechChat != null)
             {
-                String[] loadSettings = File.ReadAllLines("settingsTTS.txt");
-                foreach (var setting in loadSettings)
+                TTSSettingsButton.Visible = speechChat == null ? false : true;
+
+                if (File.Exists("settingsTTS.txt"))
                 {
-                    if (setting.Contains("SpeechChatCheckBox")) SpeechChatCheckbox.Checked = (setting.Split('|').Last().Trim() == "True" ? true : false);
-                    if (setting.Contains("SpeechChatVoice")) SpeechChatComboBox.SelectedIndex = Convert.ToInt32(setting.Split('|').Last().Trim());
+                    String[] loadSettings = File.ReadAllLines("settingsTTS.txt");
+                    foreach (var setting in loadSettings)
+                    {
+                        if (setting.Contains("SpeechChatCheckBox")) SpeechChatCheckbox.Checked = (setting.Split('|').Last().Trim() == "True" ? true : false);
+                        if (setting.Contains("SpeechChatVoice")) SpeechChatComboBox.SelectedIndex = Convert.ToInt32(setting.Split('|').Last().Trim());
+                    }
                 }
             }
-
             ResetTTSButton.Visible = SpeechChatCheckbox.Checked;
             SkipTTSButton.Visible = SpeechChatCheckbox.Checked;
         }
@@ -644,15 +646,22 @@ namespace ChannelPointsPlus
 
         private void ConnectTwitchChat(string username, string oauth)
         {
-            TwitchApi = new TwitchApi(this, username, oauth);
-            twitchChatManager = new TwitchChatManager(this, TwitchApi);
-            ChatTextBox.Visible = true;
-            SpeechChatCheckbox.Visible = true;
-            TwitchLoginPanel.Visible = false;
-            speechChat = new SpeechChatManager(this);
-            SpeechChatComboBox.Visible = true;
-            SpeechChatComboBox.Items.AddRange(speechChat.GetInstalledVoices().ToArray());
-            TTSSettingsButton.Visible = true;
+            TwitchApi = new TwitchApi(this);
+            if(TwitchApi.Connect(username, oauth))
+            {
+                twitchChatManager = new TwitchChatManager(this, TwitchApi);
+                ChatTextBox.Visible = true;
+                SpeechChatCheckbox.Visible = true;
+                TwitchLoginPanel.Visible = false;
+                speechChat = new SpeechChatManager(this);
+                SpeechChatComboBox.Visible = true;
+                SpeechChatComboBox.Items.AddRange(speechChat.GetInstalledVoices().ToArray());
+                TTSSettingsButton.Visible = true;
+            }
+            else
+            {
+                ShowInfoBoxError("Twitch username or oauth is not correct");
+            }          
         }
 
 
@@ -774,13 +783,13 @@ namespace ChannelPointsPlus
             {
                 ResetTTSButton.Visible = true;
                 SkipTTSButton.Visible = true;
-                SetSpeechChat(true);
+                if(speechChat != null) SetSpeechChat(true);
             }
             else
             {
                 ResetTTSButton.Visible = false;
                 SkipTTSButton.Visible = false;
-                SetSpeechChat(false);
+                if (speechChat != null) SetSpeechChat(false);
             }
         }
 
@@ -898,6 +907,18 @@ namespace ChannelPointsPlus
         {
             InfoBox.Text = $"StreamAssistant: {info}";
             InfoBox.Visible = true;
+        }
+
+        private async Task ShowInfoBoxError(string error)
+        {
+            InfoBox.Text = $"StreamAssistant: {error}";
+            InfoBox.Visible = true;
+            var beforeColor = InfoBox.ForeColor;
+            InfoBox.ForeColor = System.Drawing.Color.Red;
+            await Task.Delay(5000);
+            InfoBox.ForeColor = beforeColor;
+            InfoBox.Visible = false;
+            return;
         }
 
         private async void ResetTTSButton_Click(object sender, EventArgs e)
