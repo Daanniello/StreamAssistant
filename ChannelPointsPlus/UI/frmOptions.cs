@@ -35,7 +35,7 @@ namespace ChannelPointsPlus
             if (userInput == "") return;
             Properties.Settings.Default.savedChannelID = userInput;
             Properties.Settings.Default.Save();
-            MessageBox.Show("Please restart the program to connect to the new ChannelID.", "ChannelPointsPlus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Please restart the program to connect to the new ChannelID.", "StreamAssistant", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace ChannelPointsPlus
                 File.Delete("settingsTwitch.txt");
             }
 
-            MessageBox.Show("Please restart the program to connect to the new Twitch login.", "ChannelPointsPlus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Please restart the program to connect to the new Twitch login.", "StreamAssistant", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

@@ -27,8 +27,8 @@ namespace ChannelPointsPlus.APIs
         {
             try
             {
-                ConnectionCredentials credentials = new ConnectionCredentials(username, OAuth);
-                _username = username;
+                _username = username.ToLower();
+                ConnectionCredentials credentials = new ConnectionCredentials(_username, OAuth);                
                 var clientOptions = new ClientOptions
                 {
                     MessagesAllowedInPeriod = 750,
@@ -36,7 +36,7 @@ namespace ChannelPointsPlus.APIs
                 };
                 WebSocketClient customClient = new WebSocketClient(clientOptions);
                 client = new TwitchClient(customClient);
-                client.Initialize(credentials, username);
+                client.Initialize(credentials, _username);
 
                 client.OnConnected += Client_OnConnected;
                 client.OnDisconnected += Client_OnDisconnected;

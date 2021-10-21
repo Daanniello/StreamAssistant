@@ -170,7 +170,7 @@
             // 
             // trayIcon
             // 
-            this.trayIcon.Text = "ChannelPointsPlus";
+            this.trayIcon.Text = "StreamAssistant";
             this.trayIcon.Visible = true;
             this.trayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trayIcon_MouseDoubleClick);
             // 
@@ -1647,7 +1647,7 @@
             this.MinimumSize = new System.Drawing.Size(341, 326);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Silverhaze\'s Channel Points";
+            this.Text = "StreamAssistant";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_OnClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trkVolume)).EndInit();
