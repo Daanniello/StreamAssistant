@@ -58,13 +58,13 @@ namespace ChannelPointsPlus
             if (_mainForm.bindingsScene.ContainsKey(e.RewardTitle) && e.Status != "ACTION_TAKEN")
             {
                 _mainForm.bindingsScene.TryGetValue(e.RewardTitle, out string output);
-                _mainForm.sceneChanger.ChangeScene(output, _mainForm.GetSceneDuration());
+                _mainForm.sceneChanger.ChangeScene(output, _mainForm.GetSceneDuration(), _mainForm.sceneChangeNoDuration);
             }
 
             if (_mainForm.bindingsSceneSource.ContainsKey(e.RewardTitle) && e.Status != "ACTION_TAKEN")
             {
                 _mainForm.bindingsSceneSource.TryGetValue(e.RewardTitle, out string output);
-                _mainForm.sceneSourceChanger.ChangeSceneSource(output, _mainForm.GetSceneSourceDuration());
+                _mainForm.sceneSourceChanger.ChangeSceneSource(output, _mainForm.GetSceneSourceDuration(), _mainForm.sceneSourceChangeNoDuration);
             }
 
             if (_mainForm.bindingsVideo.ContainsKey(e.RewardTitle) && e.Status != "ACTION_TAKEN")

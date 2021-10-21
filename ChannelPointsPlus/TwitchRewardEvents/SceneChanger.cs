@@ -29,7 +29,7 @@ namespace ChannelPointsPlus
             }
         }
 
-        public async void ChangeScene(string sceneName, int sceneChangeDuration)
+        public async void ChangeScene(string sceneName, int sceneChangeDuration, bool noDuration = false)
         {
             //Streamlabs        
             //Gets the active scene
@@ -51,6 +51,7 @@ namespace ChannelPointsPlus
             //Sets the scene to the requested one 
             var slobsRequest2 = SlobsRequestBuilder.NewRequest().SetMethod("makeSceneActive").SetResource("ScenesService").AddArgs(scene.Id).BuildRequest();
             var slobsRpcResponse2 = await slobsClient.ExecuteRequestAsync(slobsRequest2).ConfigureAwait(false);
+            if (noDuration) return;
             await Task.Delay(Convert.ToInt32(sceneChangeDuration) * 1000);
             //Sets back the scene to the normal one
             var slobsMakeActiveRequest = SlobsRequestBuilder.NewRequest().SetMethod("makeSceneActive").SetResource("ScenesService").AddArgs(currentScene.Id).BuildRequest();

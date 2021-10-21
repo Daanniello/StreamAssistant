@@ -47,6 +47,9 @@ namespace ChannelPointsPlus
         public bool ttsSpeakOutUsername = false;
         public bool ttsUseSays = false;
 
+        public bool sceneChangeNoDuration = false;
+        public bool sceneSourceChangeNoDuration = false;
+
         private bool TTSSettingsTabOpen = false;
 
         private AutoResetEvent logEvent = new AutoResetEvent(false);
@@ -834,6 +837,34 @@ namespace ChannelPointsPlus
             if (sender.CheckState == CheckState.Checked) ttsUseSays = true;
             if (sender.CheckState == CheckState.Unchecked) ttsUseSays = false;
             ChatMessageLog($"TTS Use 'Says' after username is turned {ttsUseSays}");
+        }
+
+        private void SceneChangeNoSwitchCheckBox_CheckedChanged(dynamic sender, EventArgs e)
+        {
+            if (sender.CheckState == CheckState.Checked)
+            {
+                sceneChangeNoDuration = true;
+                SceneChangeDuration.Enabled = false;
+            }
+            if (sender.CheckState == CheckState.Unchecked)
+            {
+                sceneChangeNoDuration = false;
+                SceneChangeDuration.Enabled = true;
+            }
+        }
+
+        private void SceneSourceNoDurationCheckBox_CheckedChanged(dynamic sender, EventArgs e)
+        {
+            if (sender.CheckState == CheckState.Checked)
+            {
+                sceneSourceChangeNoDuration = true;
+                SceneSourceChangeDuration.Enabled = false;
+            }
+            if (sender.CheckState == CheckState.Unchecked)
+            {
+                sceneSourceChangeNoDuration = false;
+                SceneSourceChangeDuration.Enabled = true;
+            }
         }
 
         #endregion
