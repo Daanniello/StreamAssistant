@@ -69,12 +69,12 @@
             this.MetroTabControl = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.VideoEventsInfo = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.VideoRewards = new System.Windows.Forms.ListBox();
             this.VideoUrls = new System.Windows.Forms.ListBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.SceneItemEventsInfo = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.SceneSourceRewards = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -83,9 +83,9 @@
             this.SceneSourceChangeDuration = new System.Windows.Forms.NumericUpDown();
             this.panel3 = new System.Windows.Forms.Panel();
             this.SceneChangeNoSwitchCheckBox = new System.Windows.Forms.CheckBox();
-            this.SceneChangeEventsInfo = new System.Windows.Forms.RichTextBox();
+            this.SceneChangeEventsInfo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.AudioEventsInfo = new System.Windows.Forms.RichTextBox();
+            this.AudioEventsInfo = new System.Windows.Forms.Label();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.panel9 = new System.Windows.Forms.Panel();
             this.ViewerListLabel = new System.Windows.Forms.Label();
@@ -98,7 +98,7 @@
             this.RandomPickerTimeLeft = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.RandomPickerDurationInput = new System.Windows.Forms.NumericUpDown();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.RandomViewerPickerInfo = new System.Windows.Forms.Label();
             this.RandomPickerRequirementsInput = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -703,7 +703,7 @@
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel8.Controls.Add(this.richTextBox2);
+            this.panel8.Controls.Add(this.VideoEventsInfo);
             this.panel8.Controls.Add(this.label13);
             this.panel8.Controls.Add(this.VideoRewards);
             this.panel8.Controls.Add(this.VideoUrls);
@@ -715,17 +715,17 @@
             this.panel8.Size = new System.Drawing.Size(602, 411);
             this.panel8.TabIndex = 30;
             // 
-            // richTextBox2
+            // VideoEventsInfo
             // 
-            this.richTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox2.ForeColor = System.Drawing.Color.Silver;
-            this.richTextBox2.Location = new System.Drawing.Point(24, 52);
-            this.richTextBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(555, 48);
-            this.richTextBox2.TabIndex = 27;
-            this.richTextBox2.Text = "Adds media on a browser source. NOT FINISHED YET.";
+            this.VideoEventsInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.VideoEventsInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.VideoEventsInfo.ForeColor = System.Drawing.Color.Silver;
+            this.VideoEventsInfo.Location = new System.Drawing.Point(24, 52);
+            this.VideoEventsInfo.Margin = new System.Windows.Forms.Padding(4);
+            this.VideoEventsInfo.Name = "VideoEventsInfo";
+            this.VideoEventsInfo.Size = new System.Drawing.Size(555, 48);
+            this.VideoEventsInfo.TabIndex = 27;
+            this.VideoEventsInfo.Text = "Adds media on a browser source. NOT FINISHED YET.";
             // 
             // label13
             // 
@@ -770,7 +770,7 @@
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.SceneSourceNoDurationCheckBox);
-            this.panel5.Controls.Add(this.richTextBox1);
+            this.panel5.Controls.Add(this.SceneItemEventsInfo);
             this.panel5.Controls.Add(this.label6);
             this.panel5.Controls.Add(this.SceneSourceRewards);
             this.panel5.Controls.Add(this.label7);
@@ -785,17 +785,17 @@
             this.panel5.Size = new System.Drawing.Size(583, 411);
             this.panel5.TabIndex = 29;
             // 
-            // richTextBox1
+            // SceneItemEventsInfo
             // 
-            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.ForeColor = System.Drawing.Color.Silver;
-            this.richTextBox1.Location = new System.Drawing.Point(24, 52);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(536, 48);
-            this.richTextBox1.TabIndex = 27;
-            this.richTextBox1.Text = "Enables an item inside the current scene, for a certain duration. ";
+            this.SceneItemEventsInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.SceneItemEventsInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SceneItemEventsInfo.ForeColor = System.Drawing.Color.Silver;
+            this.SceneItemEventsInfo.Location = new System.Drawing.Point(24, 52);
+            this.SceneItemEventsInfo.Margin = new System.Windows.Forms.Padding(4);
+            this.SceneItemEventsInfo.Name = "SceneItemEventsInfo";
+            this.SceneItemEventsInfo.Size = new System.Drawing.Size(536, 48);
+            this.SceneItemEventsInfo.TabIndex = 27;
+            this.SceneItemEventsInfo.Text = "Enables an item inside the current scene, for a certain duration. ";
             // 
             // label6
             // 
@@ -994,7 +994,7 @@
             this.panel9.Controls.Add(this.RandomPickerStartButton);
             this.panel9.Controls.Add(this.label18);
             this.panel9.Controls.Add(this.RandomPickerDurationInput);
-            this.panel9.Controls.Add(this.richTextBox3);
+            this.panel9.Controls.Add(this.RandomViewerPickerInfo);
             this.panel9.Controls.Add(this.RandomPickerRequirementsInput);
             this.panel9.Controls.Add(this.label16);
             this.panel9.Location = new System.Drawing.Point(19, 18);
@@ -1136,17 +1136,17 @@
             0,
             0});
             // 
-            // richTextBox3
+            // RandomViewerPickerInfo
             // 
-            this.richTextBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.richTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox3.ForeColor = System.Drawing.Color.Silver;
-            this.richTextBox3.Location = new System.Drawing.Point(29, 48);
-            this.richTextBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(340, 52);
-            this.richTextBox3.TabIndex = 28;
-            this.richTextBox3.Text = "Pick a random viewer in chat\n";
+            this.RandomViewerPickerInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.RandomViewerPickerInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RandomViewerPickerInfo.ForeColor = System.Drawing.Color.Silver;
+            this.RandomViewerPickerInfo.Location = new System.Drawing.Point(29, 48);
+            this.RandomViewerPickerInfo.Margin = new System.Windows.Forms.Padding(4);
+            this.RandomViewerPickerInfo.Name = "RandomViewerPickerInfo";
+            this.RandomViewerPickerInfo.Size = new System.Drawing.Size(340, 52);
+            this.RandomViewerPickerInfo.TabIndex = 28;
+            this.RandomViewerPickerInfo.Text = "Pick a random viewer in chat\n";
             // 
             // RandomPickerRequirementsInput
             // 
@@ -1869,13 +1869,13 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.RichTextBox SceneChangeEventsInfo;
-        private System.Windows.Forms.RichTextBox AudioEventsInfo;
+        private System.Windows.Forms.Label SceneChangeEventsInfo;
+        private System.Windows.Forms.Label AudioEventsInfo;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.RichTextBox LogTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label SceneItemEventsInfo;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ListBox SceneSourceRewards;
         private System.Windows.Forms.Label label7;
@@ -1896,7 +1896,7 @@
         private System.Windows.Forms.Panel TwitchLoginPanel;
         private System.Windows.Forms.ComboBox SpeechChatComboBox;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.Label VideoEventsInfo;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ListBox VideoRewards;
         private System.Windows.Forms.ListBox VideoUrls;
@@ -1909,7 +1909,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.Label RandomViewerPickerInfo;
         private System.Windows.Forms.TextBox RandomPickerRequirementsInput;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label22;
