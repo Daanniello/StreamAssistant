@@ -1079,7 +1079,7 @@
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(118, 16);
             this.label22.TabIndex = 38;
-            this.label22.Text = "Join reqruirements";
+            this.label22.Text = "Join requirements";
             // 
             // RandomPickerWinner
             // 
