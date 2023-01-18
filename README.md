@@ -20,7 +20,9 @@ Install it here https://github.com/Daanniello/StreamAssistant/releases
 
 Thats it! 
 
-![program](https://user-images.githubusercontent.com/24249387/135997726-64b913ae-6e92-473d-9045-2890879257bb.PNG)
+![image](https://user-images.githubusercontent.com/24249387/213152649-ddb4e886-136d-4862-b421-18378ce32cba.png)
+![image](https://user-images.githubusercontent.com/24249387/213152717-ba479c6e-e35a-499c-8b27-526b50c223ce.png)
+
 
 # What it does 
 
